@@ -1,7 +1,8 @@
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
     <div class="copyright text-center my-auto">
-      <span>Copyright &copy; Your Website 2019</span>
+      <!-- <span>Copyright &copy; BFSYS <?php echo date('Y') ?></span> -->
+      <span>Copyright &copy; BFSYS <?php echo date('Y') ?>&nbsp; | Por: Cleiton Salvagni</span>
     </div>
   </div>
 </footer>
@@ -39,6 +40,17 @@
 <script src="public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <script src="public/js/sb-admin-2.min.js"></script>
+
+
+<?php if (isset($scripts)) : ?>
+
+  <?php foreach ($scripts as $script) : ?>
+
+    <script src="<?php echo base_url("public/" . $script); ?>"></script>
+
+  <?php endforeach; ?>
+
+<?php endif; ?>
 
 </body>
 
