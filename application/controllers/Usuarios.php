@@ -18,6 +18,11 @@ class Usuarios extends CI_Controller
 
         );
 
+        // echo '<pre>';
+        // print_r($data['usuarios']);
+        // exit();
+
+
         $this->load->view('layout/header', $data);
         $this->load->view('usuarios/index', $data);
         $this->load->view('layout/footer', $data);
