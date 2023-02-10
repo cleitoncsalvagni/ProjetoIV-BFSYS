@@ -14,6 +14,14 @@ class Usuarios extends CI_Controller
     {
 
         $data = array(
+
+            'titulo' => 'Usuários Cadastrados',
+            'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
+            'scripts' => array(
+                'vendor/datatables/jquery.dataTables.min.js',
+                'vendor/datatables/dataTables.bootstrap4.min.js',
+                'vendor/datatables/app.js'
+            ),
             'usuarios' => $this->ion_auth->users()->result(),
 
         );
@@ -24,7 +32,7 @@ class Usuarios extends CI_Controller
 
 
         $this->load->view('layout/header', $data);
-        $this->load->view('usuarios/index', $data);
-        $this->load->view('layout/footer', $data);
+        $this->load->view('usuarios/index');
+        $this->load->view('layout/footer');
     }
 }
