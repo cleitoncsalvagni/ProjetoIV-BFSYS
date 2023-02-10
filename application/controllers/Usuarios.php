@@ -66,10 +66,17 @@ class Usuarios extends CI_Controller
             // print_r($this->input->post());
             // exit();
 
+            $this->form_validation->set_rules('first_name', '', 'trim|required');
 
-            $this->load->view('layout/header', $data);
-            $this->load->view('usuarios/edit');
-            $this->load->view('layout/footer');
+            if ($this->form_validation->run()) {
+
+                exit('Validado');
+            } else {
+
+                $this->load->view('layout/header', $data);
+                $this->load->view('usuarios/edit');
+                $this->load->view('layout/footer');
+            }
         }
     }
 }

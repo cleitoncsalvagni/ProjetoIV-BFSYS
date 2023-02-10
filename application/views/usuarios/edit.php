@@ -22,19 +22,20 @@
                         <div class="col-md-4">
                             <label>Nome</label>
                             <input type="text" class="form-control" name="first_name" placeholder="Informe o nome" value="<?php echo $usuario->first_name; ?>">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            <?php echo form_error('first_name', '<small class="form-text text-danger">', '</small>') ?>
+
                         </div>
 
                         <div class="col-md-4">
                             <label>Sobrenome</label>
                             <input type="text" class="form-control" name="last_name" placeholder="Informe o sobrenome" value="<?php echo $usuario->last_name; ?>">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            <?php echo form_error('', '') ?>
                         </div>
 
                         <div class="col-md-4">
                             <label>E-mail</label>
                             <input type="text" class="form-control" name="email" placeholder="Informe o email" value="<?php echo $usuario->email; ?>">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            <?php echo form_error('', '') ?>
                         </div>
                     </div>
 
@@ -43,7 +44,7 @@
                         <div class="col-md-4">
                             <label>Usuário</label>
                             <input type="text" class="form-control" name="username" placeholder="Informe o usuário" value="<?php echo $usuario->username; ?>">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            <?php echo form_error('', '') ?>
                         </div>
 
                         <div class="col-md-4">
@@ -67,12 +68,12 @@
                         <div class="col-md-6">
                             <label>Senha</label>
                             <input type="password" class="form-control" name="password" placeholder="Informe a senha">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            <?php echo form_error('', '') ?>
                         </div>
                         <div class="col-md-6">
                             <label>Confirmação de senha</label>
                             <input type="password" class="form-control" name="confirm_password" placeholder="Informe novamente a senha">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            <?php echo form_error('', '') ?>
                         </div>
 
                         <input type="hidden" name="usuario_id" value="<?php echo $usuario->id; ?>">
