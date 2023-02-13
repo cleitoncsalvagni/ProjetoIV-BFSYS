@@ -51,9 +51,10 @@
                     <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <!-- <th>ID</th> -->
                                 <th>Usuário</th>
                                 <th>Login</th>
+                                <th>Perfil</th>
                                 <th class='text-center'>Ativo</th>
                                 <th class='text-right no-sort'>Ações</th>
                             </tr>
@@ -62,13 +63,14 @@
                             <?php foreach ($usuarios as $user) : ?>
 
                                 <tr>
-                                    <td><?php echo $user->id ?></td>
+                                    <!-- <td><?php echo $user->id ?></td> -->
                                     <td><?php echo $user->username ?></td>
                                     <td><?php echo $user->email ?></td>
+                                    <td><?php echo ($this->ion_auth->is_admin($user->id) ? 'Administrador' : 'Vendedor') ?></td>
                                     <td class='text-center pr-4'><?php echo ($user->active ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-right'>
                                         <a title="Editar" href="<?php echo base_url('usuarios/edit/' . $user->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i></a>
-                                        <a title="Excluir" href="" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
+                                        <a title="Excluir" href="<?php echo base_url('usuarios/del/' . $user->id) ?>" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
                                     </td>
                                 </tr>
 
