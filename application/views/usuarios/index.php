@@ -16,7 +16,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fas fa-exclamation-triangle"></i>&nbsp; <?php echo $message; ?>
+                        <i class="far fa-exclamation-triangle"></i>&nbsp; <?php echo $message; ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -26,7 +26,22 @@
 
         <?php endif; ?>
 
-        <!-- DataTales Example -->
+        <?php if ($message = $this->session->flashdata('sucesso')) : ?>
+
+            <div class='row'>
+                <div class='col-md-12'>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="far fa-smile-wink"></i>&nbsp; <?php echo $message; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        <?php endif; ?>
+
+
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <a href='' title='Cadastrar novo usuário' class='btn btn-success btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
