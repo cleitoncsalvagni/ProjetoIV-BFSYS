@@ -40,8 +40,11 @@ class Usuarios extends CI_Controller
     {
 
         if (!$user_id || !$this->ion_auth->user($user_id)->row()) {
-            exit('Usuário não encontrado!');
+
+            $this->session->set_flashdata('error', 'Usuário não encontrado');
+            redirect('usuarios');
         } else {
+
             $data = array(
                 'titulo' => 'Editar Usuário',
                 'usuario' => $this->ion_auth->user($user_id)->row(),
@@ -67,9 +70,13 @@ class Usuarios extends CI_Controller
             // exit();
 
             $this->form_validation->set_rules('first_name', '', 'trim|required');
+            $this->form_validation->set_rules('last_name', '', 'trim|required');
+            $this->form_validation->set_rules('email', '', 'trim|required|valid_email|callback_email_check');
+            $this->form_validation->set_rules('username', '', 'trim|required|callback_username_check');
+            $this->form_validation->set_rules('password', '', 'min_length[8]|max_length[50]');
+            $this->form_validation->set_rules('confirm_password', '', 'matches[password]');
 
             if ($this->form_validation->run()) {
-
                 exit('Validado');
             } else {
 
@@ -77,6 +84,36 @@ class Usuarios extends CI_Controller
                 $this->load->view('usuarios/edit');
                 $this->load->view('layout/footer');
             }
+        }
+    }
+
+    public function email_check($email)
+    {
+
+        $user_id = $this->input->post('usuario_id');
+
+        if ($this->core_model->get_by_id('users', array('email' => $email, 'id !=' => $user_id))) {
+
+            $this->form_validation->set_message('email_check', 'Este email já existe!');
+            return false;
+        } else {
+
+            return true;
+        }
+    }
+
+    public function username_check($username)
+    {
+
+        $user_id = $this->input->post('usuario_id');
+
+        if ($this->core_model->get_by_id('users', array('email' => $username, 'id !=' => $user_id))) {
+
+            $this->form_validation->set_message('usuario_check', 'Este nome de usuário já existe!');
+            return false;
+        } else {
+
+            return true;
         }
     }
 }

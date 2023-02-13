@@ -29,13 +29,13 @@
                         <div class="col-md-4">
                             <label>Sobrenome</label>
                             <input type="text" class="form-control" name="last_name" placeholder="Informe o sobrenome" value="<?php echo $usuario->last_name; ?>">
-                            <?php echo form_error('', '') ?>
+                            <?php echo form_error('last_name', '<small class="form-text text-danger">', '</small>') ?>
                         </div>
 
                         <div class="col-md-4">
                             <label>E-mail</label>
                             <input type="text" class="form-control" name="email" placeholder="Informe o email" value="<?php echo $usuario->email; ?>">
-                            <?php echo form_error('', '') ?>
+                            <?php echo form_error('email', '<small class="form-text text-danger">', '</small>') ?>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                         <div class="col-md-4">
                             <label>Usuário</label>
                             <input type="text" class="form-control" name="username" placeholder="Informe o usuário" value="<?php echo $usuario->username; ?>">
-                            <?php echo form_error('', '') ?>
+                            <?php echo form_error('username', '<small class="form-text text-danger">', '</small>') ?>
                         </div>
 
                         <div class="col-md-4">
@@ -68,12 +68,12 @@
                         <div class="col-md-6">
                             <label>Senha</label>
                             <input type="password" class="form-control" name="password" placeholder="Informe a senha">
-                            <?php echo form_error('', '') ?>
+                            <?php echo form_error('password', '<small class="form-text text-danger">', '</small>') ?>
                         </div>
                         <div class="col-md-6">
                             <label>Confirmação de senha</label>
                             <input type="password" class="form-control" name="confirm_password" placeholder="Informe novamente a senha">
-                            <?php echo form_error('', '') ?>
+                            <?php echo form_error('confirm_password', '<small class="form-text text-danger">', '</small>') ?>
                         </div>
 
                         <input type="hidden" name="usuario_id" value="<?php echo $usuario->id; ?>">
