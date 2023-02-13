@@ -16,7 +16,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="far fa-exclamation-triangle"></i>&nbsp; <?php echo $message; ?>
+                        <i class="fas fa-exclamation-triangle"></i>&nbsp; <?php echo $message; ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -70,9 +70,27 @@
                                     <td class='text-center pr-4'><?php echo ($user->active ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-right'>
                                         <a title="Editar" href="<?php echo base_url('usuarios/edit/' . $user->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i></a>
-                                        <a title="Excluir" href="<?php echo base_url('usuarios/del/' . $user->id) ?>" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
+                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $user->id ?>" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
                                     </td>
                                 </tr>
+
+                                <div class="modal fade" id="user-<?php echo $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Deletar Usuário</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Deseja mesmo <strong>deletar</strong> o usuário? Esta ação não pode ser desfeita!</div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
+                                                <a class="btn btn-danger btn-sm" href="<?php echo base_url('usuarios/del/' . $user->id) ?>">Deletar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             <?php endforeach; ?>
                         </tbody>
