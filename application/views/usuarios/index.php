@@ -44,7 +44,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='' title='Cadastrar novo usuário' class='btn btn-success btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
+                <a href='<?php echo base_url('usuarios/novo') ?>' title='Cadastrar novo usuário' class='btn btn-success btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -54,7 +54,7 @@
                                 <th>ID</th>
                                 <th>Usuário</th>
                                 <th>Login</th>
-                                <th>Ativo</th>
+                                <th class='text-center'>Ativo</th>
                                 <th class='text-right no-sort'>Ações</th>
                             </tr>
                         </thead>
@@ -65,7 +65,7 @@
                                     <td><?php echo $user->id ?></td>
                                     <td><?php echo $user->username ?></td>
                                     <td><?php echo $user->email ?></td>
-                                    <td><?php echo $user->active ?></td>
+                                    <td class='text-center pr-4'><?php echo ($user->active ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-right'>
                                         <a title="Editar" href="<?php echo base_url('usuarios/edit/' . $user->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i></a>
                                         <a title="Excluir" href="" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
