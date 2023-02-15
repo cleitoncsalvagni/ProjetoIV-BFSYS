@@ -141,7 +141,9 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success btn-sm text-center">Salvar</button>
+
+                    <button type="submit" class="btn btn-success btn-sm text-center col-md-12 border-20">Salvar</button>
+
 
                 </form>
             </div>

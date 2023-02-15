@@ -13,7 +13,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='<?php echo base_url('usuarios') ?>' title='Voltar' class='btn btn-primary btn-sm float-right'><i class="fas fa-arrow-left"></i>&nbsp; Voltar</a>
+                <a href='<?php echo base_url('usuarios') ?>' title='Voltar' class='btn btn-outline-dark btn-sm col-md-2'><i class="fas fa-arrow-left"></i>&nbsp; Retornar</a>
             </div>
             <div class="card-body">
                 <form method="POST" name="form_novo">
@@ -78,7 +78,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                    <button type="submit" class="btn btn-success btn-sm col-md-12 mt-3">Salvar</button>
 
                 </form>
             </div>
