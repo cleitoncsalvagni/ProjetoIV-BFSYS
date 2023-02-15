@@ -5,5 +5,5 @@ BFSys (Bussiness Flow System) é um sistema para controle de Ordens de Serviço 
 ## Tecnologias
 
 <p><b>Frontend:</b> CodeIgniter 3, Bootstrap </p>
-<p><b>Backend:</b> PHP </p>
+<p><b>Backend:</b> PHP/C# </p>
 
