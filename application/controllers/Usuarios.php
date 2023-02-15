@@ -8,6 +8,11 @@ class Usuarios extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        if (!$this->ion_auth->logged_in()) {
+            // $this->session->set_flashdata('info', 'Sua sessão expirou!');
+            redirect('auth/login');
+        }
     }
 
     public function index()
@@ -59,6 +64,7 @@ class Usuarios extends CI_Controller
             );
             $group = array($this->input->post('perfil_usuario'));
 
+            $data = html_escape($additional_data);
             $additional_data = $this->security->xss_clean($additional_data);
             $group = $this->security->xss_clean($group);
 
@@ -163,6 +169,7 @@ class Usuarios extends CI_Controller
 
                 );
 
+                $data = html_escape($data);
                 $data = $this->security->xss_clean($data);
                 $password = $this->input->post('password');
 
