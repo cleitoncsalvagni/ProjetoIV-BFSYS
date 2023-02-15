@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url('/') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('/') ?>">Início</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo ?></li>
             </ol>
         </nav>
@@ -56,7 +56,7 @@
                                 <th>Login</th>
                                 <th>Perfil</th>
                                 <th class='text-center'>Ativo</th>
-                                <th class='text-right no-sort'>Ações</th>
+                                <th class='text-center no-sort'>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,9 +68,9 @@
                                     <td><?php echo $user->email ?></td>
                                     <td><?php echo ($this->ion_auth->is_admin($user->id) ? 'Administrador' : 'Vendedor') ?></td>
                                     <td class='text-center pr-4'><?php echo ($user->active ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
-                                    <td class='text-right'>
-                                        <a title="Editar" href="<?php echo base_url('usuarios/edit/' . $user->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i></a>
-                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $user->id ?>" class="btn btn-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
+                                    <td class='text-center'>
+                                        <a title="Editar" href="<?php echo base_url('usuarios/edit/' . $user->id) ?>" class="btn btn-outline-primary btn-sm"><i class="fas fa-user-edit"></i></a>
+                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $user->id ?>" class="btn btn-outline-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
                                     </td>
                                 </tr>
 

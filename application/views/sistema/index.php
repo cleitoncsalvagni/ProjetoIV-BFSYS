@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url('/') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('/') ?>">Início</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo ?></li>
             </ol>
         </nav>
@@ -42,13 +42,10 @@
         <?php endif; ?>
 
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <a href='<?php echo base_url('usuarios') ?>' title='Voltar' class='btn btn-primary btn-sm float-right'><i class="fas fa-arrow-left"></i>&nbsp; Voltar</a>
-            </div>
             <div class="card-body">
                 <form method="POST" name="form_edit">
 
-                    <div class="form-group row mb-3">
+                    <div class="form-group row mb-4">
                         <div class="col-md-4">
                             <label>Razão Social</label>
                             <input type="text" class="form-control" name="sistema_razao_social" placeholder="Razão social" value="<?php echo $sistema->sistema_razao_social; ?>">
@@ -74,7 +71,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-3">
+                    <div class="form-group row mb-4">
                         <div class="col-md-3">
                             <label>Telefone Fixo</label>
                             <input type="text" class="form-control" name="sistema_telefone_fixo" placeholder="Telefone fixo" value="<?php echo $sistema->sistema_telefone_fixo; ?>">
@@ -101,7 +98,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-3">
+                    <div class="form-group row mb-4">
                         <div class="col-md-4">
                             <label>Endereço</label>
                             <input type="text" class="form-control" name="sistema_endereco" placeholder="Endereço" value="<?php echo $sistema->sistema_endereco; ?>">
@@ -110,16 +107,17 @@
                         </div>
 
                         <div class="col-md-2">
+                            <label>Número</label>
+                            <input type="text" class="form-control" name="sistema_numero" placeholder="Número" value="<?php echo $sistema->sistema_numero; ?>">
+                            <?php echo form_error('sistema_numero', '<small class="form-text text-danger">', '</small>') ?>
+                        </div>
+
+                        <div class="col-md-2">
                             <label>CEP</label>
                             <input type="text" class="form-control cep" name="sistema_cep" placeholder="CEP" value="<?php echo $sistema->sistema_cep; ?>">
                             <?php echo form_error('sistema_cep', '<small class="form-text text-danger">', '</small>') ?>
                         </div>
 
-                        <div class="col-md-2">
-                            <label>Número</label>
-                            <input type="text" class="form-control" name="sistema_numero" placeholder="Número" value="<?php echo $sistema->sistema_numero; ?>">
-                            <?php echo form_error('sistema_numero', '<small class="form-text text-danger">', '</small>') ?>
-                        </div>
 
                         <div class="col-md-2">
                             <label>Cidade</label>
@@ -134,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-5">
+                    <div class="form-group row mb-3">
                         <div class="col-md-12">
                             <label>Texto da ordem de serviço e venda</label>
                             <textarea name='sistema_txt_ordem_servico' class="form-control" placeholder="Ex: Obrigado por adquirir nossos serviços!"><?php echo $sistema->sistema_txt_ordem_servico; ?></textarea>
@@ -143,7 +141,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                    <button type="submit" class="btn btn-success btn-sm text-center">Salvar</button>
 
                 </form>
             </div>
