@@ -240,22 +240,13 @@ class Clientes extends CI_Controller
     public function del($cliente_id = NULL)
     {
 
-        if (!$cliente_id || !$this->ion_auth->user($cliente_id)->row()) {
-            $this->session->set_flashdata('error', 'Usuário não encontrado');
-            redirect('usuarios');
-        }
+        if (!$cliente_id || !$this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id))) {
 
-        if ($this->ion_auth->is_admin($cliente_id)) {
-            $this->session->set_flashdata('error', 'O administrador não pode ser excluído!');
-            redirect('usuarios');
-        }
-
-        if ($this->ion_auth->delete_user($cliente_id)) {
-            $this->session->set_flashdata('sucesso', 'Usuário excluído com sucesso!');
-            redirect('usuarios');
+            $this->session->set_flashdata('error', 'Cliente não encontrado');
+            redirect('clientes');
         } else {
-            $this->session->set_flashdata('error', 'Erro ao deletar usuário. Tente novamente.');
-            redirect('usuarios');
+            $this->core_model->delete('clientes', array('cliente_id' => $cliente_id));
+            redirect('clientes');
         }
     }
 
