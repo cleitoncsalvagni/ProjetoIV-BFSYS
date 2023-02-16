@@ -15,7 +15,9 @@
             <div class="card-body">
                 <form method="POST" name="form_edit">
 
-                    <fieldset class='mt-4 border p-2'>
+                    <p><strong><i class="fas fa-clock"></i>&nbsp;&nbsp;Última alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($cliente->cliente_data_alteracao) ?></p>
+
+                    <fieldset class='mt-4 border p-3'>
                         <legend class='small'><i class="fas fa-fw fa-user-tie"></i>&nbsp; Dados Pessoais</legend>
 
                         <div class="form-group row mb-3">
@@ -42,15 +44,27 @@
 
                         <div class="form-group row mb-3">
                             <div class="col-md-3">
-                                <label>CPF ou CNPJ</label>
-                                <input type="text" class="form-control cnpj" name="cliente_cpf_cnpj" placeholder="Informe o CPF ou o CNPJ" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
-                                <?php echo form_error('cliente_cpf_cnpj', '<small class="form-text text-danger">', '</small>') ?>
+                                <?php if ($cliente->cliente_tipo == 1) : ?>
+                                    <label>CPF</label>
+                                    <input type="text" class="form-control cpf" name="cliente_cpf" placeholder="Informe o CPF" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
+                                    <?php echo form_error('cliente_cpf', '<small class="form-text text-danger">', '</small>') ?>
+                                <?php else : ?>
+                                    <label>CNPJ</label>
+                                    <input type="text" class="form-control cnpj" name="cliente_cnpj" placeholder="Informe o CNPJ" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
+                                    <?php echo form_error('cliente_cnpj', '<small class="form-text text-danger">', '</small>') ?>
+                                <?php endif; ?>
                             </div>
+
                             <div class="col-md-3">
-                                <label>RG ou IE</label>
-                                <input type="text" class="form-control" name="cliente_rg_ie" placeholder="Informe o RG ou a Inscrição Estadual" value="<?php echo $cliente->cliente_rg_ie; ?>">
+                                <?php if ($cliente->cliente_tipo == 1) : ?>
+                                    <label>RG</label>
+                                <?php else : ?>
+                                    <label>Inscrição Estadual</label>
+                                <?php endif; ?>
+                                <input type="text" class="form-control" name="cliente_rg_ie" placeholder="<?php echo $cliente->cliente_tipo == 1 ? 'Informe o RG' : 'Informe a Inscriçaõ Estadual'; ?>" value="<?php echo $cliente->cliente_rg_ie; ?>">
                                 <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
+
                             <div class="col-md-6">
                                 <label>Email</label>
                                 <input type="text" class="form-control" name="cliente_email" placeholder="Informe o email" value="<?php echo $cliente->cliente_email; ?>">
@@ -75,9 +89,8 @@
 
                     </fieldset>
 
-
-                    <fieldset class='mt-4 border p-2'>
-                        <legend class='small'><i class="fas fa-map-marker-alt"></i>&nbsp; Dados de endereço</legend>
+                    <fieldset class='mt-4 border p-3'>
+                        <legend class='small'><i class="fas fa-map-marker-alt"></i>&nbsp; Endereço</legend>
                         <div class="form-group row mb-3">
                             <div class="col-md-4">
                                 <label>Endereço</label>
@@ -121,10 +134,10 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class='mt-4 border p-2'>
-                        <legend class='small'><i class="fas fa-user-cog"></i>&nbsp; Configurações</legend>
+                    <fieldset class='mt-4 border p-3'>
+                        <legend class='small'><i class="fas fa-user-cog"></i>&nbsp; Preferências</legend>
 
-                        <div class="form-group mb-3">
+                        <div class="form-group row mb-3">
                             <div class="col-md-2">
                                 <label>Cliente ativo</label>
                                 <select name='cliente_ativo' class="form-control">
@@ -133,8 +146,9 @@
                                 </select>
                                 <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
-
-                            <div class="col-md-8 mt-3">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-8">
                                 <label>Observações</label>
                                 <textarea class="form-control" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
                                 <?php echo form_error('cliente_obs', '<small class="form-text text-danger">', '</small>') ?>
