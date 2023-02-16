@@ -50,7 +50,7 @@ class Clientes extends CI_Controller
             $this->form_validation->set_rules('cliente_nome', '', 'trim|required|min_length[4]|max_length[45]');
             $this->form_validation->set_rules('cliente_sobrenome', '', 'trim|required|min_length[4]|max_length[150]');
             $this->form_validation->set_rules('cliente_data_nascimento', '', 'required');
-            $this->form_validation->set_rules('cliente_cpf_cnpj', '', 'trim|required|min_length[15]|max_length[20]');
+            $this->form_validation->set_rules('cliente_cpf_cnpj', '', 'trim|required|min_length[10]|max_length[20]');
             $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|max_length[20]');
             $this->form_validation->set_rules('cliente_email', '', 'trim|valid_email|max_length[50]');
             $this->form_validation->set_rules('cliente_telefone', '', 'trim|max_length[14]');
