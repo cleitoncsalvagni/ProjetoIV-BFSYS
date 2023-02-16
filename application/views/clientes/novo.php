@@ -30,7 +30,7 @@
                     <fieldset class='mt-5 border p-3'>
                         <legend class='small'><i class="fas fa-fw fa-user-tie"></i>&nbsp; Dados Pessoais</legend>
 
-                        <div class="form-group row mb-3">
+                        <div class="form-group row">
                             <div class="col-md-5">
                                 <label>Nome</label>
                                 <input type="text" class="form-control" name="cliente_nome" placeholder="Informe o nome" value="<?php echo set_value('cliente_nome'); ?>">
@@ -80,7 +80,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3">
+                        <div class="form-group row">
                             <div class="col-md-3">
                                 <label>Celular</label>
                                 <input type="text" class="form-control sp_celphones" name="cliente_celular" placeholder="Informe o celular" value="<?php echo set_value('cliente_celular') ?>">
@@ -116,7 +116,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3">
+                        <div class="form-group row">
                             <div class="col-md-2">
                                 <label>Bairro</label>
                                 <input type="text" class="form-control" name="cliente_bairro" placeholder="Informe o bairro" value="<?php echo set_value('cliente_bairro'); ?>">
@@ -141,7 +141,7 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class='mt-4 border p-3'>
+                    <fieldset class='mt-4 border p-3 mb-3'>
                         <legend class='small'><i class="fas fa-user-cog"></i>&nbsp; Preferências</legend>
 
                         <div class="form-group row mb-3">

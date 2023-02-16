@@ -44,7 +44,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='<?php echo base_url('clientes/novo') ?>' title='Cadastrar novo cliente' class='btn btn-success btn-sm float-right col-md-2'><i class="fas fa-user-plus"></i>&nbsp; Novo cliente</a>
+                <a href='<?php echo base_url('clientes/novo') ?>' title='Cadastrar novo cliente' class='btn btn-success btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo cliente</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -80,12 +80,12 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Deletar Usuário</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Deletar Cliente</h5>
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">Deseja mesmo <strong>deletar</strong> o usuário? Esta ação não pode ser desfeita!</div>
+                                            <div class="modal-body">Deseja mesmo <strong>deletar</strong> o cliente? Esta ação não pode ser desfeita!</div>
                                             <div class="modal-footer">
                                                 <button class="btn btn-primary btn-sm" type="button" data-dismiss="modal">Cancelar</button>
                                                 <a class="btn btn-danger btn-sm" href="<?php echo base_url('clientes/del/' . $cliente->cliente_id) ?>">Deletar</a>
