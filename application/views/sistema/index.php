@@ -107,7 +107,7 @@
                     </fieldset>
 
                     <fieldset class='mt-4 border p-3 mb-3'>
-                        <legend class='small'><i class="fas fa-cogs"></i>&nbsp; Endereço</legend>
+                        <legend class='small'><i class="fas fa-map-marker-alt"></i>&nbsp; Endereço</legend>
 
                         <div class="form-group row mb-4">
                             <div class="col-md-4">
