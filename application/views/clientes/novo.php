@@ -14,8 +14,6 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form method="POST" name="form_add">
-
-
                     <div>
                         <div class="custom-control custom-radio custom-control-inline mt-2">
                             <input type="radio" id="pessoa_fisica" name="cliente_tipo" class="custom-control-input" value="1" <?php echo set_checkbox('cliente_tipo', '1') ?> checked="">
@@ -32,20 +30,20 @@
 
                         <div class="form-group row">
                             <div class="col-md-5">
-                                <label>Nome</label>
+                                <label>Nome <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control" name="cliente_nome" placeholder="Informe o nome" value="<?php echo set_value('cliente_nome'); ?>">
                                 <?php echo form_error('cliente_nome', '<small class="form-text text-danger">', '</small>') ?>
 
                             </div>
 
                             <div class="col-md-5">
-                                <label>Sobrenome</label>
+                                <label>Sobrenome <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control form-control-user" name="cliente_sobrenome" placeholder="Informe o sobrenome" value="<?php echo set_value('cliente_sobrenome'); ?>">
                                 <?php echo form_error('cliente_sobrenome', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
 
                             <div class="col-md-2">
-                                <label>Data de nascimento</label>
+                                <label>Data de nasc. <strong class='text-danger'>*</strong></label>
                                 <input type="date" class="form-control" name="cliente_data_nascimento" value="<?php echo set_value('cliente_data_nascimento'); ?>">
                                 <?php echo form_error('cliente_data_nascimento', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
@@ -54,21 +52,26 @@
 
                         <div class="form-group row mb-3">
                             <div class='col-md-3 pessoa_fisica'>
-                                <label>CPF</label>
+                                <label>CPF <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control cpf" name="cliente_cpf" placeholder="Informe o CPF" value="<?php echo set_value('cliente_cpf') ?>">
                                 <?php echo form_error('cliente_cpf', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
 
                             <div class='col-md-3 pessoa_juridica'>
-                                <label>CNPJ</label>
+                                <label>CNPJ <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control cnpj" name="cliente_cnpj" placeholder="Informe o CNPJ" value="<?php echo set_value('cliente_cnpj') ?>">
                                 <?php echo form_error('cliente_cnpj', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
 
-                            <div class="col-md-3">
-                                <label class='pessoa_fisica'>RG</label>
-                                <label class='pessoa_juridica'>Inscrição Estadual</label>
-                                <input type="text" class="form-control" name="cliente_rg_ie" value="<?php echo set_value('cliente_rg_ie'); ?>">
+                            <div class="col-md-3 pessoa_fisica">
+                                <label class=''>RG</label>
+                                <input type="text" class="form-control" name="cliente_rg_ie" placeholder="Informe o RG" value="<?php echo set_value('cliente_rg_ie'); ?>">
+                                <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="col-md-3 pessoa_juridica">
+                                <label class=''>Inscrição Estadual</label>
+                                <input type="text" class="form-control" name="cliente_rg_ie" placeholder="Informe a inscrição estadual" value="<?php echo set_value('cliente_rg_ie'); ?>">
                                 <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
 
@@ -100,7 +103,7 @@
                         <legend class='small'><i class="fas fa-map-marker-alt"></i>&nbsp; Endereço</legend>
                         <div class="form-group row mb-3">
                             <div class="col-md-4">
-                                <label>Endereço</label>
+                                <label>Endereço <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control" name="cliente_endereco" placeholder="Informe o endereço" value="<?php echo set_value('cliente_endereço') ?>">
                                 <?php echo form_error('cliente_endereco', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
@@ -118,22 +121,22 @@
 
                         <div class="form-group row">
                             <div class="col-md-2">
-                                <label>Bairro</label>
+                                <label>Bairro <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control" name="cliente_bairro" placeholder="Informe o bairro" value="<?php echo set_value('cliente_bairro'); ?>">
                                 <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                             <div class="col-md-2">
-                                <label>CEP</label>
+                                <label>CEP <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control cep" name="cliente_cep" placeholder="Informe o CEP" value="<?php echo set_value('cliente_cep'); ?>">
                                 <?php echo form_error('cliente_cep', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                             <div class="col-md-3">
-                                <label>Cidade</label>
+                                <label>Cidade <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control" name="cliente_cidade" placeholder="Informe a cidade" value="<?php echo set_value('cliente_cidade'); ?>">
                                 <?php echo form_error('cliente_cidade', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                             <div class="col-md-2">
-                                <label>UF</label>
+                                <label>UF <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control uf" name="cliente_estado" placeholder="UF" value="<?php echo set_value('cliente_estado'); ?>">
                                 <?php echo form_error('cliente_estado', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
