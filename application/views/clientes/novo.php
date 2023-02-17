@@ -156,14 +156,14 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-8">
-                                <label>Observações</label>
-                                <textarea class="form-control" name="cliente_obs" placeholder="Observações"><?php echo set_value('cliente_obs'); ?></textarea>
-                                <?php echo form_error('cliente_obs', '<small class="form-text text-danger">', '</small>') ?>
-                            </div>
-                        </div>
                     </fieldset>
+                    <div class="form-group row">
+                        <div class="col-md-8">
+                            <label>Observações</label>
+                            <textarea class="form-control" name="cliente_obs" placeholder="Observações"><?php echo set_value('cliente_obs'); ?></textarea>
+                            <?php echo form_error('cliente_obs', '<small class="form-text text-danger">', '</small>') ?>
+                        </div>
+                    </div>
 
                     <button type="submit" class="btn btn-success btn-sm ">Salvar</button>
                     <a href='<?php echo base_url('clientes') ?>' title='Voltar' class='btn btn-primary btn-sm ml-2'>Voltar</a>

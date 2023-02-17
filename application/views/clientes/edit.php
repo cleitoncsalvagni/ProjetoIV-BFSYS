@@ -127,14 +127,14 @@
                             </div>
                             <div class="col-md-1">
                                 <label>UF</label>
-                                <input type="text" class="form-control uf" name="cliente_estado" placeholder="Informe a cidade" value="<?php echo $cliente->cliente_estado; ?>">
+                                <input type="text" class="form-control uf" name="cliente_estado" placeholder="UF" value="<?php echo $cliente->cliente_estado; ?>">
                                 <?php echo form_error('cliente_estado', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
 
                         </div>
                     </fieldset>
 
-                    <fieldset class='mt-4 border p-3'>
+                    <fieldset class='mt-4 border p-3 mb-3'>
                         <legend class='small'><i class="fas fa-user-cog"></i>&nbsp; Preferências</legend>
 
                         <div class="form-group row mb-3">
@@ -147,19 +147,18 @@
                                 <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-8">
-                                <label>Observações</label>
-                                <textarea class="form-control" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
-                                <?php echo form_error('cliente_obs', '<small class="form-text text-danger">', '</small>') ?>
-                            </div>
-                        </div>
                     </fieldset>
-
-                    <div class="form-group row mb-3">
-                        <input type='hidden' name='cliente_tipo' value="<?php echo $cliente->cliente_tipo; ?>">
-                        <input type='hidden' name='cliente_id' value="<?php echo $cliente->cliente_id; ?>">
+                    <div class="form-group row">
+                        <div class="col-md-8">
+                            <label>Observações</label>
+                            <textarea class="form-control" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
+                            <?php echo form_error('cliente_obs', '<small class="form-text text-danger">', '</small>') ?>
+                        </div>
                     </div>
+
+                    <input type='hidden' name='cliente_tipo' value="<?php echo $cliente->cliente_tipo; ?>">
+                    <input type='hidden' name='cliente_id' value="<?php echo $cliente->cliente_id; ?>">
+
 
                     <button type="submit" class="btn btn-success btn-sm ">Salvar</button>
                     <a href='<?php echo base_url('clientes') ?>' title='Voltar' class='btn btn-primary btn-sm ml-2'>Voltar</a>
