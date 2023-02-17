@@ -44,7 +44,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='<?php echo base_url('clientes/novo') ?>' title='Cadastrar novo cliente' class='btn btn-success btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo cliente</a>
+                <a href='<?php echo base_url('clientes/novo') ?>' title='Cadastrar novo cliente' class='btn btn-success rounded-pill btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo cliente</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -71,8 +71,8 @@
                                     <td><?php echo ($cliente->cliente_tipo ? 'Pessoa Física' : 'Pessoa Jurídica') ?></td>
                                     <td class='text-center pr-4'><?php echo ($cliente->cliente_ativo ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-center'>
-                                        <a title="Editar" href="<?php echo base_url('clientes/edit/' . $cliente->cliente_id) ?>" class="btn btn-outline-primary btn-sm"><i class="fas fa-user-edit"></i></a>
-                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $cliente->cliente_id ?>" class="btn btn-outline-danger btn-sm"><i class="fas fa-user-times"></i></i></a>
+                                        <a title="Editar" href="<?php echo base_url('clientes/edit/' . $cliente->cliente_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-user-edit"></i></a>
+                                        <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $cliente->cliente_id ?>" class="btn btn-outline-danger rounded btn-sm"><i class="fas fa-user-times"></i></i></a>
                                     </td>
                                 </tr>
 
