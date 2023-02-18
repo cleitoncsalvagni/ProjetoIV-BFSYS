@@ -159,7 +159,6 @@
 
 
                     <button type="submit" class="btn btn-success btn-sm text-center">Salvar</button>
-                    <a href='<?php echo base_url('/') ?>' title='Voltar' class='btn btn-primary btn-sm ml-2'>Voltar</a>
 
                 </form>
             </div>

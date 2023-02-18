@@ -83,7 +83,7 @@
                     </fieldset>
 
                     <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-                    <a href='<?php echo base_url('usuarios') ?>' title='Voltar' class='btn btn-primary btn-sm ml-2'>Voltar</a>
+                    <a href='<?php echo base_url($this->router->fetch_class()) ?>' title='Voltar' class='btn btn-primary btn-sm ml-2'>Voltar</a>
 
                 </form>
             </div>
