@@ -74,8 +74,8 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label>Atendente</label>
-                                <input type="text" class="form-control" name="fornecedor_contato" placeholder="Informe o nome do atendente" value="<?php echo $fornecedor->fornecedor_contato; ?>">
+                                <label>Contato</label>
+                                <input type="text" class="form-control" name="fornecedor_contato" placeholder="Informe o nome do contato" value="<?php echo $fornecedor->fornecedor_contato; ?>">
                                 <?php echo form_error('fornecedor_contato', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                         </div>
