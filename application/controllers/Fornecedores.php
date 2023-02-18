@@ -46,85 +46,105 @@ class Fornecedores extends CI_Controller
             $this->session->set_flashdata('error', 'Fornecedor não encontrado!');
             redirect('fornecedores');
         } else {
+            $this->form_validation->set_rules('fornecedor_razao', '', 'trim|required|min_length[4]|max_length[200]|callback_check_razao_social');
+            $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
+            $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|min_length[10]|max_length[20]|callback_check_cnpj');
+            $this->form_validation->set_rules('fornecedor_ie', '', 'trim|max_length[20]|callback_check_ie');
+            $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
+            $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
 
-            if (!$fornecedor_id || !$this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id))) {
+            if ($this->input->post('fornecedor_telefone')) {
+                $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|max_length[14]|callback_check_telefone');
+            }
 
-                $this->session->set_flashdata('error', 'Fornecedor não encontrado!');
+            $this->form_validation->set_rules('fornecedor_cep', '', 'trim|required|exact_length[9]');
+            $this->form_validation->set_rules('fornecedor_endereco', '', 'trim|required|max_length[155]');
+            $this->form_validation->set_rules('fornecedor_numero_endereco', '', 'trim|max_length[20]');
+            $this->form_validation->set_rules('fornecedor_contato', '', 'trim|max_length[45]');
+            $this->form_validation->set_rules('fornecedor_bairro', '', 'trim|required|max_length[45]');
+            $this->form_validation->set_rules('fornecedor_complemento', '', 'trim|max_length[145]');
+            $this->form_validation->set_rules('fornecedor_cidade', '', 'trim|required|max_length[50]');
+            $this->form_validation->set_rules('fornecedor_estado', '', 'trim|required|exact_length[2]');
+            $this->form_validation->set_rules('fornecedor_obs', '', 'max_length[400]');
+
+
+            if ($this->form_validation->run()) {
+                $data = elements(
+                    array(
+                        'fornecedor_razao',
+                        'fornecedor_nome_fantasia',
+                        'fornecedor_cnpj',
+                        'fornecedor_ie',
+                        'fornecedor_email',
+                        'fornecedor_celular',
+                        'fornecedor_contato',
+                        'fornecedor_telefone',
+                        'fornecedor_endereco',
+                        'fornecedor_numero_endereco',
+                        'fornecedor_complemento',
+                        'fornecedor_bairro',
+                        'fornecedor_cep',
+                        'fornecedor_cidade',
+                        'fornecedor_estado',
+                        'fornecedor_ativo',
+                        'fornecedor_obs',
+                    ),
+                    $this->input->post()
+                );
+
+                $data['fornecedor_estado'] = strtoupper($this->input->post('fornecedor_estado'));
+
+                $data = html_escape($data);
+
+                $this->core_model->update('fornecedores', $data, array('fornecedor_id' => $fornecedor_id));
                 redirect('fornecedores');
             } else {
-                $fornecedor_tipo = $this->input->post('fornecedor_tipo');
-
-                $this->form_validation->set_rules('fornecedor_razao', '', 'trim|required|min_length[4]|max_length[200]|callback_check_razao_social');
-                $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
-                $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|min_length[10]|max_length[20]|callback_check_cnpj');
-                // $this->form_validation->set_rules('fornecedor_ie', '', 'trim|max_length[20]|callback_check_ie');
-                // $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
-                // $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[14]|callback_check_celular');
-
-                if ($this->input->post('fornecedor_telefone')) {
-                    // $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|max_length[14]|callback_check_telefone');
-                }
-
-                $this->form_validation->set_rules('fornecedor_cep', '', 'trim|required|exact_length[9]');
-                $this->form_validation->set_rules('fornecedor_endereco', '', 'trim|required|max_length[155]');
-                $this->form_validation->set_rules('fornecedor_numero_endereco', '', 'trim|max_length[20]');
-                $this->form_validation->set_rules('fornecedor_contato', '', 'trim|max_length[45]');
-                $this->form_validation->set_rules('fornecedor_bairro', '', 'trim|required|max_length[45]');
-                $this->form_validation->set_rules('fornecedor_complemento', '', 'trim|max_length[145]');
-                $this->form_validation->set_rules('fornecedor_cidade', '', 'trim|required|max_length[50]');
-                $this->form_validation->set_rules('fornecedor_estado', '', 'trim|required|exact_length[2]');
-                $this->form_validation->set_rules('fornecedor_obs', '', 'max_length[400]');
+                $data = array(
+                    'titulo' => 'Editar Fornecedor',
+                    'scripts' => array(
+                        'vendor/mask/jquery.mask.min.js',
+                        'vendor/mask/app.js',
+                    ),
+                    'fornecedor' => $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)),
+                );
 
 
-                if ($this->form_validation->run()) {
-
-                    exit('Validado');
-                } else {
-                    $data = array(
-                        'titulo' => 'Editar Fornecedor',
-                        'scripts' => array(
-                            'vendor/mask/jquery.mask.min.js',
-                            'vendor/mask/app.js',
-                        ),
-                        'fornecedor' => $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)),
-                    );
-
-
-                    $this->load->view('layout/header', $data);
-                    $this->load->view('fornecedores/edit');
-                    $this->load->view('layout/footer');
-                }
+                $this->load->view('layout/header', $data);
+                $this->load->view('fornecedores/edit');
+                $this->load->view('layout/footer');
             }
+
+
+
+
+            // [fornecedor_id] => 1
+            // [fornecedor_data_cadastro] => 2023-02-17 14:58:34
+            // [fornecedor_razao] => StarApp Sistemas LTDA
+            // [fornecedor_nome_fantasia] => StarApp
+            // [fornecedor_cnpj] => 21.231.458/0001-05
+            // [fornecedor_ie] => 
+            // [fornecedor_telefone] => (49) 3336-3333
+            // [fornecedor_celular] => 
+            // [fornecedor_email] => contato@starapp.com.br
+            // [fornecedor_contato] => Cleiton
+            // [fornecedor_cep] => 
+            // [fornecedor_endereco] => Avenida Garças
+            // [fornecedor_numero_endereco] => 1330
+            // [fornecedor_bairro] => Centro
+            // [fornecedor_complemento] => Comercio
+            // [fornecedor_cidade] => Chapeco
+            // [fornecedor_estado] => SC
+            // [fornecedor_ativo] => 1
+            // [fornecedor_obs] => Vende artefato eletrico
+            // [fornecedor_data_alteracao] => 2023-02-17 16:47:53
         }
-
-
-        // [fornecedor_id] => 1
-        // [fornecedor_data_cadastro] => 2023-02-17 14:58:34
-        // [fornecedor_razao] => StarApp Sistemas LTDA
-        // [fornecedor_nome_fantasia] => StarApp
-        // [fornecedor_cnpj] => 21.231.458/0001-05
-        // [fornecedor_ie] => 
-        // [fornecedor_telefone] => (49) 3336-3333
-        // [fornecedor_celular] => 
-        // [fornecedor_email] => contato@starapp.com.br
-        // [fornecedor_contato] => Cleiton
-        // [fornecedor_cep] => 
-        // [fornecedor_endereco] => Avenida Garças
-        // [fornecedor_numero_endereco] => 1330
-        // [fornecedor_bairro] => Centro
-        // [fornecedor_complemento] => Comercio
-        // [fornecedor_cidade] => Chapeco
-        // [fornecedor_estado] => SC
-        // [fornecedor_ativo] => 1
-        // [fornecedor_obs] => Vende artefato eletrico
-        // [fornecedor_data_alteracao] => 2023-02-17 16:47:53
     }
 
     public function check_email($fornecedor_email)
     {
         $fornecedor_id = $this->input->post('fornecedor_id');
 
-        if ($this->core_model->get_by_id('fornecedores', array('cliente_email' => $fornecedor_email, 'fornecedor_id !=' => $fornecedor_id))) {
+        if ($this->core_model->get_by_id('fornecedores', array('fornecedor_email' => $fornecedor_email, 'fornecedor_id !=' => $fornecedor_id))) {
             $this->form_validation->set_message('check_email', 'Este email já existe!');
             return FALSE;
         } else {
@@ -148,7 +168,7 @@ class Fornecedores extends CI_Controller
     {
         $fornecedor_id = $this->input->post('fornecedor_id');
 
-        if ($this->core_model->get_by_id('fornecedores', array('cliente_celular' => $fornecedor_celular, 'fornecedor_id !=' => $fornecedor_id))) {
+        if ($this->core_model->get_by_id('fornecedores', array('fornecedor_celular' => $fornecedor_celular, 'fornecedor_id !=' => $fornecedor_id))) {
             $this->form_validation->set_message('check_celular', 'Este celular existe!');
             return FALSE;
         } else {
@@ -272,7 +292,7 @@ class Fornecedores extends CI_Controller
         $fornecedor_id = $this->input->post('fornecedor_id');
 
         if ($this->core_model->get_by_id('fornecedores', array('fornecedor_ie' => $fornecedor_ie, 'fornecedor_id !=' => $fornecedor_id))) {
-            $this->form_validation->set_message('check_ie', 'Este documento já existe!');
+            $this->form_validation->set_message('check_ie', 'Esta inscrição estadual já existe!');
             return FALSE;
         } else {
             return TRUE;
