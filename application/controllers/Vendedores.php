@@ -38,6 +38,73 @@ class Vendedores extends CI_Controller
         $this->load->view('layout/footer');
     }
 
+    public function novo()
+    {
+        $this->form_validation->set_rules('vendedor_nome_completo', '', 'trim|required|min_length[4]|max_length[145]');
+        $this->form_validation->set_rules('vendedor_cpf', '', 'trim|required|min_length[4]|max_length[25]|is_unique[vendedores.vendedor_cpf]|callback_check_cpf');
+        $this->form_validation->set_rules('vendedor_rg', '', 'trim|max_length[25]|is_unique[vendedores.vendedor_rg]');
+        $this->form_validation->set_rules('vendedor_email', '', 'trim|required|valid_email|max_length[45]|is_unique[vendedores.vendedor_email]');
+        $this->form_validation->set_rules('vendedor_celular', '', 'trim|required|max_length[15]|is_unique[vendedores.vendedor_celular]');
+
+        if ($this->input->post('vendedor_telefone')) {
+            $this->form_validation->set_rules('vendedor_telefone', '', 'trim|max_length[14]|callback_check_telefone');
+        }
+
+        $this->form_validation->set_rules('vendedor_cep', '', 'trim|required|exact_length[9]');
+        $this->form_validation->set_rules('vendedor_endereco', '', 'trim|required|max_length[45]');
+        $this->form_validation->set_rules('vendedor_numero_endereco', '', 'trim|max_length[25]');
+        $this->form_validation->set_rules('vendedor_bairro', '', 'trim|required|max_length[45]');
+        $this->form_validation->set_rules('vendedor_complemento', '', 'trim|max_length[145]');
+        $this->form_validation->set_rules('vendedor_cidade', '', 'trim|required|max_length[45]');
+        $this->form_validation->set_rules('vendedor_estado', '', 'trim|required|exact_length[2]');
+        $this->form_validation->set_rules('vendedor_obs', '', 'max_length[400]');
+
+
+        if ($this->form_validation->run()) {
+            $data = elements(
+                array(
+                    'vendedor_codigo',
+                    'vendedor_nome_completo',
+                    'vendedor_cpf',
+                    'vendedor_rg',
+                    'vendedor_email',
+                    'vendedor_celular',
+                    'vendedor_telefone',
+                    'vendedor_endereco',
+                    'vendedor_numero_endereco',
+                    'vendedor_complemento',
+                    'vendedor_bairro',
+                    'vendedor_cep',
+                    'vendedor_cidade',
+                    'vendedor_estado',
+                    'vendedor_ativo',
+                    'vendedor_obs',
+                ),
+                $this->input->post()
+            );
+
+            $data['vendedor_estado'] = strtoupper($this->input->post('vendedor_estado'));
+
+            $data = html_escape($data);
+
+            $this->core_model->insert('vendedores', $data);
+            redirect('vendedores');
+        } else {
+            $data = array(
+                'titulo' => 'Cadastrar Vendedor',
+                'scripts' => array(
+                    'vendor/mask/jquery.mask.min.js',
+                    'vendor/mask/app.js',
+                ),
+                'vendedor_codigo' => $this->core_model->generate_unique_code('vendedores', 'numeric', 8, 'vendedor_codigo'),
+            );
+
+            $this->load->view('layout/header', $data);
+            $this->load->view('vendedores/novo');
+            $this->load->view('layout/footer');
+        }
+    }
+
     public function edit($vendedor_id = NULL)
     {
 
