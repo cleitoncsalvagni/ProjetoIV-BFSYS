@@ -29,9 +29,9 @@ class Vendedores extends CI_Controller
 
         );
 
-        echo '<pre>';
-        print_r($data['vendedores']);
-        exit();
+        // echo '<pre>';
+        // print_r($data['vendedores']);
+        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('vendedores/index');
@@ -113,24 +113,24 @@ class Vendedores extends CI_Controller
         }
     }
 
-    public function del($fornecedor_id = NULL)
+    public function del($vendedor_id = NULL)
     {
 
-        if (!$fornecedor_id || !$this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id))) {
+        if (!$vendedor_id || !$this->core_model->get_by_id('vendedores', array('vendedor_id' => $vendedor_id))) {
 
-            $this->session->set_flashdata('error', 'Fornecedor não encontrado');
-            redirect('fornecedores');
+            $this->session->set_flashdata('error', 'Vendedor não encontrado');
+            redirect('vendedores');
         } else {
-            $this->core_model->delete('fornecedores', array('fornecedor_id' => $fornecedor_id));
-            redirect('fornecedores');
+            $this->core_model->delete('vendedores', array('vendedor_id' => $vendedor_id));
+            redirect('vendedores');
         }
     }
 
-    public function check_email($fornecedor_email)
+    public function check_email($vendedor_email)
     {
-        $fornecedor_id = $this->input->post('fornecedor_id');
+        $vendedor_id = $this->input->post('vendedor_id');
 
-        if ($this->core_model->get_by_id('fornecedores', array('fornecedor_email' => $fornecedor_email, 'fornecedor_id !=' => $fornecedor_id))) {
+        if ($this->core_model->get_by_id('vendedores', array('vendedor_email' => $vendedor_email, 'vendedor_id !=' => $vendedor_id))) {
             $this->form_validation->set_message('check_email', 'Este email já existe!');
             return FALSE;
         } else {
@@ -138,11 +138,11 @@ class Vendedores extends CI_Controller
         }
     }
 
-    public function check_telefone($fornecedor_telefone)
+    public function check_telefone($vendedor_telefone)
     {
-        $fornecedor_id = $this->input->post('fornecedor_id');
+        $vendedor_id = $this->input->post('vendedor_id');
 
-        if ($this->core_model->get_by_id('fornecedores', array('fornecedor_telefone' => $fornecedor_telefone, 'fornecedor_id !=' => $fornecedor_id))) {
+        if ($this->core_model->get_by_id('vendedores', array('vendedor_telefone' => $vendedor_telefone, 'vendedor_id !=' => $vendedor_id))) {
             $this->form_validation->set_message('check_telefone', 'Este telefone já existe!');
             return FALSE;
         } else {
@@ -150,11 +150,11 @@ class Vendedores extends CI_Controller
         }
     }
 
-    public function check_celular($fornecedor_celular)
+    public function check_celular($vendedor_celular)
     {
-        $fornecedor_id = $this->input->post('fornecedor_id');
+        $vendedor_id = $this->input->post('vendedor_id');
 
-        if ($this->core_model->get_by_id('fornecedores', array('fornecedor_celular' => $fornecedor_celular, 'fornecedor_id !=' => $fornecedor_id))) {
+        if ($this->core_model->get_by_id('vendedores', array('vendedor_celular' => $vendedor_celular, 'vendedor_id !=' => $vendedor_id))) {
             $this->form_validation->set_message('check_celular', 'Este celular existe!');
             return FALSE;
         } else {
@@ -165,12 +165,12 @@ class Vendedores extends CI_Controller
     public function check_cpf($cpf)
     {
 
-        if ($this->input->post('cliente_id')) {
+        if ($this->input->post('vendedor_id')) {
 
-            $cliente_id = $this->input->post('cliente_id');
+            $vendedor_id = $this->input->post('vendedor_id');
 
-            if ($this->core_model->get_by_id('clientes', array('cliente_id !=' => $cliente_id, 'cliente_cpf_cnpj' => $cpf))) {
-                $this->form_validation->set_message('check_cpf', 'Este CPF já existe');
+            if ($this->core_model->get_by_id('vendedores', array('vendedor_id !=' => $vendedor_id, 'vendedor_cpf' => $cpf))) {
+                $this->form_validation->set_message('check_cpf', 'Este CPF já existe!');
                 return FALSE;
             }
         }
@@ -179,7 +179,7 @@ class Vendedores extends CI_Controller
         // Verifica se nenhuma das sequências abaixo foi digitada, caso seja, retorna falso
         if (strlen($cpf) != 11 || $cpf == '00000000000' || $cpf == '11111111111' || $cpf == '22222222222' || $cpf == '33333333333' || $cpf == '44444444444' || $cpf == '55555555555' || $cpf == '66666666666' || $cpf == '77777777777' || $cpf == '88888888888' || $cpf == '99999999999') {
 
-            $this->form_validation->set_message('check_cpf', 'Por favor digite um CPF válido');
+            $this->form_validation->set_message('check_cpf', 'Por favor digite um CPF válido!');
             return FALSE;
         } else {
             // Calcula os números para verificar se o CPF é verdadeiro
@@ -190,7 +190,7 @@ class Vendedores extends CI_Controller
                 }
                 $d = ((10 * $d) % 11) % 10;
                 if ($cpf[$c] != $d) {
-                    $this->form_validation->set_message('check_cpf', 'Por favor digite um CPF válido');
+                    $this->form_validation->set_message('check_cpf', 'Por favor digite um CPF válido!');
                     return FALSE;
                 }
             }
@@ -198,12 +198,12 @@ class Vendedores extends CI_Controller
         }
     }
 
-    public function check_ie($fornecedor_ie)
+    public function check_rg($vendedor_rg)
     {
-        $fornecedor_id = $this->input->post('fornecedor_id');
+        $vendedor_id = $this->input->post('vendedor_id');
 
-        if ($this->core_model->get_by_id('fornecedores', array('fornecedor_ie' => $fornecedor_ie, 'fornecedor_id !=' => $fornecedor_id))) {
-            $this->form_validation->set_message('check_ie', 'Esta inscrição estadual já existe!');
+        if ($this->core_model->get_by_id('vendedores', array('vendedor_rg' => $vendedor_rg, 'vendedor_id !=' => $vendedor_id))) {
+            $this->form_validation->set_message('check_ie', 'Este RG já existe!');
             return FALSE;
         } else {
             return TRUE;
