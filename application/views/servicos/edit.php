@@ -18,7 +18,7 @@
                     <p><strong><i class="fas fa-clock"></i>&nbsp;&nbsp;Última alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($servico->servico_data_alteracao) ?></p>
 
                     <fieldset class='mt-4 border p-3'>
-                        <legend class='small'><i class="fas fa-tag"></i>&nbsp; Informações do serviço</legend>
+                        <legend class='small'><i class="fas fa-tools"></i>&nbsp; Informações do serviço</legend>
 
                         <div class="form-group row mb-3">
                             <div class="col-md-4">

@@ -15,7 +15,7 @@
             <div class="card-body">
                 <form method="POST" name="form_novo">
                     <fieldset class='mt-4 border p-3'>
-                        <legend class='small'><i class="fas fa-tag"></i>&nbsp; Informações do serviço</legend>
+                        <legend class='small'><i class="fas fa-tools"></i>&nbsp; Informações do serviço</legend>
 
                         <div class="form-group row mb-3">
                             <div class="col-md-6">
