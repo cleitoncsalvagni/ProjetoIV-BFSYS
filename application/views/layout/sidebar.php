@@ -1,8 +1,8 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-light sidebar sidebar-primary accordion" id="accordionSidebar">
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/') ?>">
     <div class="sidebar-brand-icon">
-      <i class="fas fa-chart-pie"></i> <!-- FEATURE: CLIENTE ADICIONAR O NOME DA EMPRESA/LOGO --->
+      <img src="http://[::1]/bfsys/public/img/bfsys_logo_icon.svg" style='width: 3.5rem;' class="img-fluid" alt="..."> <!-- FEATURE: CLIENTE ADICIONAR O NOME DA EMPRESA/LOGO --->
     </div>
     <div class="sidebar-brand-text mx-3">BFSYS</div>
   </a>
@@ -57,7 +57,7 @@
 
 
   <div class="sidebar-heading">
-    Configurações
+    AJUSTES
   </div>
 
   <li class="nav-item <?php echo $this->router->fetch_class() == 'usuarios' ? 'active' : '' ?>">
