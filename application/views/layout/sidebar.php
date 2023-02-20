@@ -18,7 +18,7 @@
   <hr class="sidebar-divider">
 
   <div class="sidebar-heading">
-    Cadastros
+    Módulos
   </div>
 
   <li class="nav-item">
@@ -29,13 +29,28 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
-        <a class="collapse-item" title='Gerenciar Clientes' href="<?php echo base_url('clientes') ?>"><i class="fas fa-user-tie"></i>&nbsp;&nbsp;Clientes</a>
-        <a class="collapse-item" title='Gerenciar Fornecedores' href="<?php echo base_url('fornecedores') ?>"><i class="fas fa-box"></i>&nbsp;&nbsp;Fornecedores</a>
-        <a class="collapse-item" title='Gerenciar Vendedores' href="<?php echo base_url('vendedores') ?>"><i class="fas fa-users"></i>&nbsp;&nbsp;Vendedores</a>
-        <a class="collapse-item" title='Gerenciar Serviços' href="<?php echo base_url('servicos') ?>"><i class="fas fa-tags"></i>&nbsp;&nbsp;Serviços</a>
+        <a class="collapse-item" title='Gerenciar Clientes' href="<?php echo base_url('clientes') ?>"><i class="fas fa-user-tie text-gray-700"></i>&nbsp;&nbsp;Clientes</a>
+        <a class="collapse-item" title='Gerenciar Fornecedores' href="<?php echo base_url('fornecedores') ?>"><i class="fas fa-box text-gray-700"></i>&nbsp;&nbsp;Fornecedores</a>
+        <a class="collapse-item" title='Gerenciar Vendedores' href="<?php echo base_url('vendedores') ?>"><i class="fas fa-users text-gray-700"></i>&nbsp;&nbsp;Vendedores</a>
+        <a class="collapse-item" title='Gerenciar Serviços' href="<?php echo base_url('servicos') ?>"><i class="fas fa-tools text-gray-700"></i>&nbsp;&nbsp;Serviços</a>
       </div>
     </div>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-box-open "></i>
+      <span>Estoque</span>
+    </a>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Escolha uma opção:</h6>
+        <a class="collapse-item" title='Gerenciar Marcas' href="<?php echo base_url('marcas') ?>"><i class="fas fa-tags text-gray-700"></i>&nbsp;&nbsp;Marcas</a>
+      </div>
+    </div>
+  </li>
+
+
 
   <hr class="sidebar-divider">
 
