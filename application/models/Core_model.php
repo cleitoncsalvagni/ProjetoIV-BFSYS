@@ -49,7 +49,7 @@ class Core_model extends CI_Model
             if ($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('success', 'Dados salvos com sucesso');
             } else {
-                $this->session->set_flashdata('erro', 'Não foi possível salvar os dados');
+                $this->session->set_flashdata('error', 'Não foi possível salvar os dados');
             }
         } else {
             return FALSE;
@@ -64,7 +64,7 @@ class Core_model extends CI_Model
             if ($this->db->update($table, $data, $condition)) {
                 $this->session->set_flashdata('success', 'Dados salvos com sucesso');
             } else {
-                $this->session->set_flashdata('erro', 'Não foi possível salvar os dados');
+                $this->session->set_flashdata('error', 'Não foi possível salvar os dados');
             }
         } else {
             return FALSE;
@@ -85,7 +85,7 @@ class Core_model extends CI_Model
             if (!$status) {
                 foreach ($error as $code) {
                     if ($code == 1451) {
-                        $this->session->set_flashdata('erro', 'Esse registro não pode ser excluído, pois está sendo utilizado em outra tabela');
+                        $this->session->set_flashdata('error', 'Esse registro não pode ser excluído, pois está sendo utilizado em outra tabela');
                     }
                 }
             } else {
