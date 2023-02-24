@@ -47,6 +47,7 @@
         <h6 class="collapse-header">Escolha uma opção:</h6>
         <a class="collapse-item" title='Gerenciar Marcas' href="<?php echo base_url('marcas') ?>"><i class="fas fa-tags text-gray-700"></i>&nbsp;&nbsp;Marcas</a>
         <a class="collapse-item" title='Gerenciar Categorias' href="<?php echo base_url('categorias') ?>"><i class="fab fa-buffer text-gray-700"></i>&nbsp;&nbsp;Categorias</a>
+        <a class="collapse-item" title='Gerenciar Produtos' href="<?php echo base_url('produtos') ?>"><i class="fab fa-product-hunt text-gray-700"></i>&nbsp;&nbsp;Produtos</a>
       </div>
     </div>
   </li>
@@ -57,7 +58,7 @@
 
 
   <div class="sidebar-heading">
-    Configurações
+    Ajustes
   </div>
 
   <li class="nav-item <?php echo $this->router->fetch_class() == 'usuarios' ? 'active' : '' ?>">

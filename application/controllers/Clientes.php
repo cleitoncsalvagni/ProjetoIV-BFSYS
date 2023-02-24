@@ -26,12 +26,7 @@ class Clientes extends CI_Controller
                 'vendor/datatables/app.js'
             ),
             'clientes' => $this->core_model->get_all('clientes'),
-
         );
-
-        // echo '<pre>';
-        // print_r($data['clientes']);
-        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('clientes/index');
