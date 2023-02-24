@@ -1,18 +1,14 @@
-<?php if (!$this->router->fetch_class() == 'login') : ?>
+<?php if ($this->router->fetch_class() != 'login') : ?>
 
   <footer class="sticky-footer bg-white">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
-        <!-- <span>Copyright &copy; BFSYS <?php echo date('Y') ?></span> -->
-        <span>Copyright &copy; BFSYS <?php echo date('Y') ?> | Por Cleiton Salvagni</span>
+        <span>Copyright &copy; BFSYS <?php echo date('Y') ?></span>
       </div>
     </div>
   </footer>
 
 <?php endif; ?>
-
-
-</div>
 
 </div>
 
