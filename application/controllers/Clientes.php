@@ -18,7 +18,7 @@ class Clientes extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Clientes',
+            'pageTitle' => 'Clientes',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -115,8 +115,7 @@ class Clientes extends CI_Controller
             } else {
                 $data = array(
 
-                    'titulo' => 'Editar Cliente',
-
+                    'pageTitle' => 'Editar Cliente',
                     'scripts' => array(
                         'vendor/mask/jquery.mask.min.js',
                         'vendor/mask/app.js',
@@ -212,7 +211,7 @@ class Clientes extends CI_Controller
         } else {
             $data = array(
 
-                'titulo' => 'Cadastrar Cliente',
+                'pageTitle' => 'Cadastrar Cliente',
 
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',

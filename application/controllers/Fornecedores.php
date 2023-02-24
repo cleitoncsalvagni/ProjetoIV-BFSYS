@@ -18,7 +18,7 @@ class Fornecedores extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Fornecedores',
+            'pageTitle' => 'Fornecedores',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -94,7 +94,7 @@ class Fornecedores extends CI_Controller
             redirect('fornecedores');
         } else {
             $data = array(
-                'titulo' => 'Novo Fornecedor',
+                'pageTitle' => 'Novo Fornecedor',
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',
                     'vendor/mask/app.js',
@@ -169,7 +169,7 @@ class Fornecedores extends CI_Controller
                 redirect('fornecedores');
             } else {
                 $data = array(
-                    'titulo' => 'Editar Fornecedor',
+                    'pageTitle' => 'Editar Fornecedor',
                     'scripts' => array(
                         'vendor/mask/jquery.mask.min.js',
                         'vendor/mask/app.js',

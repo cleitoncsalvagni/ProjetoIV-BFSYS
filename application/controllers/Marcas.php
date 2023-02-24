@@ -18,7 +18,7 @@ class Marcas extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Marcas',
+            'pageTitle' => 'Marcas',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -63,7 +63,7 @@ class Marcas extends CI_Controller
                 redirect('marcas');
             } else {
                 $data = array(
-                    'titulo' => 'Editar Marcas',
+                    'pageTitle' => 'Editar Marcas',
                     'scripts' => array(
                         'vendor/mask/jquery.mask.min.js',
                         'vendor/mask/app.js',
@@ -98,7 +98,7 @@ class Marcas extends CI_Controller
             redirect('marcas');
         } else {
             $data = array(
-                'titulo' => 'Cadastrar Marcas',
+                'pageTitle' => 'Cadastrar Marcas',
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',
                     'vendor/mask/app.js',

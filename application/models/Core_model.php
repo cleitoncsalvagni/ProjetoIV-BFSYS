@@ -5,49 +5,49 @@ defined('BASEPATH') or exit('Ação não permitida');
 class Core_model extends CI_Model
 {
 
-    public function get_all($tabela = NULL, $condicao = NULL)
+    public function get_all($table = NULL, $condition = NULL)
     {
 
-        if ($tabela && $this->db->table_exists($tabela)) {
+        if ($table && $this->db->table_exists($table)) {
 
-            if (is_array($condicao)) {
+            if (is_array($condition)) {
 
-                $this->db->where($condicao);
+                $this->db->where($condition);
             }
 
-            return $this->db->get($tabela)->result();
+            return $this->db->get($table)->result();
         } else {
             return FALSE;
         }
     }
 
-    public function get_by_id($tabela = NULL, $condicao = NULL)
+    public function get_by_id($table = NULL, $condition = NULL)
     {
 
-        if ($tabela && $this->db->table_exists($tabela) && is_array($condicao)) {
+        if ($table && $this->db->table_exists($table) && is_array($condition)) {
 
-            $this->db->where($condicao);
+            $this->db->where($condition);
             $this->db->limit(1);
 
-            return $this->db->get($tabela)->row();
+            return $this->db->get($table)->row();
         } else {
             return FALSE;
         }
     }
 
-    public function insert($tabela = NULL, $data = NULL, $get_last_id = NULL)
+    public function insert($table = NULL, $data = NULL, $get_last_id = NULL)
     {
 
-        if ($tabela && $this->db->table_exists($tabela) && is_array($data)) {
+        if ($table && $this->db->table_exists($table) && is_array($data)) {
 
-            $this->db->insert($tabela, $data);
+            $this->db->insert($table, $data);
 
             if ($get_last_id) {
                 $this->session->set_userdata('last_id', $this->db->insert_id());
             }
 
             if ($this->db->affected_rows() > 0) {
-                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+                $this->session->set_flashdata('success', 'Dados salvos com sucesso');
             } else {
                 $this->session->set_flashdata('erro', 'Não foi possível salvar os dados');
             }
@@ -56,13 +56,13 @@ class Core_model extends CI_Model
         }
     }
 
-    public function update($tabela = NULL, $data = NULL, $condicao = NULL)
+    public function update($table = NULL, $data = NULL, $condition = NULL)
     {
 
-        if ($tabela && $this->db->table_exists($tabela) && is_array($data) && is_array($condicao)) {
+        if ($table && $this->db->table_exists($table) && is_array($data) && is_array($condition)) {
 
-            if ($this->db->update($tabela, $data, $condicao)) {
-                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+            if ($this->db->update($table, $data, $condition)) {
+                $this->session->set_flashdata('success', 'Dados salvos com sucesso');
             } else {
                 $this->session->set_flashdata('erro', 'Não foi possível salvar os dados');
             }
@@ -71,14 +71,14 @@ class Core_model extends CI_Model
         }
     }
 
-    public function delete($tabela = NULL, $condicao = NULL)
+    public function delete($table = NULL, $condition = NULL)
     {
 
         $this->db->db_debug = FALSE;
 
-        if ($tabela && $this->db->table_exists($tabela) && is_array($condicao)) {
+        if ($table && $this->db->table_exists($table) && is_array($condition)) {
 
-            $status = $this->db->delete($tabela, $condicao);
+            $status = $this->db->delete($table, $condition);
 
             $error = $this->db->error();
 
@@ -89,7 +89,7 @@ class Core_model extends CI_Model
                     }
                 }
             } else {
-                $this->session->set_flashdata('sucesso', 'Registro excluído com sucesso');
+                $this->session->set_flashdata('success', 'Registro excluído com sucesso');
             }
 
             $this->db->db_debug = TRUE;
@@ -99,13 +99,15 @@ class Core_model extends CI_Model
     }
 
     /** Generate Unique Code
+     
      * @ Habilitar helper string
      * @param string $table
      * @param string $type_of_code. Ex.: 'numeric', 'alpha', 'alnum', 'basic', 'numeric', 'nozero', 'md5', 'sha1'
      * @param int $size_of_code
      * @param string $field_seach
      * @return int
-     */
+     
+     **/
 
     public function generate_unique_code($table = NULL, $type_of_code = NULL, $size_of_code, $field_search)
     {

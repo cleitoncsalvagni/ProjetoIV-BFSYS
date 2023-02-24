@@ -18,7 +18,7 @@ class Servicos extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Serviços',
+            'pageTitle' => 'Serviços',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -67,7 +67,7 @@ class Servicos extends CI_Controller
                 redirect('servicos');
             } else {
                 $data = array(
-                    'titulo' => 'Editar Serviços',
+                    'pageTitle' => 'Editar Serviços',
                     'scripts' => array(
                         'vendor/mask/jquery.mask.min.js',
                         'vendor/mask/app.js',
@@ -106,7 +106,7 @@ class Servicos extends CI_Controller
             redirect('servicos');
         } else {
             $data = array(
-                'titulo' => 'Cadastrar Serviço',
+                'pageTitle' => 'Cadastrar Serviço',
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',
                     'vendor/mask/app.js',

@@ -6,7 +6,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url('/') ?>">Início</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $pageTitle ?></li>
             </ol>
         </nav>
 
@@ -19,7 +19,6 @@
                     <table class="table table-bordered dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <!-- <th>ID</th> -->
                                 <th>Nome</th>
                                 <th>CPF ou CNPJ</th>
                                 <th>Email</th>
@@ -72,7 +71,7 @@
                 echo "<script>toastr.error('" . $message . "');</script>";
             }
 
-            if ($message = $this->session->flashdata('sucesso')) {
+            if ($message = $this->session->flashdata('success')) {
                 echo "<script>toastr.success('" . $message . "');</script>";
             }
             ?>

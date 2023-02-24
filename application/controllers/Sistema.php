@@ -18,7 +18,7 @@ class Sistema extends CI_Controller
     {
 
         $data = array(
-            'titulo' => 'Informações do sistema',
+            'pageTitle' => 'Informações do sistema',
 
             'scripts' => array(
                 'vendor/mask/jquery.mask.min.js',

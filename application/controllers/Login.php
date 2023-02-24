@@ -9,7 +9,7 @@ class Login extends CI_Controller
     public function index()
     {
         $data = array(
-            'titulo' => 'Login'
+            'pageTitle' => 'Login'
         );
 
 

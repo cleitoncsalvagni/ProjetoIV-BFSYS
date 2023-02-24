@@ -18,7 +18,7 @@ class Categorias extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Categorias',
+            'pageTitle' => 'Categorias',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -63,7 +63,7 @@ class Categorias extends CI_Controller
                 redirect('categorias');
             } else {
                 $data = array(
-                    'titulo' => 'Editar Categorias',
+                    'pageTitle' => 'Editar Categorias',
                     'scripts' => array(
                         'vendor/mask/jquery.mask.min.js',
                         'vendor/mask/app.js',
@@ -98,7 +98,7 @@ class Categorias extends CI_Controller
             redirect('categorias');
         } else {
             $data = array(
-                'titulo' => 'Cadastrar Categorias',
+                'pageTitle' => 'Cadastrar Categorias',
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',
                     'vendor/mask/app.js',

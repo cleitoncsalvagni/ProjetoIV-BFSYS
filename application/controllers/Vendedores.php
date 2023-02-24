@@ -18,7 +18,7 @@ class Vendedores extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Vendedores',
+            'pageTitle' => 'Vendedores',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -91,7 +91,7 @@ class Vendedores extends CI_Controller
             redirect('vendedores');
         } else {
             $data = array(
-                'titulo' => 'Cadastrar Vendedor',
+                'pageTitle' => 'Cadastrar Vendedor',
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',
                     'vendor/mask/app.js',
@@ -164,7 +164,7 @@ class Vendedores extends CI_Controller
                 redirect('vendedores');
             } else {
                 $data = array(
-                    'titulo' => 'Editar Vendedor',
+                    'pageTitle' => 'Editar Vendedor',
                     'scripts' => array(
                         'vendor/mask/jquery.mask.min.js',
                         'vendor/mask/app.js',

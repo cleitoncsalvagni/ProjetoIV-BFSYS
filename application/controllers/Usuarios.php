@@ -20,7 +20,7 @@ class Usuarios extends CI_Controller
 
         $data = array(
 
-            'titulo' => 'Usuários',
+            'pageTitle' => 'Usuários',
             'styles' => array('vendor/datatables/dataTables.bootstrap4.min.css'),
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
@@ -70,7 +70,7 @@ class Usuarios extends CI_Controller
 
             if ($this->ion_auth->register($username, $password, $email, $additional_data, $group)) {
 
-                $this->session->set_flashdata('sucesso', 'Usuário cadastrado com sucesso');
+                $this->session->set_flashdata('success', 'Usuário cadastrado com sucesso');
             } else {
                 $this->session->set_flashdata('error', 'Erro ao cadastrar o usuário');
             }
@@ -81,7 +81,7 @@ class Usuarios extends CI_Controller
             exit();
         } else {
             $data = array(
-                'titulo' => 'Cadastrar Usuário',
+                'pageTitle' => 'Cadastrar Usuário',
             );
 
             $this->load->view('layout/header', $data);
@@ -104,7 +104,7 @@ class Usuarios extends CI_Controller
         }
 
         if ($this->ion_auth->delete_user($user_id)) {
-            $this->session->set_flashdata('sucesso', 'Usuário excluído com sucesso!');
+            $this->session->set_flashdata('success', 'Usuário excluído com sucesso!');
             redirect('usuarios');
         } else {
             $this->session->set_flashdata('error', 'Erro ao deletar usuário. Tente novamente.');
@@ -122,7 +122,7 @@ class Usuarios extends CI_Controller
         } else {
 
             $data = array(
-                'titulo' => 'Editar Usuário',
+                'pageTitle' => 'Editar Usuário',
                 'usuario' => $this->ion_auth->user($user_id)->row(),
                 'perfil_usuario' => $this->ion_auth->get_users_groups($user_id)->row(),
             );
@@ -175,7 +175,7 @@ class Usuarios extends CI_Controller
 
                 if (!$password) {
                     unset($data['password']);
-                };
+                }
 
 
                 if ($this->ion_auth->update($user_id, $data)) {
@@ -188,7 +188,7 @@ class Usuarios extends CI_Controller
                         $this->ion_auth->add_to_group($perfil_usuario_post, $user_id);
                     }
 
-                    $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso!');
+                    $this->session->set_flashdata('success', 'Dados salvos com sucesso!');
                 } else {
                     $this->session->set_flashdata('error', 'Erro ao salvar os dados');
                 }

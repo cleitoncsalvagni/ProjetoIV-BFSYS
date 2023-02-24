@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo base_url('/') ?>">Início</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo ?></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $pageTitle ?></li>
             </ol>
         </nav>
 
@@ -71,7 +71,7 @@
                 echo "<script>toastr.error('" . $message . "');</script>";
             }
 
-            if ($message = $this->session->flashdata('sucesso')) {
+            if ($message = $this->session->flashdata('success')) {
                 echo "<script>toastr.success('" . $message . "');</script>";
             }
             ?>
