@@ -11,37 +11,6 @@
             </ol>
         </nav>
 
-        <?php if ($message = $this->session->flashdata('error')) : ?>
-
-            <div class='row'>
-                <div class='col-md-12'>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <i class="fas fa-exclamation-triangle"></i>&nbsp; <?php echo $message; ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        <?php endif; ?>
-
-        <?php if ($message = $this->session->flashdata('sucesso')) : ?>
-
-            <div class='row'>
-                <div class='col-md-12'>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <i class="far fa-smile-wink"></i>&nbsp; <?php echo $message; ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        <?php endif; ?>
-
-
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <a href='<?php echo base_url('usuarios/novo') ?>' title='Cadastrar novo usuário' class='btn btn-success rounded-pill btn-sm float-right'><i class="fas fa-user-plus"></i>&nbsp; Novo usuário</a>
@@ -97,6 +66,15 @@
                     </table>
                 </div>
             </div>
+            <?php
+            if ($message = $this->session->flashdata('error')) {
+                echo "<script>toastr.error('" . $message . "');</script>";
+            }
+
+            if ($message = $this->session->flashdata('sucesso')) {
+                echo "<script>toastr.success('" . $message . "');</script>";
+            }
+            ?>
         </div>
     </div>
 </div>

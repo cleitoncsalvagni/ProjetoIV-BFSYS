@@ -24,11 +24,6 @@
                                     <button type='submit' class="btn btn-primary btn-user btn-block">
                                         Entrar
                                     </button>
-                                    <div class='text-center mt-3'>
-                                        <?php if ($message = $this->session->flashdata('error')) : ?>
-                                            <small class="form-text text-danger"><?php echo $message ?></small>
-                                        <?php endif; ?>
-                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -36,7 +31,10 @@
                 </div>
             </div>
         </div>
+        <?php
+        if ($message = $this->session->flashdata('error')) {
+            echo "<script>toastr.error('" . $message . "');</script>";
+        }
+        ?>
     </div>
-
-
 </div>
