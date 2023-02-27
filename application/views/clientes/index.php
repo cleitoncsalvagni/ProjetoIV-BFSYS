@@ -12,7 +12,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='<?php echo base_url('clientes/novo') ?>' title='Cadastrar novo cliente' class='btn btn-success rounded-pill btn-sm float-right'><i class="fas fa-plus"></i>&nbsp; Novo cliente</a>
+                <a href='<?php echo base_url('clientes/novo') ?>' title='Cadastrar novo cliente' class='btn btn-success rounded btn-sm '><i class="fas fa-plus"></i>&nbsp; Novo cliente</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

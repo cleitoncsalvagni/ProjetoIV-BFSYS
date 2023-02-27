@@ -13,7 +13,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='<?php echo base_url('fornecedores/novo') ?>' title='Cadastrar novo fornecedor' class='btn btn-success rounded-pill btn-sm float-right'><i class="fas fa-plus"></i>&nbsp; Novo fornecedor</a>
+                <a href='<?php echo base_url('fornecedores/novo') ?>' title='Cadastrar novo fornecedor' class='btn btn-success rounded btn-sm'><i class="fas fa-plus"></i>&nbsp; Novo fornecedor</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -38,7 +38,7 @@
                                     <td><?php echo $fornecedor->fornecedor_cnpj ?></td>
                                     <td><?php echo $fornecedor->fornecedor_celular ?></td>
                                     <td><?php echo $fornecedor->fornecedor_email ?></td>
-                                    <td class='text-center pr-4'><?php echo ($fornecedor->fornecedor_ativo ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
+                                    <td class='text-center pr-4'><?php echo ($fornecedor->fornecedor_ativo ? '<span class="badge badge-success btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-center'>
                                         <a title="Editar" href="<?php echo base_url('fornecedores/edit/' . $fornecedor->fornecedor_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-user-edit"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $fornecedor->fornecedor_id ?>" class="btn btn-outline-danger rounded btn-sm"><i class="fas fa-user-times"></i></i></a>

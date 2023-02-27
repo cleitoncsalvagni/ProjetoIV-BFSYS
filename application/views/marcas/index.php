@@ -13,7 +13,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href='<?php echo base_url('marcas/novo') ?>' title='Cadastrar nova marca' class='btn btn-success rounded-pill btn-sm float-right'><i class="fas fa-plus"></i>&nbsp; Nova marca</a>
+                <a href='<?php echo base_url('marcas/novo') ?>' title='Cadastrar nova marca' class='btn btn-success rounded btn-sm '><i class="fas fa-plus"></i>&nbsp; Nova marca</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
