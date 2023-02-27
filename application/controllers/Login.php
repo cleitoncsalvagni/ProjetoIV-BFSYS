@@ -31,6 +31,7 @@ class Login extends CI_Controller
 
         if ($this->ion_auth->login($identity, $password, $remember)) {
 
+            $this->session->set_flashdata('welcome', 'É um prazer ter você aqui! 😉');
             redirect('home');
         } else {
             $this->session->set_flashdata('error', 'Usuário ou senha incorretos.');
