@@ -8,7 +8,6 @@
             <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 10rem !important">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image1"></div> <!-- Comentar ao adicionar logo -->
                         <!-- <img src="http://[::1]/bfsys/public/img/bfsys_logo.png" class="col-lg-6 d-none d-lg-block img-fluid rounded" alt="..."> -->
                         <div class="col-lg-6">
                             <div class="p-5">
