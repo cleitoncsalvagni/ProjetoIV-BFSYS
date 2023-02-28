@@ -41,6 +41,7 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+                                <a href='<?php echo base_url('Marcas') ?>' class="btn btn-link btn-sm mt-2"><i class="fas fa-plus-circle"></i>&nbsp;Cadastrar Marcas</a>
                             </div>
                             <div class="col-md-4">
                                 <label>Categoria</label>
@@ -51,6 +52,7 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+                                <a href='<?php echo base_url('categorias') ?>' class="btn btn-link btn-sm mt-2"><i class="fas fa-plus-circle"></i>&nbsp;Cadastrar Categorias</a>
                             </div>
 
                             <div class="col-md-4">
@@ -62,6 +64,8 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+
+                                <a href='<?php echo base_url('fornecedores') ?>' class="btn btn-link btn-sm mt-2"><i class="fas fa-plus-circle"></i>&nbsp;Cadastrar Fornecedor</a>
                             </div>
                         </div>
 
