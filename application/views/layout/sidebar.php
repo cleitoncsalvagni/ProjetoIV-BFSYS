@@ -2,7 +2,8 @@
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/') ?>">
     <div class="sidebar-brand-icon">
-      <i class="fas fa-chart-pie"></i> <!-- FEATURE: CLIENTE ADICIONAR O NOME DA EMPRESA/LOGO --->
+      <i class="fas fa-chart-pie"></i>
+      <!-- <img src="http://[::1]/bfsys/public/img/bfsys_logo_icon.svg" style='width: 3.5rem;' class="img-fluid" alt="..."> -->
     </div>
     <div class="sidebar-brand-text mx-3">BFSYS</div>
   </a>
