@@ -138,6 +138,15 @@ class Fornecedores extends CI_Controller
 
 
             if ($this->form_validation->run()) {
+                $fornecedor_ativo = $this->input->post('fornecedor_ativo');
+
+                if ($this->db->table_exists('produtos')) {
+                    if ($fornecedor_ativo == 0 && $this->core_model->get_by_id('produtos', array('produto_fornecedor_id' => $fornecedor_id, 'produto_ativo' => 1))) {
+                        $this->session->set_flashdata('error', 'Esta fornecedor não pode ser desativado pois está sendo utilizado em produtos');
+                        redirect('fornecedores');
+                    }
+                }
+
                 $data = elements(
                     array(
                         'fornecedor_razao',
@@ -182,30 +191,6 @@ class Fornecedores extends CI_Controller
                 $this->load->view('fornecedores/edit');
                 $this->load->view('layout/footer');
             }
-
-
-
-
-            // [fornecedor_id] => 1
-            // [fornecedor_data_cadastro] => 2023-02-17 14:58:34
-            // [fornecedor_razao] => StarApp Sistemas LTDA
-            // [fornecedor_nome_fantasia] => StarApp
-            // [fornecedor_cnpj] => 21.231.458/0001-05
-            // [fornecedor_ie] => 
-            // [fornecedor_telefone] => (49) 3336-3333
-            // [fornecedor_celular] => 
-            // [fornecedor_email] => contato@starapp.com.br
-            // [fornecedor_contato] => Cleiton
-            // [fornecedor_cep] => 
-            // [fornecedor_endereco] => Avenida Garças
-            // [fornecedor_numero_endereco] => 1330
-            // [fornecedor_bairro] => Centro
-            // [fornecedor_complemento] => Comercio
-            // [fornecedor_cidade] => Chapeco
-            // [fornecedor_estado] => SC
-            // [fornecedor_ativo] => 1
-            // [fornecedor_obs] => Vende artefato eletrico
-            // [fornecedor_data_alteracao] => 2023-02-17 16:47:53
         }
     }
 
