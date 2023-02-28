@@ -24,7 +24,7 @@
 								<th>Código</th>
 								<th>Descrição</th>
 								<th>Marca</th>
-								<th>Categoria</th>
+								<th class="text-center">Categoria</th>
 								<th class="text-center pr-2">Estoque mínimo</th>
 								<th class="text-center pr-2">Estoque atual</th>
 								<th class='text-center'>Ativo</th>
@@ -38,9 +38,9 @@
 									<td><?php echo $produto->produto_codigo ?></td>
 									<td><?php echo $produto->produto_descricao ?></td>
 									<td><?php echo $produto->marca ?></td>
-									<td><?php echo $produto->categoria ?></td>
-									<td class="text-center"><?php echo '<span class="badge badge-secondary btn-sm">' . $produto->produto_estoque_minimo . '</span>' ?></td>
-									<td class="text-center"><?php echo ($produto->produto_estoque_minimo >= $produto->produto_qtde_estoque ? '<span class="badge badge-warning btn-sm">' . $produto->produto_qtde_estoque . '</span>' : '<span class="badge badge-info btn-sm">' . $produto->produto_qtde_estoque . '</span>') ?></td>
+									<td class="text-center"><?php echo $produto->categoria ?></td>
+									<td class="text-center"><?php echo $produto->produto_estoque_minimo ?></td>
+									<td class="text-center"><?php echo ($produto->produto_qtde_estoque <= $produto->produto_estoque_minimo ? "<span class='badge badge-warning text-dark'> $produto->produto_qtde_estoque</span>" : $produto->produto_qtde_estoque) ?></td>
 									<td class='text-center pr-4'><?php echo ($produto->produto_ativo ? '<span class="badge badge-success btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
 									<td class='text-center'>
 										<a title="Editar" href="<?php echo base_url('produtos/edit/' . $produto->produto_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-user-edit"></i></a>
