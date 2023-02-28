@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-light sidebar sidebar-primary accordion" id="accordionSidebar">
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/') ?>">
     <div class="sidebar-brand-icon">
@@ -27,7 +27,7 @@
       <span>Cadastros</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
+      <div class="bg-light py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
         <a class="collapse-item" title='Gerenciar Clientes' href="<?php echo base_url('clientes') ?>"><i class="fas fa-user-tie text-gray-700"></i>&nbsp;&nbsp;Clientes</a>
         <a class="collapse-item" title='Gerenciar Fornecedores' href="<?php echo base_url('fornecedores') ?>"><i class="fas fa-box text-gray-700"></i>&nbsp;&nbsp;Fornecedores</a>
@@ -44,7 +44,7 @@
       <span>Estoque</span>
     </a>
     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-      <div class="bg-white py-2 collapse-inner rounded">
+      <div class="bg-light py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
         <a class="collapse-item" title='Gerenciar Produtos' href="<?php echo base_url('produtos') ?>"><i class="fas fa-box-open text-gray-700"></i>&nbsp;&nbsp;Produtos</a>
         <a class="collapse-item" title='Gerenciar Marcas' href="<?php echo base_url('marcas') ?>"><i class="fas fa-tags text-gray-700"></i>&nbsp;&nbsp;Marcas</a>
