@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url('pagar') ?>">Contas a Pagar</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('pagar') ?>">Contas a pagar</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $pageTitle ?></li>
             </ol>
         </nav>
@@ -19,7 +19,7 @@
 
                         <div class="form-group row mb-3">
                             <div class="col-md-4">
-                                <label>Fornecedor</label>
+                                <label>Fornecedor <strong class='text-danger'>*</strong></label>
                                 <select class='custom-select contas_pagar' name='conta_pagar_fornecedor_id'>
                                     <?php foreach ($fornecedores as $fornecedor) : ?>
                                         <option value="<?php echo $fornecedor->fornecedor_id ?>">
@@ -31,24 +31,24 @@
                             </div>
                         </div>
                         <div class="form-group row mb-3">
-                            <div class="col-md-2">
-                                <label>Data de vencimento</label>
+                            <div class="col-md-3">
+                                <label>Data de vencimento <strong class='text-danger'>*</strong></label>
                                 <input type="date" class="form-control form-control-user-date" name="conta_pagar_data_vencimento" value="<?php echo set_value('conta_pagar_data_vencimento') ?>">
                                 <?php echo form_error('conta_pagar_data_vencimento', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                             <div class="col-md-3">
-                                <label>Valor da conta</label>
+                                <label>Valor da conta <strong class='text-danger'>*</strong></label>
                                 <input type="text" class="form-control money2" name="conta_pagar_valor" placeholder="Digite o valor da conta" value="<?php echo set_value('conta_pagar_valor') ?>">
                                 <?php echo form_error('conta_pagar_valor', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label>Situação</label>
                                 <select class='custom-select' name='conta_pagar_status'>
-                                    <option value="1">
-                                        Paga
-                                    </option>
                                     <option value="0">
                                         Pendente
+                                    </option>
+                                    <option value="1">
+                                        Paga
                                     </option>
                                 </select>
                             </div>

@@ -6,7 +6,7 @@
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo base_url('pagar') ?>">Contas a Pagar</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url('pagar') ?>">Contas a pagar</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $pageTitle ?></li>
             </ol>
         </nav>

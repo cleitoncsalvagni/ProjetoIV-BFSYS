@@ -72,7 +72,7 @@ class Pagar extends CI_Controller
             } else {
                 $data = array(
 
-                    'pageTitle' => 'Editar conta a pagar',
+                    'pageTitle' => 'Editar conta',
                     'styles' => array(
                         'vendor/select2/select2.min.css'
                     ),

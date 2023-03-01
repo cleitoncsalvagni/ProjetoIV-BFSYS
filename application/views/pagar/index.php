@@ -22,7 +22,7 @@
 							<tr>
 								<th>Fornecedor</th>
 								<th>Valor</th>
-								<th>Data do vencimento</th>
+								<th class='text-center'>Data do vencimento</th>
 								<th>Data de pagamento</th>
 								<th class='text-center'>Situação</th>
 								<th class='text-center no-sort pr-2'>Ações</th>
@@ -34,7 +34,7 @@
 								<tr>
 									<td><?php echo $conta->fornecedor ?></td>
 									<td><?php echo 'R$&nbsp;' . $conta->conta_pagar_valor ?></td>
-									<td><?php echo formata_data_banco_sem_hora($conta->conta_pagar_data_vencimento) ?></td>
+									<td class='text-center'><?php echo formata_data_banco_sem_hora($conta->conta_pagar_data_vencimento) ?></td>
 									<td><?php echo ($conta->conta_pagar_status == 1 ? formata_data_banco_com_hora($conta->conta_pagar_data_pagamento) :  'Aguardando pagamento') ?></td>
 									<td class='text-center pr-4'>
 										<?php
