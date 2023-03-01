@@ -21,7 +21,6 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>CPF ou CNPJ</th>
-                                <th>Email</th>
                                 <th>Tipo Cliente</th>
                                 <th class='text-center'>Ativo</th>
                                 <th class='text-center no-sort'>Ações</th>
@@ -34,7 +33,6 @@
                                     <!-- <td><?php echo $cliente->cliente_id ?></td> -->
                                     <td><?php echo $cliente->cliente_nome ?></td>
                                     <td><?php echo $cliente->cliente_cpf_cnpj ?></td>
-                                    <td><?php echo $cliente->cliente_email ?></td>
                                     <td><?php echo ($cliente->cliente_tipo ? 'Pessoa Física' : 'Pessoa Jurídica') ?></td>
                                     <td class='text-center pr-4'><?php echo ($cliente->cliente_ativo ? '<span class="badge badge-success btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-center'>
