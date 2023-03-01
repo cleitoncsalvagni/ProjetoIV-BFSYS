@@ -62,7 +62,8 @@
     <div id="collapseFour" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-light py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
-        <a class="collapse-item" title='Gerenciar Produtos' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a pagar</a>
+        <a class="collapse-item" title='Gerenciar contas a pagar' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a pagar</a>
+        <a class="collapse-item" title='Gerenciar contas a receber' href="<?php echo base_url('receber') ?>"><i class="fas fa-hand-holding-usd text-gray-700"></i>&nbsp;&nbsp;Contas a receber</a>
       </div>
     </div>
   </li>
