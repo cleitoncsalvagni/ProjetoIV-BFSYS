@@ -30,9 +30,6 @@ class Pagar extends CI_Controller
 
         );
 
-        // echo '<pre>';
-        // print_r($data['contas_pagar']);
-        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('pagar/index');
@@ -45,34 +42,55 @@ class Pagar extends CI_Controller
             $this->session->set_flashdata('error', 'Conta a pagar não encontrada!');
             redirect('pagar');
         } else {
+            $this->form_validation->set_rules('conta_pagar_fornecedor_id', '', 'required');
+            $this->form_validation->set_rules('conta_pagar_data_vencimento', '', 'required');
+            $this->form_validation->set_rules('conta_pagar_valor', '', 'required');
+            $this->form_validation->set_rules('conta_pagar_obs', '', 'max_length[400]');
 
-            //form_validation
+            if ($this->form_validation->run()) {
 
+                $data = elements(
+                    array(
+                        'conta_pagar_fornecedor_id',
+                        'conta_pagar_data_vencimento',
+                        'conta_pagar_valor',
+                        'conta_pagar_obs',
+                        'conta_pagar_status',
+                    ),
+                    $this->input->post()
+                );
+                $conta_pagar_status = $this->input->post('conta_pagar_status');
 
-            $data = array(
+                if ($conta_pagar_status == 1) {
+                    $data['conta_pagar_data_pagamento'] = date('Y-m-d h:i:s');
+                }
 
-                'pageTitle' => 'Editar conta a pagar',
-                'styles' => array(
-                    'vendor/select2/select2.min.css'
-                ),
-                'scripts' => array(
-                    'vendor/select2/select2.min.js',
-                    'vendor/select2/app.js',
-                    'vendor/mask/jquery.mask.min.js',
-                    'vendor/mask/app.js',
-                ),
-                'conta_pagar' => $this->core_model->get_by_id('contas_pagar', array('conta_pagar_id' => $conta_pagar_id)),
-                'fornecedores' => $this->core_model->get_all('fornecedores'),
+                $data = html_escape($data);
 
-            );
+                $this->core_model->update('contas_pagar', $data, array('conta_pagar_id' => $conta_pagar_id));
+                redirect('pagar');
+            } else {
+                $data = array(
 
-            // echo '<pre>';
-            // print_r($data['contas_pagar']);
-            // exit();
+                    'pageTitle' => 'Editar conta a pagar',
+                    'styles' => array(
+                        'vendor/select2/select2.min.css'
+                    ),
+                    'scripts' => array(
+                        'vendor/select2/select2.min.js',
+                        'vendor/select2/app.js',
+                        'vendor/mask/jquery.mask.min.js',
+                        'vendor/mask/app.js',
+                    ),
+                    'conta_pagar' => $this->core_model->get_by_id('contas_pagar', array('conta_pagar_id' => $conta_pagar_id)),
+                    'fornecedores' => $this->core_model->get_all('fornecedores'),
 
-            $this->load->view('layout/header', $data);
-            $this->load->view('pagar/edit');
-            $this->load->view('layout/footer');
+                );
+
+                $this->load->view('layout/header', $data);
+                $this->load->view('pagar/edit');
+                $this->load->view('layout/footer');
+            }
         }
     }
 }

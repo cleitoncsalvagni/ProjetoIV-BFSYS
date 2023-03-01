@@ -76,9 +76,6 @@ class Usuarios extends CI_Controller
             }
 
             redirect('usuarios');
-            echo '<pre>';
-            print_r($additional_data);
-            exit();
         } else {
             $data = array(
                 'pageTitle' => 'Cadastrar Usuário',
