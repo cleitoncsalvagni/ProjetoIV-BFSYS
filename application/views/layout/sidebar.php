@@ -26,7 +26,7 @@
       <i class="fas fa-database"></i>
       <span>Cadastros</span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapseTwo" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-light py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
         <a class="collapse-item" title='Gerenciar Clientes' href="<?php echo base_url('clientes') ?>"><i class="fas fa-user-tie text-gray-700"></i>&nbsp;&nbsp;Clientes</a>
@@ -40,15 +40,29 @@
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
 
-      <i class="fas fa-boxes"></i>
+      <i class="fas fa-box"></i>
       <span>Estoque</span>
     </a>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapseThree" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-light py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
         <a class="collapse-item" title='Gerenciar Produtos' href="<?php echo base_url('produtos') ?>"><i class="fas fa-box-open text-gray-700"></i>&nbsp;&nbsp;Produtos</a>
         <a class="collapse-item" title='Gerenciar Marcas' href="<?php echo base_url('marcas') ?>"><i class="fas fa-tags text-gray-700"></i>&nbsp;&nbsp;Marcas</a>
         <a class="collapse-item" title='Gerenciar Categorias' href="<?php echo base_url('categorias') ?>"><i class="fab fa-buffer text-gray-700"></i>&nbsp;&nbsp;Categorias</a>
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
+
+      <i class="fas fa-money-bill-alt"></i>
+      <span>Financeiro</span>
+    </a>
+    <div id="collapseFour" class="collapse" data-parent="#accordionSidebar">
+      <div class="bg-light py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Escolha uma opção:</h6>
+        <a class="collapse-item" title='Gerenciar Produtos' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a pagar</a>
       </div>
     </div>
   </li>
