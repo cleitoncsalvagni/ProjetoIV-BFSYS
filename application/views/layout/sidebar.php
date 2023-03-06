@@ -64,6 +64,7 @@
         <h6 class="collapse-header">Escolha uma opção:</h6>
         <a class="collapse-item" title='Gerenciar contas a pagar' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a pagar</a>
         <a class="collapse-item" title='Gerenciar contas a receber' href="<?php echo base_url('receber') ?>"><i class="fas fa-hand-holding-usd text-gray-700"></i>&nbsp;&nbsp;Contas a receber</a>
+        <a class="collapse-item" title='Gerenciar formas de pagamento' href="<?php echo base_url('formas') ?>"><i class="fas fa-money-check-alt text-gray-700"></i>&nbsp;&nbsp;Formas de pagamento</a>
       </div>
     </div>
   </li>
