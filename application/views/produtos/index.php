@@ -43,8 +43,8 @@
 									<td class="text-center"><?php echo ($produto->produto_qtde_estoque <= $produto->produto_estoque_minimo ? "<span class='badge badge-warning text-dark'> $produto->produto_qtde_estoque</span>" : $produto->produto_qtde_estoque) ?></td>
 									<td class='text-center pr-4'><?php echo ($produto->produto_ativo ? '<span class="badge badge-success btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
 									<td class='text-center'>
-										<a title="Editar" href="<?php echo base_url('produtos/edit/' . $produto->produto_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-user-edit"></i></a>
-										<a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $produto->produto_id ?>" class="btn btn-outline-danger rounded btn-sm"><i class="fas fa-user-times"></i></i></a>
+										<a title="Editar" href="<?php echo base_url('produtos/edit/' . $produto->produto_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-pen"></i></a>
+										<a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $produto->produto_id ?>" class="btn btn-outline-danger rounded btn-sm"><i class="fas fa-trash"></i></i></a>
 									</td>
 								</tr>
 
