@@ -96,7 +96,7 @@ class Receber extends CI_Controller
 
     public function novo()
     {
-        $this->form_validation->set_rules('conta_receber_fornecedor_id', '', 'required');
+        $this->form_validation->set_rules('conta_receber_cliente_id', '', 'required');
         $this->form_validation->set_rules('conta_receber_data_vencimento', '', 'required');
         $this->form_validation->set_rules('conta_receber_valor', '', 'required');
         $this->form_validation->set_rules('conta_receber_obs', '', 'max_length[400]');
@@ -105,7 +105,7 @@ class Receber extends CI_Controller
 
             $data = elements(
                 array(
-                    'conta_receber_fornecedor_id',
+                    'conta_receber_cliente_id',
                     'conta_receber_data_vencimento',
                     'conta_receber_valor',
                     'conta_receber_obs',

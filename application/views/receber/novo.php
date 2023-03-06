@@ -13,9 +13,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form method="POST" name="form_edit">
-                    <p><strong><i class="fas fa-clock"></i>&nbsp;&nbsp;Última alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($conta_receber->conta_receber_data_alteracao) ?></p>
-
+                <form method="POST" name="form_novo">
                     <fieldset class='mt-4 border p-3 mb-3'>
                         <legend class='small'><i class="fas fa-receipt"></i>&nbsp; Informações da conta</legend>
 
@@ -24,7 +22,7 @@
                                 <label>Cliente</label>
                                 <select class='custom-select contas_receber' name='conta_receber_cliente_id'>
                                     <?php foreach ($clientes as $cliente) : ?>
-                                        <option value="<?php echo $cliente->cliente_id ?>" <?php echo ($cliente->cliente_id == $conta_receber->conta_receber_cliente_id ? 'selected' : '') ?>>
+                                        <option value="<?php echo $cliente->cliente_id ?>">
                                             <?php echo $cliente->cliente_nome ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -35,21 +33,21 @@
                         <div class="form-group row mb-3">
                             <div class="col-md-2">
                                 <label>Data de vencimento</label>
-                                <input type="date" class="form-control form-control-user-date" name="conta_receber_data_vencimento" value="<?php echo $conta_receber->conta_receber_data_vencimento; ?>">
+                                <input type="date" class="form-control form-control-user-date" name="conta_receber_data_vencimento" value="<?php echo set_value('conta_receber_data_vencimento') ?>">
                                 <?php echo form_error('conta_receber_data_vencimento', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                             <div class="col-md-3">
                                 <label>Valor da conta</label>
-                                <input type="text" class="form-control money2" name="conta_receber_valor" value="<?php echo $conta_receber->conta_receber_valor; ?>">
+                                <input type="text" class="form-control money2" name="conta_receber_valor" value="<?php echo set_value('conta_receber_valor') ?>">
                                 <?php echo form_error('conta_receber_valor', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                             <div class="col-md-3">
                                 <label>Situação</label>
                                 <select class='custom-select' name='conta_receber_status'>
-                                    <option value="1" <?php echo ($conta_receber->conta_receber_status == 1 ? 'selected' : '') ?>>
+                                    <option value="1">
                                         Paga
                                     </option>
-                                    <option value="0" <?php echo ($conta_receber->conta_receber_status == 0 ? 'selected' : '') ?>>
+                                    <option value="0">
                                         Pendente
                                     </option>
                                 </select>
@@ -58,18 +56,14 @@
                         <div class="form-group row">
                             <div class="col-md-8">
                                 <label>Observações</label>
-                                <textarea class="form-control" name="conta_receber_obs" placeholder="Observações"><?php echo $conta_receber->conta_receber_obs; ?></textarea>
+                                <textarea class="form-control" name="conta_receber_obs" placeholder="Observações"><?php echo set_value('conta_receber_obs') ?></textarea>
                                 <?php echo form_error('conta_receber_obs', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
                         </div>
                     </fieldset>
 
-                    <input type='hidden' name='conta_receber_id' value="<?php echo $conta_receber->conta_receber_id; ?>">
 
-
-                    <button type="submit" class="btn btn-success btn-sm" <?php echo ($conta_receber->conta_receber_status == 1 ? 'disabled' : '') ?>>
-                        <?php echo ($conta_receber->conta_receber_status == 1 ? 'Conta paga' : 'Salvar') ?>
-                    </button>
+                    <button type="submit" class="btn btn-success btn-sm">Salvar</button>
 
                     <a href='<?php echo base_url($this->router->fetch_class()) ?>' title='Voltar' class='btn btn-primary btn-sm ml-2'>Voltar</a>
                 </form>

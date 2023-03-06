@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	$(".contas_receber").select2({
-		placeholder: "CPF... CNPJ ... Nome...",
+		placeholder: "Informe o nome do cliente",
 		allowClear: true,
 		language: {
 			noResults: function () {
