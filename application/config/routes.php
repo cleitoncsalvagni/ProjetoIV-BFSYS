@@ -53,7 +53,16 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/* Rotas para as Formas de Pagamentos */
+
 $route['formas'] = 'formas_pagamentos/index';
 $route['formas/novo'] = 'formas_pagamentos/novo';
 $route['formas/edit/(:num)'] = 'formas_pagamentos/edit/$1';
 $route['formas/del/(:num)'] = 'formas_pagamentos/del/$1';
+
+/* Rotas para as Ordens de Serviços */
+
+$route['os'] = 'ordens_servicos/index';
+$route['os/novo'] = 'ordens_servicos/novo';
+$route['os/edit/(:num)'] = 'ordens_servicos/edit/$1';
+$route['os/del/(:num)'] = 'ordens_servicos/del/$1';
