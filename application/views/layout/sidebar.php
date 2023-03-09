@@ -22,6 +22,19 @@
   </div>
 
   <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <i class="fas fa-shopping-cart"></i>
+      <span>Vendas</span>
+    </a>
+    <div id="collapseOne" class="collapse" data-parent="#accordionSidebar">
+      <div class="bg-light py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Escolha uma opção:</h6>
+        <a class="collapse-item" title='Gerenciar O.S' href="<?php echo base_url('os') ?>"><i class="fas fa-file-invoice-dollar text-gray-700"></i>&nbsp;&nbsp;Ordens de Serviço</a>
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-database"></i>
       <span>Cadastros</span>
@@ -62,9 +75,9 @@
     <div id="collapseFour" class="collapse" data-parent="#accordionSidebar">
       <div class="bg-light py-2 collapse-inner rounded">
         <h6 class="collapse-header">Escolha uma opção:</h6>
-        <a class="collapse-item" title='Gerenciar contas a pagar' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a pagar</a>
-        <a class="collapse-item" title='Gerenciar contas a receber' href="<?php echo base_url('receber') ?>"><i class="fas fa-hand-holding-usd text-gray-700"></i>&nbsp;&nbsp;Contas a receber</a>
-        <a class="collapse-item" title='Gerenciar formas de pagamento' href="<?php echo base_url('formas') ?>"><i class="fas fa-money-check-alt text-gray-700"></i>&nbsp;&nbsp;Formas de pagamento</a>
+        <a class="collapse-item" title='Gerenciar contas a pagar' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a Pagar</a>
+        <a class="collapse-item" title='Gerenciar contas a receber' href="<?php echo base_url('receber') ?>"><i class="fas fa-hand-holding-usd text-gray-700"></i>&nbsp;&nbsp;Contas a Receber</a>
+        <a class="collapse-item" title='Gerenciar formas de pagamento' href="<?php echo base_url('formas') ?>"><i class="fas fa-money-check-alt text-gray-700"></i>&nbsp;&nbsp;Formas Pagamento</a>
       </div>
     </div>
   </li>
