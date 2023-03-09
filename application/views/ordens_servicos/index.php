@@ -43,6 +43,7 @@
                                             '<span class="badge badge-dark btn-sm">Em aberto</span>') ?>
                                     </td>
                                     <td class='text-center'>
+                                        <a title="Imprimir" href="<?php echo base_url('os/pdf/' . $os->ordem_servico_id) ?>" class="btn btn-outline-dark rounded btn-sm"><i class="fas fa-print"></i></a>
                                         <a title="Editar" href="<?php echo base_url('os/edit/' . $os->ordem_servico_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-pen"></i></a>
                                         <a title="Excluir" href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $os->ordem_servico_id ?>" class="btn btn-outline-danger rounded btn-sm"><i class="fas fa-trash"></i></i></a>
                                     </td>

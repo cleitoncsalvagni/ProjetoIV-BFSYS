@@ -20,7 +20,7 @@
                         <legend class="small"><i class="fas fa-tools"></i>&nbsp;&nbsp;Escolha os serviços</legend>
 
                         <div class="form-group row">
-                            <div class="ui-widget col-lg-12 mb-1 mt-1">
+                            <div class="ui-widget col-md-12 mb-1 mt-1">
                                 <input id="buscar_servicos" class="search form-control col-md-12" placeholder="Que serviço você está buscando?">
                             </div>
                         </div>

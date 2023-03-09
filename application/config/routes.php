@@ -66,3 +66,5 @@ $route['os'] = 'ordens_servicos/index';
 $route['os/novo'] = 'ordens_servicos/novo';
 $route['os/edit/(:num)'] = 'ordens_servicos/edit/$1';
 $route['os/del/(:num)'] = 'ordens_servicos/del/$1';
+$route['os/opcoes/(:num)'] = 'ordens_servicos/opcoes/$1';
+$route['os/pdf/(:num)'] = 'ordens_servicos/pdf/$1';

@@ -68,4 +68,43 @@ class Ordem_servico_model extends CI_Model
             $this->db->delete('ordem_tem_servicos', array('ordem_ts_id_ordem_servico' => $ordem_servico_id));
         }
     }
+
+    public function get_all_servicos($ordem_servico_id = NULL)
+    {
+
+        if ($ordem_servico_id) {
+
+
+            $this->db->select([
+                'ordem_tem_servicos.*',
+                'FORMAT(SUM(REPLACE(ordem_ts_valor_unitario, ",", "")), 2) as ordem_ts_valor_unitario',
+                'FORMAT(SUM(REPLACE(ordem_ts_valor_total, ",", "")), 2) as ordem_ts_valor_total',
+                'servicos.servico_id',
+                'servicos.servico_nome',
+            ]);
+
+            $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
+            $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
+            $this->db->group_by('ordem_ts_id_servico');
+
+            return $this->db->get('ordem_tem_servicos')->result();
+        }
+    }
+
+    public function get_valor_final_os($ordem_servico_id = NULL)
+    {
+
+        if ($ordem_servico_id) {
+
+            $this->db->select([
+                'FORMAT(SUM(REPLACE(ordem_ts_valor_total, ",", "")), 2) as os_valor_total',
+
+            ]);
+
+            $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
+            $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
+
+            return $this->db->get('ordem_tem_servicos')->row();
+        }
+    }
 }
