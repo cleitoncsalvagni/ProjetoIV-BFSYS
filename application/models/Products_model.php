@@ -1,10 +1,12 @@
 <?php
 
-defined('BASEPATH') OR exit ('Ação não permitida');
+defined('BASEPATH') or exit('Ação não permitida');
 
-class Products_model extends CI_Model {
+class Products_model extends CI_Model
+{
 
-	public function get_all() {
+	public function get_all()
+	{
 		$this->db->select([
 			'produtos.*',
 			'categorias.categoria_id',
@@ -22,4 +24,11 @@ class Products_model extends CI_Model {
 		return $this->db->get('produtos')->result();
 	}
 
+	public function update($produto_id, $diferenca)
+	{
+
+		$this->db->set('produto_qtde_estoque', 'produto_qtde_estoque - ' . $diferenca, FALSE);
+		$this->db->where('produto_id', $produto_id);
+		$this->db->update('produtos');
+	}
 }

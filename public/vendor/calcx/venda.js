@@ -129,7 +129,7 @@ $(document).ready(function () {
 					Swal.fire({
 						icon: "info",
 						width: 300,
-						title: "Opss!",
+						title: "Ops!",
 						html: "Esse produto já foi adicionado",
 					});
 				} else {

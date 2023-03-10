@@ -20,8 +20,8 @@
                         <legend class="small"><i class="fas fa-tools"></i>&nbsp;&nbsp;Escolha os serviços</legend>
 
                         <div class="form-group row">
-                            <div class="ui-widget col-lg-12 mb-1 mt-1">
-                                <input id="buscar_servicos" class="search form-control form-control-lg col-lg-12" placeholder="Que serviço você está buscando?">
+                            <div class="form-outline mb-4 col-md-12">
+                                <input id="buscar_servicos" type="search" class="form-control " id="datatable-search-input" placeholder="Que serviço você está buscando?">
                             </div>
                         </div>
 
