@@ -7,6 +7,7 @@ class Ordem_servico_model extends CI_Model
 {
     public function get_all()
     {
+
         $this->db->select([
             'ordens_servicos.*',
             'clientes.cliente_id',
@@ -29,11 +30,10 @@ class Ordem_servico_model extends CI_Model
             'clientes.cliente_id',
             'clientes.cliente_cpf_cnpj',
             'clientes.cliente_celular',
-            'CONCAT (clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome',
+            'CONCAT (clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome_completo',
             'formas_pagamentos.forma_pagamento_id',
             'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
         ]);
-
 
         $this->db->where('ordem_servico_id', $ordem_servico_id);
         $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
@@ -49,11 +49,12 @@ class Ordem_servico_model extends CI_Model
 
             $this->db->select([
                 'ordem_tem_servicos.*',
-                'servicos.servico_descricao'
+                'servicos.servico_descricao',
             ]);
 
             $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
-            $this->db->where('ordem_ts_id_ordem_servico ', $ordem_servico_id);
+
+            $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
 
             return $this->db->get('ordem_tem_servicos')->result();
         }
@@ -73,7 +74,6 @@ class Ordem_servico_model extends CI_Model
 
         if ($ordem_servico_id) {
 
-
             $this->db->select([
                 'ordem_tem_servicos.*',
                 'FORMAT(SUM(REPLACE(ordem_ts_valor_unitario, ",", "")), 2) as ordem_ts_valor_unitario',
@@ -84,6 +84,7 @@ class Ordem_servico_model extends CI_Model
 
             $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
             $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
+
             $this->db->group_by('ordem_ts_id_servico');
 
             return $this->db->get('ordem_tem_servicos')->result();
@@ -97,13 +98,12 @@ class Ordem_servico_model extends CI_Model
 
             $this->db->select([
                 'FORMAT(SUM(REPLACE(ordem_ts_valor_total, ",", "")), 2) as os_valor_total',
-
             ]);
 
             $this->db->join('servicos', 'servico_id = ordem_ts_id_servico', 'LEFT');
             $this->db->where('ordem_ts_id_ordem_servico', $ordem_servico_id);
-
-            return $this->db->get('ordem_tem_servicos')->row();
         }
+
+        return $this->db->get('ordem_tem_servicos')->row();
     }
 }

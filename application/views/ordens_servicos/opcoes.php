@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class='row text-center'>
                     <div class='col-md-4'>
-                        <a href="<?php echo base_url('os/pdf/' . $ordem_servico->ordem_servico_id) ?>" class="btn btn-dark btn-icon-split btn-md">
+                        <a href="<?php echo base_url('os/pdf/' . $ordem_servico->ordem_servico_id) ?>" target="_blank" class="btn btn-dark btn-icon-split btn-md">
                             <span class="icon text-white-50">
                                 <i class="fas fa-print"></i>
                             </span>

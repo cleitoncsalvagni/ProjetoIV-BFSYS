@@ -84,9 +84,6 @@ class Ordens_servicos extends CI_Controller
 
             $servico_item_total = str_replace('R$', '', $this->input->post('servico_item_total'));
 
-            $servico_preco = str_replace(',', ' ', $servico_preco);
-            $servico_item_total = str_replace(',', ' ',  $servico_item_total);
-
             $qtd_servico = count($servico_id);
 
             $ordem_servico_id = $this->input->post('ordem_servico_id');
@@ -197,9 +194,6 @@ class Ordens_servicos extends CI_Controller
                 $servico_preco = str_replace('R$', '', $this->input->post('servico_preco'));
 
                 $servico_item_total = str_replace('R$', '', $this->input->post('servico_item_total'));
-
-                $servico_preco = str_replace(',', ' ', $servico_preco);
-                $servico_item_total = str_replace(',', ' ',  $servico_item_total);
 
                 $qtd_servico = count($servico_id);
 
@@ -333,7 +327,7 @@ class Ordens_servicos extends CI_Controller
             $html .= '<p align="right" style="font-size: 12px">O.S Nº&nbsp;' . $ordem_servico->ordem_servico_id . '</p>';
 
             $html .= '<p>'
-                . '<strong>Cliente: </strong>' . $ordem_servico->cliente_nome . '<br/>'
+                . '<strong>Cliente: </strong>' . $ordem_servico->cliente_nome_completo . '<br/>'
                 . '<strong>CPF: </strong>' . $ordem_servico->cliente_cpf_cnpj . '<br/>'
                 . '<strong>Celular: </strong>' . $ordem_servico->cliente_celular . '<br/>'
                 . '<strong>Data de emissão: </strong>' . formata_data_banco_com_hora($ordem_servico->ordem_servico_data_emissao) . '<br/>'
@@ -366,10 +360,10 @@ class Ordens_servicos extends CI_Controller
 
             endforeach;
 
-            $html .= '<th colspan="3">';
+            $html .= '<th colspan="3" style="border-bottom: solid #ddd 1px;">';
 
-            $html .= '<td style="border-top: solid #ddd 1px"><strong>Valor final</strong></td>';
-            $html .= '<td style="border-top: solid #ddd 1px">' . 'R$&nbsp;' . $valor_final_os->os_valor_total . '</td>';
+            $html .= '<td style="padding-top: 20px"><strong>Valor final</strong></td>';
+            $html .= '<td style="padding-top: 20px">' . 'R$&nbsp;' . $valor_final_os->os_valor_total . '</td>';
 
             $html .= '</th>';
 
