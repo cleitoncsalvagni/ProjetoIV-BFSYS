@@ -9,6 +9,7 @@ class Formas_pagamentos extends CI_Controller
         parent::__construct();
 
         if (!$this->ion_auth->logged_in()) {
+            $this->session->set_flashdata('info', 'Sua sessão expirou! Por favor realize seu login novamente');
             redirect('login');
         }
     }

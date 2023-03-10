@@ -34,6 +34,9 @@
         if ($message = $this->session->flashdata('error')) {
             echo "<script>toastr.error('" . $message . "');</script>";
         }
+        if ($message = $this->session->flashdata('info')) {
+            echo "<script>toastr.info('" . $message . "');</script>";
+        }
         ?>
     </div>
 </div>

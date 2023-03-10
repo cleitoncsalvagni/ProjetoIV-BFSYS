@@ -23,11 +23,7 @@ class Login extends CI_Controller
 
         $identity = $this->security->xss_clean($this->input->post('email'));
         $password = $this->security->xss_clean($this->input->post('password'));
-        $remember = FALSE; // fazer para o usuário escolher
-
-        // echo '<pre>';
-        // print_r($this->input->post());
-        // exit();
+        $remember = FALSE;
 
         if ($this->ion_auth->login($identity, $password, $remember)) {
 
