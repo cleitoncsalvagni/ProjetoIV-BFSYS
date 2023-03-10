@@ -28,6 +28,7 @@ class Ordem_servico_model extends CI_Model
             'ordens_servicos.*',
             'clientes.cliente_id',
             'clientes.cliente_cpf_cnpj',
+            'clientes.cliente_celular',
             'CONCAT (clientes.cliente_nome, " ", clientes.cliente_sobrenome) as cliente_nome',
             'formas_pagamentos.forma_pagamento_id',
             'formas_pagamentos.forma_pagamento_nome as forma_pagamento',
@@ -35,8 +36,6 @@ class Ordem_servico_model extends CI_Model
 
 
         $this->db->where('ordem_servico_id', $ordem_servico_id);
-
-
         $this->db->join('clientes', 'cliente_id = ordem_servico_cliente_id', 'LEFT');
         $this->db->join('formas_pagamentos', 'forma_pagamento_id = ordem_servico_forma_pagamento_id', 'LEFT');
 
