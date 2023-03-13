@@ -13,6 +13,11 @@ class Receber extends CI_Controller
             redirect('login');
         }
 
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('info', 'Você não tem permissão para acessar o menu Contas a Receber');
+            redirect('/');
+        }
+
         $this->load->model('bills_model');
     }
 

@@ -12,6 +12,11 @@ class Formas_pagamentos extends CI_Controller
             $this->session->set_flashdata('info', 'Sua sessão expirou! Por favor realize seu login novamente');
             redirect('login');
         }
+
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('info', 'Você não tem permissão para acessar o menu Formas de Pagamentos');
+            redirect('/');
+        }
     }
 
     public function index()
@@ -53,14 +58,6 @@ class Formas_pagamentos extends CI_Controller
                         redirect('formas');
                     }
                 }
-
-                // if ($this->db->table_exists('ordem_servicos')) {
-
-                //     if ($forma_pagamento_ativa == 0 && $this->core_model('ordem_servicos', array('ordem_servico_forma_pagamento_id' => $forma_pagamento_id, 'ordem_servico_status' => 0))) {
-                //         $this->session->set_flashdata('error', 'Esta forma de pagamento não pode ser desativada pois está sendo utilizada em ordens de serviço');
-                //         redirect('formas');
-                //     }
-                // }
 
                 $data = elements(
                     array(

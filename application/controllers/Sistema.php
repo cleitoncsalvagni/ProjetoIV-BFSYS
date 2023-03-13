@@ -13,6 +13,11 @@ class Sistema extends CI_Controller
             $this->session->set_flashdata('info', 'Sua sessão expirou! Por favor realize seu login novamente');
             redirect('login');
         }
+
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('info', 'Você não tem permissão para acessar o menu do Sistema');
+            redirect('home');
+        }
     }
 
     public function index()
@@ -45,22 +50,7 @@ class Sistema extends CI_Controller
         $this->form_validation->set_rules('sistema_txt_ordem_servico', '', 'max_length[400]');
 
         if ($this->form_validation->run()) {
-            // [sistema_id] => 1
-            // [sistema_razao_social] => BFSYS Gerenciamento Empresarial LTDA
-            // [sistema_nome_fantasia] => BFSYS
-            // [sistema_cnpj] => 00.000.000/0000-00
-            // [sistema_ie] => 
-            // [sistema_telefone_fixo] => 
-            // [sistema_telefone_movel] => (49) 9 9145-2011
-            // [sistema_email] => contato@bfsys.tech
-            // [sistema_site_url] => http://localhost/bfsys/
-            // [sistema_cep] => 89817-000
-            // [sistema_endereco] => Avenida João Batista Dal Piva, Centro
-            // [sistema_numero] => 0
-            // [sistema_cidade] => Guatambú
-            // [sistema_estado] => SC
-            // [sistema_txt_ordem_servico] => 
-            // [sistema_data_alteracao] => 2023-02-14 12:48:14
+
 
             $data = elements(array(
                 'sistema_razao_social',

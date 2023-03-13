@@ -67,63 +67,67 @@
     </div>
   </li>
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
+  <?php if ($this->ion_auth->is_admin()) : ?>
 
-      <i class="fas fa-money-bill-alt"></i>
-      <span>Financeiro</span>
-    </a>
-    <div id="collapseFour" class="collapse" data-parent="#accordionSidebar">
-      <div class="bg-light py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Escolha uma opção:</h6>
-        <a class="collapse-item" title='Gerenciar contas a pagar' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a Pagar</a>
-        <a class="collapse-item" title='Gerenciar contas a receber' href="<?php echo base_url('receber') ?>"><i class="fas fa-hand-holding-usd text-gray-700"></i>&nbsp;&nbsp;Contas a Receber</a>
-        <a class="collapse-item" title='Gerenciar formas de pagamento' href="<?php echo base_url('formas') ?>"><i class="fas fa-money-check-alt text-gray-700"></i>&nbsp;&nbsp;Formas Pagamento</a>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
+
+        <i class="fas fa-money-bill-alt"></i>
+        <span>Financeiro</span>
+      </a>
+      <div id="collapseFour" class="collapse" data-parent="#accordionSidebar">
+        <div class="bg-light py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Escolha uma opção:</h6>
+          <a class="collapse-item" title='Gerenciar contas a pagar' href="<?php echo base_url('pagar') ?>"><i class="fas fa-receipt text-gray-700"></i>&nbsp;&nbsp;Contas a Pagar</a>
+          <a class="collapse-item" title='Gerenciar contas a receber' href="<?php echo base_url('receber') ?>"><i class="fas fa-hand-holding-usd text-gray-700"></i>&nbsp;&nbsp;Contas a Receber</a>
+          <a class="collapse-item" title='Gerenciar formas de pagamento' href="<?php echo base_url('formas') ?>"><i class="fas fa-money-check-alt text-gray-700"></i>&nbsp;&nbsp;Formas Pagamento</a>
+        </div>
       </div>
-    </div>
-  </li>
+    </li>
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseTwo">
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseTwo">
 
-      <i class="fas fa-search-plus"></i>
-      <span>Relatórios</span>
-    </a>
-    <div id="collapseSix" class="collapse" data-parent="#accordionSidebar">
-      <div class="bg-light py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Escolha uma opção:</h6>
-        <a class="collapse-item" title='Gerenciar relatório de vendas' href="<?php echo base_url('relatorios/vendas') ?>"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Vendas</a>
-        <a title="Gerar relatório de ordens de serviços" class="collapse-item" href="<?php echo base_url('relatorios/os'); ?>"><i class="fas fa-shopping-basket text-gray-900"></i>&nbsp;&nbsp;Ordens de serviços</a>
-        <a title="Gerar relatório de contas a pagar" class="collapse-item" href="<?php echo base_url('relatorios/pagar'); ?>"><i class="fas fa-money-bill-alt text-gray-900"></i>&nbsp;&nbsp;Contas a pagar</a>
-        <a title="Gerar relatório de contas a receber" class="collapse-item" href="<?php echo base_url('relatorios/receber'); ?>"><i class="fas fa-hand-holding-usd text-gray-900"></i>&nbsp;&nbsp;Contas a receber</a>
+        <i class="fas fa-search-plus"></i>
+        <span>Relatórios</span>
+      </a>
+      <div id="collapseSix" class="collapse" data-parent="#accordionSidebar">
+        <div class="bg-light py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Escolha uma opção:</h6>
+          <a class="collapse-item" title='Gerenciar relatório de vendas' href="<?php echo base_url('relatorios/vendas') ?>"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Vendas</a>
+          <a title="Gerar relatório de ordens de serviços" class="collapse-item" href="<?php echo base_url('relatorios/os'); ?>"><i class="fas fa-shopping-basket text-gray-900"></i>&nbsp;&nbsp;Ordens de serviços</a>
+          <a title="Gerar relatório de contas a pagar" class="collapse-item" href="<?php echo base_url('relatorios/pagar'); ?>"><i class="fas fa-money-bill-alt text-gray-900"></i>&nbsp;&nbsp;Contas a pagar</a>
+          <a title="Gerar relatório de contas a receber" class="collapse-item" href="<?php echo base_url('relatorios/receber'); ?>"><i class="fas fa-hand-holding-usd text-gray-900"></i>&nbsp;&nbsp;Contas a receber</a>
+        </div>
       </div>
-    </div>
-  </li>
+    </li>
 
+  <?php endif; ?>
 
 
   <hr class="sidebar-divider">
 
 
-  <div class="sidebar-heading">
-    Ajustes
-  </div>
+  <?php if ($this->ion_auth->is_admin()) : ?>
 
-  <li class="nav-item <?php echo $this->router->fetch_class() == 'usuarios' ? 'active' : '' ?>">
-    <a title='Gerenciar usuários' class="nav-link" href="<?php echo base_url('usuarios'); ?>">
-      <i class="fas fa-fw fa-users"></i>
-      <span>Usuários</span></a>
-  </li>
+    <div class="sidebar-heading">
+      Ajustes
+    </div>
 
-  <li class="nav-item <?php echo $this->router->fetch_class() == 'sistema' ? 'active' : '' ?>">
-    <a title='Gerenciar dados do sistema' class="nav-link" href="<?php echo base_url('sistema'); ?>">
-      <i class="fas fa-cogs"></i>
-      <span>Sistema</span></a>
-  </li>
+    <li class="nav-item <?php echo $this->router->fetch_class() == 'usuarios' ? 'active' : '' ?>">
+      <a title='Gerenciar usuários' class="nav-link" href="<?php echo base_url('usuarios'); ?>">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Usuários</span></a>
+    </li>
 
+    <li class="nav-item <?php echo $this->router->fetch_class() == 'sistema' ? 'active' : '' ?>">
+      <a title='Gerenciar dados do sistema' class="nav-link" href="<?php echo base_url('sistema'); ?>">
+        <i class="fas fa-cogs"></i>
+        <span>Sistema</span></a>
+    </li>
 
-  <hr class="sidebar-divider d-none d-md-block">
-
+    <hr class="sidebar-divider d-none d-md-block">
+  <?php endif; ?>
 
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>

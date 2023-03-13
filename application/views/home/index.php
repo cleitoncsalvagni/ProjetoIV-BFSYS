@@ -6,7 +6,8 @@
   </div>
   <?php
 
-  if ($message = $this->session->flashdata('welcome')) {
+
+  if ($message = $this->session->flashdata('info')) {
     echo "<script>toastr.info('" . $message . "');</script>";
   }
 

@@ -18,6 +18,11 @@ class Usuarios extends CI_Controller
     public function index()
     {
 
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('info', 'Você não tem permissão para acessar o menu Usuários');
+            redirect('/');
+        }
+
         $data = array(
 
             'pageTitle' => 'Usuários',
@@ -38,6 +43,10 @@ class Usuarios extends CI_Controller
 
     public function novo()
     {
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('info', 'Você não tem permissão para acessar o menu Usuários');
+            redirect('/');
+        }
 
         $this->form_validation->set_rules('first_name', '', 'trim|required');
         $this->form_validation->set_rules('last_name', '', 'trim|required');
@@ -84,6 +93,10 @@ class Usuarios extends CI_Controller
 
     public function del($user_id = NULL)
     {
+        if (!$this->ion_auth->is_admin()) {
+            $this->session->set_flashdata('info', 'Você não tem permissão para acessar o menu Usuários');
+            redirect('/');
+        }
 
         if (!$user_id || !$this->ion_auth->user($user_id)->row()) {
             $this->session->set_flashdata('error', 'Usuário não encontrado');
@@ -106,13 +119,21 @@ class Usuarios extends CI_Controller
 
     public function edit($user_id = NULL)
     {
+        if (!$this->ion_auth->is_admin()) {
+
+            $user_session = $this->session->userdata('user_id');
+
+            if ($user_session != $user_id) {
+                $this->session->set_flashdata('error', 'Você não pode editar um usuário diferente do seu');
+                redirect('/');
+            }
+        }
 
         if (!$user_id || !$this->ion_auth->user($user_id)->row()) {
 
             $this->session->set_flashdata('error', 'Usuário não encontrado');
             redirect('usuarios');
         } else {
-
             $data = array(
                 'pageTitle' => 'Editar Usuário',
                 'usuario' => $this->ion_auth->user($user_id)->row(),
@@ -146,30 +167,38 @@ class Usuarios extends CI_Controller
                 $data = $this->security->xss_clean($data);
                 $password = $this->input->post('password');
 
+                if (!$this->ion_auth->is_admin()) {
+                    unset($data['active']);
+                }
+
                 if (!$password) {
                     unset($data['password']);
                 }
-
 
                 if ($this->ion_auth->update($user_id, $data)) {
 
                     $perfil_usuario_db = $this->ion_auth->get_users_groups($user_id)->row();
                     $perfil_usuario_post = $this->input->post('perfil_usuario');
 
-                    if ($perfil_usuario_post != $perfil_usuario_db->id) {
-                        $this->ion_auth->remove_from_group($perfil_usuario_db->id, $user_id);
-                        $this->ion_auth->add_to_group($perfil_usuario_post, $user_id);
+                    if ($this->ion_auth->is_admin()) {
+
+                        if ($perfil_usuario_post != $perfil_usuario_db->id) {
+                            $this->ion_auth->remove_from_group($perfil_usuario_db->id, $user_id);
+                            $this->ion_auth->add_to_group($perfil_usuario_post, $user_id);
+                        }
                     }
 
                     $this->session->set_flashdata('success', 'Dados salvos com sucesso!');
                 } else {
                     $this->session->set_flashdata('error', 'Erro ao salvar os dados');
                 }
-                redirect('usuarios');
 
-                // echo '<pre>';
-                // print_r($data);
-                // exit();
+                if (!$this->ion_auth->is_admin()) {
+                    redirect('/');
+                } else {
+
+                    redirect('usuarios');
+                }
             } else {
 
                 $this->load->view('layout/header', $data);
