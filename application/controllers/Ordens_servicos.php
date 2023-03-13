@@ -372,10 +372,6 @@ class Ordens_servicos extends CI_Controller
             $html .= '</body>';
             $html .= '</html>';
 
-            // echo '<pre>';
-            // print_r($html);
-            // exit;
-
             $this->pdf->createPDF($html, $file_name, false);
         }
     }

@@ -83,6 +83,23 @@
     </div>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseTwo">
+
+      <i class="fas fa-search-plus"></i>
+      <span>Relatórios</span>
+    </a>
+    <div id="collapseSix" class="collapse" data-parent="#accordionSidebar">
+      <div class="bg-light py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Escolha uma opção:</h6>
+        <a class="collapse-item" title='Gerenciar relatório de vendas' href="<?php echo base_url('relatorios/vendas') ?>"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Vendas</a>
+        <a title="Gerar relatório de ordens de serviços" class="collapse-item" href="<?php echo base_url('relatorios/os'); ?>"><i class="fas fa-shopping-basket text-gray-900"></i>&nbsp;&nbsp;Ordens de serviços</a>
+        <a title="Gerar relatório de contas a pagar" class="collapse-item" href="<?php echo base_url('relatorios/pagar'); ?>"><i class="fas fa-money-bill-alt text-gray-900"></i>&nbsp;&nbsp;Contas a pagar</a>
+        <a title="Gerar relatório de contas a receber" class="collapse-item" href="<?php echo base_url('relatorios/receber'); ?>"><i class="fas fa-hand-holding-usd text-gray-900"></i>&nbsp;&nbsp;Contas a receber</a>
+      </div>
+    </div>
+  </li>
+
 
 
   <hr class="sidebar-divider">
