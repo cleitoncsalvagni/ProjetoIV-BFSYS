@@ -248,7 +248,34 @@ $(document).ready(function () {
 
 	$(".dataTable").DataTable({
 		language: DATATABLE_PTBR,
-		resposive: true,
+		responsive: true,
+		aoColumnDefs: [
+			{
+				bSortable: false,
+				aTargets: ["no-sort"],
+			},
+		],
+	});
+
+	$(".produtos").DataTable({
+		language: DATATABLE_PTBR,
+		responsive: true,
+		dom: "Bfrtip",
+		buttons: [
+			{
+				extend: "pdfHtml5",
+				text: '<i class="fas fa-download"></i>&nbsp;<a>Exportar para PDF</a>',
+				title: "Lista de produtos cadastrados",
+				filename: "Produtos cadastrados",
+				titleAttr: "Exportar para PDF",
+				className: "btn btn-primary btn-sm float-right ml-3",
+				orientation: "portrait",
+				pageSize: "A4",
+				exportOptions: {
+					columns: [0, 1, 2, 3, 4, 5, 6],
+				},
+			},
+		],
 		aoColumnDefs: [
 			{
 				bSortable: false,
