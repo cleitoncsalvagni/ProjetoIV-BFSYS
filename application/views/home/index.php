@@ -24,7 +24,7 @@
                   <div class="h5 mb-0 font-weight-bold text-success"><?php echo 'R$&nbsp;' . $soma_vendas->venda_valor_total; ?></div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-shopping-cart fa-3x text-success"></i>
+                  <i class="fas fa-shopping-cart fa-2x text-success"></i>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
                   <div class="h5 mb-0 font-weight-bold text-primary"><?php echo 'R$&nbsp;' . $soma_ordem_servicos->os_valor_total; ?></div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-shopping-basket fa-3x text-primary"></i>
+                  <i class="fas fa-shopping-basket fa-2x text-primary"></i>
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                   </div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-money-bill-alt fa-3x text-danger"></i>
+                  <i class="fas fa-money-bill-alt fa-2x text-danger"></i>
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@
                   </div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-hand-holding-usd fa-3x text-warning"></i>
+                  <i class="fas fa-hand-holding-usd fa-2x text-warning"></i>
                 </div>
               </div>
             </div>
