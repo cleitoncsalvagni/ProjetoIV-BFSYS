@@ -159,10 +159,11 @@ class Produtos extends CI_Controller
 		if (!$produto_id || !$this->core_model->get_by_id('produtos', array('produto_id' => $produto_id))) {
 
 			$this->session->set_flashdata('error', 'Produto não encontrado');
+			redirect('produtos');
 		} else {
 			$this->core_model->delete('produtos', array('produto_id' => $produto_id));
+			redirect('produtos');
 		}
-		redirect('produtos');
 	}
 
 	public function check_descricao($produto_descricao)

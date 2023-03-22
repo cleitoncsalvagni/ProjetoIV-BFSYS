@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Marcas extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -30,6 +29,10 @@ class Marcas extends CI_Controller
             'marcas' => $this->core_model->get_all('marcas'),
 
         );
+
+        // echo '<pre>';
+        // print_r($data['marcas']);
+        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('marcas/index');
@@ -126,10 +129,11 @@ class Marcas extends CI_Controller
         if (!$marca_id || !$this->core_model->get_by_id('marcas', array('marca_id' => $marca_id))) {
 
             $this->session->set_flashdata('error', 'Marca não encontrada!');
+            redirect('marcas');
         } else {
             $this->core_model->delete('marcas', array('marca_id' => $marca_id));
+            redirect('marcas');
         }
-        redirect('marcas');
     }
 
     public function check_nome_marca($marca_nome)

@@ -4,9 +4,9 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Bills_model extends CI_Model
 {
-
 	public function get_all_pagar()
 	{
+
 		$this->db->select([
 			'contas_pagar.*',
 			'fornecedor_id',
@@ -30,8 +30,7 @@ class Bills_model extends CI_Model
 		return $this->db->get('contas_receber')->result();
 	}
 
-	public function get_contas_receber_relatorio($conta_receber_status = NULL, $data_vencimento = NULL)
-	{
+	public function get_contas_receber_relatorio($conta_receber_status = NULL, $data_vencimento = NULL) {
 
 		$this->db->select([
 			'contas_receber.*',
@@ -51,8 +50,7 @@ class Bills_model extends CI_Model
 		return $this->db->get('contas_receber')->result();
 	}
 
-	public function get_sum_contas_receber_relatorio($conta_receber_status = NULL, $data_vencimento = NULL)
-	{
+	public function get_sum_contas_receber_relatorio($conta_receber_status = NULL, $data_vencimento = NULL) {
 
 		$this->db->select([
 			'FORMAT(SUM(REPLACE(conta_receber_valor, ",", "")), 2) as conta_receber_valor_total',
@@ -69,8 +67,7 @@ class Bills_model extends CI_Model
 		return $this->db->get('contas_receber')->row();
 	}
 
-	public function get_contas_pagar_relatorio($conta_pagar_status = NULL, $data_vencimento = NULL)
-	{
+	public function get_contas_pagar_relatorio($conta_pagar_status = NULL, $data_vencimento = NULL) {
 
 		$this->db->select([
 			'contas_pagar.*',
@@ -91,8 +88,7 @@ class Bills_model extends CI_Model
 		return $this->db->get('contas_pagar')->result();
 	}
 
-	public function get_sum_contas_pagar_relatorio($conta_pagar_status = NULL, $data_vencimento = NULL)
-	{
+	public function get_sum_contas_pagar_relatorio($conta_pagar_status = NULL, $data_vencimento = NULL) {
 
 		$this->db->select([
 			'FORMAT(SUM(REPLACE(conta_pagar_valor, ",", "")), 2) as conta_pagar_valor_total',
@@ -108,4 +104,5 @@ class Bills_model extends CI_Model
 		}
 		return $this->db->get('contas_pagar')->row();
 	}
+
 }

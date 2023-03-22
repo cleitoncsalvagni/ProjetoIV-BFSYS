@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Clientes extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -135,6 +134,10 @@ class Clientes extends CI_Controller
 
                 );
 
+                // echo '<pre>';
+                // print_r($data['cliente']);
+                // exit();
+
                 $this->load->view('layout/header', $data);
                 $this->load->view('clientes/edit');
                 $this->load->view('layout/footer');
@@ -228,6 +231,10 @@ class Clientes extends CI_Controller
 
             );
 
+            // echo '<pre>';
+            // print_r($data['cliente']);
+            // exit();
+
             $this->load->view('layout/header', $data);
             $this->load->view('clientes/novo');
             $this->load->view('layout/footer');
@@ -240,10 +247,11 @@ class Clientes extends CI_Controller
         if (!$cliente_id || !$this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id))) {
 
             $this->session->set_flashdata('error', 'Cliente não encontrado');
+            redirect('clientes');
         } else {
             $this->core_model->delete('clientes', array('cliente_id' => $cliente_id));
+            redirect('clientes');
         }
-        redirect('clientes');
     }
 
     public function check_email($cliente_email)

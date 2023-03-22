@@ -32,8 +32,8 @@
                             <?php foreach ($vendas as $venda) : ?>
 
                                 <tr>
-                                    <td><?php echo word_limiter($venda->cliente_nome_completo, 3) ?></td>
-                                    <td><?php echo word_limiter($venda->vendedor_nome_completo, 3)?></td>
+                                    <td><?php echo $venda->cliente_nome_completo ?></td>
+                                    <td><?php echo $venda->vendedor_nome_completo ?></td>
                                     <td><?php echo 'R$&nbsp;' . $venda->venda_valor_total ?></td>
                                     <td><?php echo $venda->forma_pagamento ?></td>
                                     <td class='text-center'><?php echo formata_data_banco_com_hora($venda->venda_data_emissao) ?></td>

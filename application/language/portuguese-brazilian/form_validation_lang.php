@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * System messages translation for CodeIgniter(tm)

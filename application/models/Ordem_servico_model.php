@@ -5,7 +5,6 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Ordem_servico_model extends CI_Model
 {
-
 	public function get_all()
 	{
 

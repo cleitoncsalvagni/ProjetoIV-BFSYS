@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Categorias extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -30,6 +29,10 @@ class Categorias extends CI_Controller
             'categorias' => $this->core_model->get_all('categorias'),
 
         );
+
+        // echo '<pre>';
+        // print_r($data['categorias']);
+        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('categorias/index');
@@ -127,10 +130,11 @@ class Categorias extends CI_Controller
         if (!$categoria_id || !$this->core_model->get_by_id('categorias', array('categoria_id' => $categoria_id))) {
 
             $this->session->set_flashdata('error', 'Categoria não encontrada!');
+            redirect('categorias');
         } else {
             $this->core_model->delete('categorias', array('categoria_id' => $categoria_id));
+            redirect('categorias');
         }
-        redirect('categorias');
     }
 
     public function check_nome_categoria($categoria_nome)

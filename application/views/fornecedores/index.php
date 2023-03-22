@@ -23,7 +23,8 @@
                                 <!-- <th>ID</th> -->
                                 <th>Nome fantasia</th>
                                 <th>CNPJ</th>
-                                <th>Contato</th>
+                                <th>Celular</th>
+                                <th>Email</th>
                                 <th class='text-center'>Ativo</th>
                                 <th class='text-center no-sort'>Ações</th>
                             </tr>
@@ -36,6 +37,7 @@
                                     <td><?php echo $fornecedor->fornecedor_nome_fantasia ?></td>
                                     <td><?php echo $fornecedor->fornecedor_cnpj ?></td>
                                     <td><?php echo $fornecedor->fornecedor_celular ?></td>
+                                    <td><?php echo $fornecedor->fornecedor_email ?></td>
                                     <td class='text-center pr-4'><?php echo ($fornecedor->fornecedor_ativo ? '<span class="badge badge-success btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-center'>
                                         <a title="Editar" href="<?php echo base_url('fornecedores/edit/' . $fornecedor->fornecedor_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-pen"></i></a>

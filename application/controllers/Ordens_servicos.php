@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Ordens_servicos extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -314,6 +313,7 @@ class Ordens_servicos extends CI_Controller
             $html .= 'table {border-collapse: collapse; width: 100%;}';
             $html .= 'th, td {text-align: left; padding: 8px;}';
             $html .= 'th {background-color: #f2f2f2;}';
+            $html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
             $html .= 'footer {font-size: 12px; text-align: center;}';
             $html .= '</style>';
             $html .= '</head>';
@@ -330,7 +330,8 @@ class Ordens_servicos extends CI_Controller
             $html .= '<p><strong>' . $ordem_servico->cliente_nome_completo . '</strong><br>';
             $html .= '<strong>CPF/CNPJ:</strong> ' . $ordem_servico->cliente_cpf_cnpj . '<br>';
             $html .= '<strong>Celular:</strong> ' . $ordem_servico->cliente_celular . '<br>';
-            $html .= '<strong>Data de emissão:</strong> ' . formata_data_banco_com_hora($ordem_servico->ordem_servico_data_emissao) . '</p>';
+            $html .= '<strong>Data de emissão:</strong> ' . formata_data_banco_com_hora($ordem_servico->ordem_servico_data_emissao) . '<br>';
+            $html .= '<strong>Forma de pagamento:</strong> ' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '</p>';
             $html .= '</div>';
             $html .= '<hr>';
             $html .= '<table>';
@@ -344,16 +345,16 @@ class Ordens_servicos extends CI_Controller
             $html .= '</tr>';
             $html .= '</thead>';
             $html .= '<tbody>';
-
-            foreach ($servicos_ordem as $servico) {
+            foreach ($servicos_ordem as $servico) :
                 $html .= '<tr>';
                 $html .= '<td>' . $servico->servico_nome . '</td>';
                 $html .= '<td>' . $servico->ordem_ts_quantidade . '</td>';
                 $html .= '<td>' . 'R$&nbsp;' . $servico->ordem_ts_valor_unitario . '</td>';
-                $html .= '<td>' . $servico->ordem_ts_valor_desconto . '%&nbsp;' . '</td>';
+                $html .= '<td>'  . $servico->ordem_ts_valor_desconto . '%&nbsp;' . '</td>';
                 $html .= '<td>' . 'R$&nbsp;' . $servico->ordem_ts_valor_total . '</td>';
                 $html .= '</tr>';
-            }
+            endforeach;
+
 
             $html .= '<tfoot>';
             $html .= '<tr>';
@@ -362,12 +363,9 @@ class Ordens_servicos extends CI_Controller
             $html .= '</tr>';
             $html .= '</tfoot>';
 
+
             $html .= '</table>';
 
-            $html .= '<div style="margin-top: 20px;">';
-            $html .= '<h4>Forma de pagamento:</h4>';
-            $html .= '<p>' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '</p>';
-            $html .= '</div>';
 
             $html .= '<footer>';
             $html .= '<p>' . $empresa->sistema_txt_ordem_servico . '</p>';

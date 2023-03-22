@@ -57,7 +57,7 @@
 
                             <div class="col-md-3">
                                 <label>Telefone Fixo</label>
-                                <input type="text" class="form-control phone_with_ddd" name="sistema_telefone_fixo" placeholder="Telefone fixo" value="<?php echo $sistema->sistema_telefone_fixo; ?>">
+                                <input type="text" class="form-control" name="sistema_telefone_fixo" placeholder="Telefone fixo" value="<?php echo $sistema->sistema_telefone_fixo; ?>">
                                 <?php echo form_error('sistema_telefone_fixo', '<small class="form-text text-danger">', '</small>') ?>
 
                             </div>
@@ -137,9 +137,6 @@
 
         if ($message = $this->session->flashdata('success')) {
             echo "<script>toastr.success('" . $message . "');</script>";
-        }
-                if ($message = $this->session->flashdata('info')) {
-            echo "<script>toastr.info('" . $message . "');</script>";
         }
         ?>
     </div>

@@ -2,7 +2,7 @@
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/') ?>">
     <div class="sidebar-brand-icon">
-      <img src="<?php echo base_url("public/img/bfsys_logo_icon.svg") ?>" style='width: 3rem;' class="img-fluid" alt="...">
+      <img src="http://[::1]/bfsys/public/img/bfsys_logo_icon.svg" style='width: 3rem;' class="img-fluid" alt="...">
     </div>
     <div class="sidebar-brand-text mx-3">BFSYS</div>
   </a>
