@@ -478,7 +478,10 @@ class Relatorios extends CI_Controller
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d7f65d4e92a38d418ed5ef31142b9b4d16c07b1
 					$this->pdf->createPDF($html, $file_name, false);
 				} else {
 
