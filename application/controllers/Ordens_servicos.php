@@ -296,7 +296,7 @@ class Ordens_servicos extends CI_Controller
             $this->session->set_flashdata('error', 'Ordem de serviço não encontrada');
             redirect('os');
         } else {
-            
+
             $empresa = $this->core_model->get_by_id('sistema', array('sistema_id' => 1));
             $ordem_servico = $this->ordem_servico_model->get_by_id($ordem_servico_id);
             $ordem_servico_id = $ordem_servico->ordem_servico_id;
@@ -304,76 +304,76 @@ class Ordens_servicos extends CI_Controller
             $valor_final_os = $this->ordem_servico_model->get_valor_final_os($ordem_servico_id);
             $file_name = 'OS_' . $ordem_servico->ordem_servico_id;
 
-$html = '<html>';
-$html .= '<head>';
-$html .= '<title>' . $empresa->sistema_nome_fantasia . ' | Impressão de ordem</title>';
-$html .= '<style>';
-$html .= 'body {font-size: 14px; font-family: Arial, sans-serif; margin: 0;}';
-$html .= 'h4 {text-align: center;}';
-$html .= 'table {border-collapse: collapse; width: 100%;}';
-$html .= 'th, td {text-align: left; padding: 8px;}';
-$html .= 'th {background-color: #f2f2f2;}';
-$html .= 'footer {font-size: 12px; text-align: center;}';
-$html .= '</style>';
-$html .= '</head>';
-$html .= '<body>';
-$html .= '<div style="padding: 20px;">';
-$html .= '<h4>' . $empresa->sistema_razao_social . '</h4>';
-$html .= '<p>' . $empresa->sistema_endereco . ', ' . $empresa->sistema_numero . '<br>';
-$html .= $empresa->sistema_cidade . ' - ' . $empresa->sistema_estado . '<br>';
-$html .= 'CEP: ' . $empresa->sistema_cep . ' | Contato: ' . $empresa->sistema_telefone_movel . ' | E-mail: ' . $empresa->sistema_email . '</p>';
-$html .= '<hr>';
-$html .= '<p style="text-align: right; font-size: 12px;">O.S Nº ' . $ordem_servico->ordem_servico_id . '</p>';
-$html .= '<div style="margin-top: 20px;">';
-$html .= '<h4>Cliente:</h4>';
-$html .= '<p><strong>' . $ordem_servico->cliente_nome_completo . '</strong><br>';
-$html .= '<strong>CPF/CNPJ:</strong> ' . $ordem_servico->cliente_cpf_cnpj . '<br>';
-$html .= '<strong>Celular:</strong> ' . $ordem_servico->cliente_celular . '<br>';
-$html .= '<strong>Data de emissão:</strong> ' . formata_data_banco_com_hora($ordem_servico->ordem_servico_data_emissao) . '</p>';
-$html .= '</div>';
-$html .= '<hr>';
-$html .= '<table>';
-$html .= '<thead>';
-$html .= '<tr>';
-$html .= '<th>Serviço</th>';
-$html .= '<th>Quantidade</th>';
-$html .= '<th>Valor unitário</th>';
-$html .= '<th>Desconto</th>';
-$html .= '<th>Valor total itens </th>';
-$html .= '</tr>';
-$html .= '</thead>';
-$html .= '<tbody>';
+            $html = '<html>';
+            $html .= '<head>';
+            $html .= '<title>' . $empresa->sistema_nome_fantasia . ' | Impressão de ordem</title>';
+            $html .= '<style>';
+            $html .= 'body {font-size: 14px; font-family: Arial, sans-serif; margin: 0;}';
+            $html .= 'h4 {text-align: center;}';
+            $html .= 'table {border-collapse: collapse; width: 100%;}';
+            $html .= 'th, td {text-align: left; padding: 8px;}';
+            $html .= 'th {background-color: #f2f2f2;}';
+            $html .= 'footer {font-size: 12px; text-align: center;}';
+            $html .= '</style>';
+            $html .= '</head>';
+            $html .= '<body>';
+            $html .= '<div style="padding: 20px;">';
+            $html .= '<h4>' . $empresa->sistema_razao_social . '</h4>';
+            $html .= '<p>' . $empresa->sistema_endereco . ', ' . $empresa->sistema_numero . '<br>';
+            $html .= $empresa->sistema_cidade . ' - ' . $empresa->sistema_estado . '<br>';
+            $html .= 'CEP: ' . $empresa->sistema_cep . ' | Contato: ' . $empresa->sistema_telefone_movel . ' | E-mail: ' . $empresa->sistema_email . '</p>';
+            $html .= '<hr>';
+            $html .= '<p style="text-align: right; font-size: 12px;">O.S Nº ' . $ordem_servico->ordem_servico_id . '</p>';
+            $html .= '<div style="margin-top: 20px;">';
+            $html .= '<h4>Cliente:</h4>';
+            $html .= '<p><strong>' . $ordem_servico->cliente_nome_completo . '</strong><br>';
+            $html .= '<strong>CPF/CNPJ:</strong> ' . $ordem_servico->cliente_cpf_cnpj . '<br>';
+            $html .= '<strong>Celular:</strong> ' . $ordem_servico->cliente_celular . '<br>';
+            $html .= '<strong>Data de emissão:</strong> ' . formata_data_banco_com_hora($ordem_servico->ordem_servico_data_emissao) . '</p>';
+            $html .= '</div>';
+            $html .= '<hr>';
+            $html .= '<table>';
+            $html .= '<thead>';
+            $html .= '<tr>';
+            $html .= '<th>Serviço</th>';
+            $html .= '<th>Quantidade</th>';
+            $html .= '<th>Valor unitário</th>';
+            $html .= '<th>Desconto</th>';
+            $html .= '<th>Valor total itens </th>';
+            $html .= '</tr>';
+            $html .= '</thead>';
+            $html .= '<tbody>';
 
-foreach ($servicos_ordem as $servico) {
-    $html .= '<tr>';
-    $html .= '<td>' . $servico->servico_nome . '</td>';
-    $html .= '<td>' . $servico->ordem_ts_quantidade . '</td>';
-    $html .= '<td>' . 'R$&nbsp;' . $servico->ordem_ts_valor_unitario . '</td>';
-    $html .= '<td>' . $servico->ordem_ts_valor_desconto . '%&nbsp;' . '</td>';
-    $html .= '<td>' . 'R$&nbsp;' . $servico->ordem_ts_valor_total . '</td>';
-    $html .= '</tr>';
-}
+            foreach ($servicos_ordem as $servico) {
+                $html .= '<tr>';
+                $html .= '<td>' . $servico->servico_nome . '</td>';
+                $html .= '<td>' . $servico->ordem_ts_quantidade . '</td>';
+                $html .= '<td>' . 'R$&nbsp;' . $servico->ordem_ts_valor_unitario . '</td>';
+                $html .= '<td>' . $servico->ordem_ts_valor_desconto . '%&nbsp;' . '</td>';
+                $html .= '<td>' . 'R$&nbsp;' . $servico->ordem_ts_valor_total . '</td>';
+                $html .= '</tr>';
+            }
 
-$html .= '<tfoot>';
-$html .= '<tr>';
-$html .= '<td colspan="4" style="text-align:right; font-weight:bold; border:none; padding-top:20px;">Valor total:</td>';
-$html .= '<td style="border:none; padding-top:20px;">' . 'R$&nbsp;' . $valor_final_os->os_valor_total . '</td>';
-$html .= '</tr>';
-$html .= '</tfoot>';
+            $html .= '<tfoot>';
+            $html .= '<tr>';
+            $html .= '<td colspan="4" style="text-align:right; font-weight:bold; border:none; padding-top:20px;">Valor total:</td>';
+            $html .= '<td style="border:none; padding-top:20px;">' . 'R$&nbsp;' . $valor_final_os->os_valor_total . '</td>';
+            $html .= '</tr>';
+            $html .= '</tfoot>';
 
-$html .= '</table>';
+            $html .= '</table>';
 
-$html .= '<div style="margin-top: 20px;">';
-$html .= '<h4>Forma de pagamento:</h4>';
-$html .= '<p>' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '</p>';
-$html .= '</div>';
+            $html .= '<div style="margin-top: 20px;">';
+            $html .= '<h4>Forma de pagamento:</h4>';
+            $html .= '<p>' . ($ordem_servico->ordem_servico_status == 1 ? $ordem_servico->forma_pagamento : 'Em aberto') . '</p>';
+            $html .= '</div>';
 
-$html .= '<footer>';
-$html .= '<p>' . $empresa->sistema_txt_ordem_servico . '</p>';
-$html .= '</footer>';
+            $html .= '<footer>';
+            $html .= '<p>' . $empresa->sistema_txt_ordem_servico . '</p>';
+            $html .= '</footer>';
 
-$html .= '</body>';
-$html .= '</html>';
+            $html .= '</body>';
+            $html .= '</html>';
 
             $this->pdf->createPDF($html, $file_name, false);
         }

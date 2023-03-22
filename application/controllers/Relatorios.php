@@ -90,6 +90,7 @@ class Relatorios extends CI_Controller
 					$html .= '<td>' . $venda->forma_pagamento . '</td>';
 					$html .= '<td>' . 'R$&nbsp;' . $venda->venda_valor_total . '</td>';
 					$html .= '<td></td>';
+					$html .= '<td></td>';
 					$html .= '</tr>';
 				endforeach;
 
@@ -186,8 +187,9 @@ class Relatorios extends CI_Controller
 					$html .= '<td></td>';
 					$html .= '<td>' . formata_data_banco_com_hora($os->ordem_servico_data_emissao) . '</td>';
 					$html .= '<td>' . $os->cliente_nome_completo . '</td>';
-					$html .= '<td>' . ($os->forma_pagamento ? $os->forma_pagamento : '') . '</td>';
+					$html .= '<td>' . ($os->forma_pagamento ? ($os->forma_pagamento ? $os->forma_pagamento : '') : '') . '</td>';
 					$html .= '<td>' . 'R$&nbsp;' . $os->ordem_servico_valor_total . '</td>';
+					$html .= '<td></td>';
 					$html .= '<td></td>';
 					$html .= '</tr>';
 				endforeach;
@@ -243,6 +245,7 @@ class Relatorios extends CI_Controller
 					$empresa = $this->core_model->get_by_id('sistema', array('sistema_id' => 1));
 					$contas = $this->bills_model->get_contas_receber_relatorio($conta_receber_status, $data_vencimento);
 					$file_name = 'Relatório de contas a receber vencidas';
+					$file_name = 'Relatório de contas a receber vencidas';
 
 					$html = '<html>';
 					$html .= '<head>';
@@ -266,6 +269,9 @@ class Relatorios extends CI_Controller
 					$html .= '<hr>';
 					$html .= '<table>';
 					$html .= '<thead>';
+					$html .= '<hr>';
+					$html .= '<table>';
+					$html .= '<thead>';
 					$html .= '<tr>';
 					$html .= '<th></th>';
 					$html .= '<th>Cliente</th>';
@@ -276,6 +282,10 @@ class Relatorios extends CI_Controller
 					$html .= '</tr>';
 					$html .= '</thead>';
 					$html .= '<tbody>';
+					$html .= '</thead>';
+					$html .= '<tbody>';
+
+					$valor_final_contas = $this->bills_model->get_sum_contas_receber_relatorio($conta_receber_status, $data_vencimento);
 
 					$valor_final_contas = $this->bills_model->get_sum_contas_receber_relatorio($conta_receber_status, $data_vencimento);
 
@@ -286,6 +296,7 @@ class Relatorios extends CI_Controller
 						$html .= '<td>' . formata_data_banco_com_hora($conta->conta_receber_data_vencimento) . '</td>';
 						$html .= '<td>Vencida</td>';
 						$html .= '<td>' . 'R$&nbsp;' . $conta->conta_receber_valor . '</td>';
+						$html .= '<td></td>';
 						$html .= '<td></td>';
 						$html .= '</tr>';
 					endforeach;
@@ -318,6 +329,7 @@ class Relatorios extends CI_Controller
 					$empresa = $this->core_model->get_by_id('sistema', array('sistema_id' => 1));
 					$contas = $this->bills_model->get_contas_receber_relatorio($conta_receber_status);
 					$file_name = 'Relatório de contas a receber pagas';
+					$file_name = 'Relatório de contas a receber pagas';
 
 					$html = '<html>';
 					$html .= '<head>';
@@ -341,9 +353,13 @@ class Relatorios extends CI_Controller
 					$html .= '<hr>';
 					$html .= '<table>';
 					$html .= '<thead>';
+					$html .= '<hr>';
+					$html .= '<table>';
+					$html .= '<thead>';
 					$html .= '<tr>';
 					$html .= '<th></th>';
 					$html .= '<th>Cliente</th>';
+					$html .= '<th>Data vencimento</th>';
 					$html .= '<th>Data vencimento</th>';
 					$html .= '<th>Situação</th>';
 					$html .= '<th>Valor total</th>';
@@ -351,6 +367,10 @@ class Relatorios extends CI_Controller
 					$html .= '</tr>';
 					$html .= '</thead>';
 					$html .= '<tbody>';
+					$html .= '</thead>';
+					$html .= '<tbody>';
+
+					$valor_final_contas = $this->bills_model->get_sum_contas_receber_relatorio($conta_receber_status);
 
 					$valor_final_contas = $this->bills_model->get_sum_contas_receber_relatorio($conta_receber_status);
 
@@ -361,6 +381,7 @@ class Relatorios extends CI_Controller
 						$html .= '<td>' . formata_data_banco_com_hora($conta->conta_receber_data_pagamento) . '</td>';
 						$html .= '<td>Paga</td>';
 						$html .= '<td>' . 'R$&nbsp;' . $conta->conta_receber_valor . '</td>';
+						$html .= '<td></td>';
 						$html .= '<td></td>';
 						$html .= '</tr>';
 					endforeach;
@@ -428,6 +449,10 @@ class Relatorios extends CI_Controller
 					$html .= '<tbody>';
 
 					$valor_final_contas = $this->bills_model->get_sum_contas_receber_relatorio($conta_receber_status);
+					$html .= '</thead>';
+					$html .= '<tbody>';
+
+					$valor_final_contas = $this->bills_model->get_sum_contas_receber_relatorio($conta_receber_status);
 
 					foreach ($contas as $conta) :
 						$html .= '<tr>';
@@ -436,6 +461,7 @@ class Relatorios extends CI_Controller
 						$html .= '<td>' . formata_data_banco_sem_hora($conta->conta_receber_data_vencimento) . '</td>';
 						$html .= '<td>A receber</td>';
 						$html .= '<td>' . 'R$&nbsp;' . $conta->conta_receber_valor . '</td>';
+						$html .= '<td></td>';
 						$html .= '<td></td>';
 						$html .= '</tr>';
 					endforeach;
@@ -449,6 +475,7 @@ class Relatorios extends CI_Controller
 					$html .= '</table>';
 					$html .= '</body>';
 					$html .= '</html>';
+
 
 
 
@@ -527,6 +554,10 @@ class Relatorios extends CI_Controller
 					$html .= '<tbody>';
 
 					$valor_final_contas = $this->bills_model->get_sum_contas_pagar_relatorio($conta_pagar_status, $data_vencimento);
+					$html .= '</thead>';
+					$html .= '<tbody>';
+
+					$valor_final_contas = $this->bills_model->get_sum_contas_pagar_relatorio($conta_pagar_status, $data_vencimento);
 
 					foreach ($contas as $conta) :
 						$html .= '<tr>';
@@ -535,6 +566,7 @@ class Relatorios extends CI_Controller
 						$html .= '<td>' . formata_data_banco_sem_hora($conta->conta_pagar_data_vencimento) . '</td>';
 						$html .= '<td>Vencida</td>';
 						$html .= '<td>' . 'R$&nbsp;' . $conta->conta_pagar_valor . '</td>';
+						$html .= '<td></td>';
 						$html .= '<td></td>';
 						$html .= '</tr>';
 					endforeach;
@@ -597,10 +629,15 @@ class Relatorios extends CI_Controller
 					$html .= '<th></th>';
 					$html .= '<th>Fornecedor</th>';
 					$html .= '<th>Data vencimento</th>';
+					$html .= '<th>Data vencimento</th>';
 					$html .= '<th>Situação</th>';
 					$html .= '<th>Valor total</th>';
 					$html .= '<th></th>';
 					$html .= '</tr>';
+					$html .= '</thead>';
+					$html .= '<tbody>';
+
+					$valor_final_contas = $this->bills_model->get_sum_contas_pagar_relatorio($conta_pagar_status, $data_vencimento);
 					$html .= '</thead>';
 					$html .= '<tbody>';
 
@@ -613,6 +650,7 @@ class Relatorios extends CI_Controller
 						$html .= '<td>' . formata_data_banco_com_hora($conta->conta_pagar_data_pagamento) . '</td>';
 						$html .= '<td>Paga</td>';
 						$html .= '<td>' . 'R$&nbsp;' . $conta->conta_pagar_valor . '</td>';
+						$html .= '<td></td>';
 						$html .= '<td></td>';
 						$html .= '</tr>';
 					endforeach;
@@ -682,6 +720,10 @@ class Relatorios extends CI_Controller
 					$html .= '<tbody>';
 
 					$valor_final_contas = $this->bills_model->get_sum_contas_pagar_relatorio($conta_pagar_status, $data_vencimento);
+					$html .= '</thead>';
+					$html .= '<tbody>';
+
+					$valor_final_contas = $this->bills_model->get_sum_contas_pagar_relatorio($conta_pagar_status, $data_vencimento);
 
 					foreach ($contas as $conta) :
 						$html .= '<tr>';
@@ -690,6 +732,7 @@ class Relatorios extends CI_Controller
 						$html .= '<td>' . formata_data_banco_sem_hora($conta->conta_pagar_data_vencimento) . '</td>';
 						$html .= '<td>A pagar</td>';
 						$html .= '<td>' . 'R$&nbsp;' . $conta->conta_pagar_valor . '</td>';
+						$html .= '<td></td>';
 						$html .= '<td></td>';
 						$html .= '</tr>';
 					endforeach;
