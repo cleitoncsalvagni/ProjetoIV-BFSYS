@@ -30,7 +30,7 @@
 
                             <div class="col-md-3">
                                 <label>Preço</label>
-                                <input type="text" class="form-control" name="servico_preco" placeholder="Informe o preço" value="<?php echo $servico->servico_preco; ?>">
+                                <input type="number" class="form-control" name="servico_preco" placeholder="Informe o preço" value="<?php echo $servico->servico_preco; ?>">
                                 <?php echo form_error('servico_preco', '<small class="form-text text-danger">', '</small>') ?>
                             </div>
 

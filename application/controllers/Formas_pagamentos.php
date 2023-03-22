@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Formas_pagamentos extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -45,7 +46,7 @@ class Formas_pagamentos extends CI_Controller
             $this->session->set_flashdata('error', 'Forma de pagamento não encontrada');
             redirect('formas');
         } else {
-            $this->form_validation->set_rules('forma_pagamento_nome', '', 'trim|required|min_length[4]|max_length[45]|callback_check_pagamento_nome');
+            $this->form_validation->set_rules('forma_pagamento_nome', '', 'trim|required|min_length[2]|max_length[45]|callback_check_pagamento_nome');
 
             if ($this->form_validation->run()) {
 
@@ -53,7 +54,7 @@ class Formas_pagamentos extends CI_Controller
 
                 if ($this->db->table_exists('vendas')) {
 
-                    if ($forma_pagamento_ativa == 0 && $this->core_model('vendas', array('venda_forma_pagamento_id' => $forma_pagamento_id, 'venda_status' => 0))) {
+                    if ($forma_pagamento_ativa == 0 && $this->core_model->get_by_id('vendas', array('venda_forma_pagamento_id' => $forma_pagamento_id, 'venda_status' => 0))) {
                         $this->session->set_flashdata('error', 'Esta forma de pagamento não pode ser desativada pois está sendo utilizada em vendas');
                         redirect('formas');
                     }
@@ -88,11 +89,9 @@ class Formas_pagamentos extends CI_Controller
 
     public function novo()
     {
-        $this->form_validation->set_rules('forma_pagamento_nome', '', 'trim|required|min_length[4]|max_length[45]|is_unique[formas_pagamentos.forma_pagamento_nome]');
+        $this->form_validation->set_rules('forma_pagamento_nome', '', 'trim|required|min_length[2]|max_length[45]|is_unique[formas_pagamentos.forma_pagamento_nome]');
 
         if ($this->form_validation->run()) {
-
-            $forma_pagamento_ativa = $this->input->post('forma_pagamento_ativa');
 
             $data = elements(
                 array(

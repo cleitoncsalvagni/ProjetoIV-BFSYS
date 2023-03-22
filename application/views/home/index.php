@@ -21,7 +21,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs get_pagar_vencidas font-weight-bold text-success text-uppercase mb-1">TOTAL DE VENDAS</div>
-                  <div class="h5 mb-0 font-weight-bold text-success"><?php echo 'R$&nbsp;' . $soma_vendas->venda_valor_total; ?></div>
+                  <div class="h5 mb-0 font-weight-bold text-success"><?php echo 'R$&nbsp;' . ($soma_vendas->venda_valor_total == NULL ? '0,00' : $soma_vendas->venda_valor_total); ?></div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-shopping-cart fa-2x text-success"></i>
@@ -38,7 +38,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">TOTAL DE SERVIÇOS</div>
-                  <div class="h5 mb-0 font-weight-bold text-primary"><?php echo 'R$&nbsp;' . $soma_ordem_servicos->os_valor_total; ?></div>
+                  <div class="h5 mb-0 font-weight-bold text-primary"><?php echo 'R$&nbsp;' . ($soma_ordem_servicos->os_valor_total == NULL ? '0,00' : $soma_ordem_servicos->os_valor_total); ?></div>
                 </div>
                 <div class="col-auto">
                   <i class="fas fa-shopping-basket fa-2x text-primary"></i>
@@ -57,7 +57,7 @@
                   <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">TOTAL A PAGAR</div>
                   <div class="row no-gutters align-items-center">
                     <div class="col-auto">
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-danger"><?php echo 'R$&nbsp;' . $total_pagar->conta_pagar_valor_total; ?></div>
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-danger"><?php echo 'R$&nbsp;' . ($total_pagar->conta_pagar_valor_total == NULL ? '0,00' : $total_pagar->conta_pagar_valor_total); ?></div>
                     </div>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
 
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-success">TOP 3 Produtos mais vendidos</h6>
+            <h6 class="m-0 font-weight-bold text-success">TOP 3 | Produtos mais vendidos</h6>
           </div>
           <div class="card-body">
             <div class="text-center">
@@ -111,7 +111,7 @@
 
                 <thead>
                   <tr>
-                    <th>Nome produto</th>
+                    <th>Nome do produto</th>
                     <th class="text-center">Vendidos</th>
                   </tr>
                 </thead>
@@ -143,7 +143,7 @@
         <!-- Illustrations -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">TOP 3 Serviços mais vendidos</h6>
+            <h6 class="m-0 font-weight-bold text-primary">TOP 3 | Serviços mais vendidos </h6>
           </div>
           <div class="card-body">
             <div class="text-center">
@@ -156,19 +156,17 @@
 
                 <thead>
                   <tr>
-                    <th>Nome serviço</th>
+                    <th>Nome do serviço</th>
                     <th class="text-center">Vendidos</th>
                   </tr>
                 </thead>
                 <tbody>
 
                   <?php foreach ($servicos_mais_vendidos as $servico) : ?>
-
-                    <tr>
-                      <td><?php echo $servico->servico_nome ?></td>
-                      <td class="text-center"><?php echo '<span class="badge badge-primary">' . $servico->quantidade_vendidos . '</span>' ?></td>
-                    </tr>
-
+                         <tr>
+                          <td><?php echo $servico->servico_nome ?? 'Nenhuma informação' ?></td>
+                          <td class="text-center"><?php echo '<span class="badge badge-primary">' . $servico->quantidade_vendidos . '</span>' ?></td>
+                        </tr>
                   <?php endforeach; ?>
 
                 </tbody>
