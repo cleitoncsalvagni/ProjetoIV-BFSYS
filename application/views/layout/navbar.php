@@ -7,6 +7,26 @@
 
   <ul class="navbar-nav ml-auto">
 
+
+    <li class="nav-item dropdown no-arrow d-sm-none">
+      <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-search fa-fw"></i>
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+        <form class="form-inline mr-auto w-100 navbar-search">
+          <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </li>
+
     <?php if ($this->ion_auth->is_admin()) : ?>
 
 
@@ -120,13 +140,7 @@
         <?php $user = $this->ion_auth->user()->row(); ?>
 
         <span class="mr-2 d-none d-lg-inline text-gray-900"><?php echo $user->first_name; ?> </span>
-        <img class="img-profile rounded-circle" src="<?php
-                                                      if ($user->photo) {
-                                                        echo $user->photo;
-                                                      } else {
-                                                        echo base_url('public/img/bfsys_logo_icon.svg');
-                                                      }
-                                                      ?>">
+        <img class="img-profile rounded-circle" src="<?php echo base_url('public/img/bfsys_logo_icon.svg') ?>">
       </a>
 
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
