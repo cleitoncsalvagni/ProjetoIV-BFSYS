@@ -99,17 +99,15 @@ class Core_model extends CI_Model
     }
 
     /** Generate Unique Code
-     
      * @ Habilitar helper string
      * @param string $table
      * @param string $type_of_code. Ex.: 'numeric', 'alpha', 'alnum', 'basic', 'numeric', 'nozero', 'md5', 'sha1'
      * @param int $size_of_code
-     * @param string $field_seach
-     * @return int
-     
+     * @param string $field_search
+     * @return string
      **/
 
-    public function generate_unique_code($table = NULL, $type_of_code = NULL, $size_of_code, $field_search)
+    public function generate_unique_code($table, $type_of_code, $size_of_code, $field_search)
     {
 
         do {

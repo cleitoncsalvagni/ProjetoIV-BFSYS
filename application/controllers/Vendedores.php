@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Vendedores extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -29,10 +30,6 @@ class Vendedores extends CI_Controller
             'vendedores' => $this->core_model->get_all('vendedores'),
 
         );
-
-        // echo '<pre>';
-        // print_r($data['vendedores']);
-        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('vendedores/index');
@@ -187,11 +184,10 @@ class Vendedores extends CI_Controller
         if (!$vendedor_id || !$this->core_model->get_by_id('vendedores', array('vendedor_id' => $vendedor_id))) {
 
             $this->session->set_flashdata('error', 'Vendedor não encontrado');
-            redirect('vendedores');
         } else {
             $this->core_model->delete('vendedores', array('vendedor_id' => $vendedor_id));
-            redirect('vendedores');
         }
+        redirect('vendedores');
     }
 
     public function check_email($vendedor_email)

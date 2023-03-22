@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Fornecedores extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -29,10 +30,6 @@ class Fornecedores extends CI_Controller
             'fornecedores' => $this->core_model->get_all('fornecedores'),
 
         );
-
-        // echo '<pre>';
-        // print_r($data['fornecedores']);
-        // exit();
 
         $this->load->view('layout/header', $data);
         $this->load->view('fornecedores/index');
@@ -201,11 +198,10 @@ class Fornecedores extends CI_Controller
         if (!$fornecedor_id || !$this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id))) {
 
             $this->session->set_flashdata('error', 'Fornecedor não encontrado');
-            redirect('fornecedores');
         } else {
             $this->core_model->delete('fornecedores', array('fornecedor_id' => $fornecedor_id));
-            redirect('fornecedores');
         }
+        redirect('fornecedores');
     }
 
     public function check_email($fornecedor_email)

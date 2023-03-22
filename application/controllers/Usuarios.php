@@ -2,9 +2,9 @@
 
 defined('BASEPATH') or exit('Ação não permitida');
 
-
 class Usuarios extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -68,7 +68,7 @@ class Usuarios extends CI_Controller
             );
             $group = array($this->input->post('perfil_usuario'));
 
-            $data = html_escape($additional_data);
+            $additional_data = html_escape($additional_data);
             $additional_data = $this->security->xss_clean($additional_data);
             $group = $this->security->xss_clean($group);
 
@@ -110,11 +110,10 @@ class Usuarios extends CI_Controller
 
         if ($this->ion_auth->delete_user($user_id)) {
             $this->session->set_flashdata('success', 'Usuário excluído com sucesso!');
-            redirect('usuarios');
         } else {
             $this->session->set_flashdata('error', 'Erro ao deletar usuário. Tente novamente.');
-            redirect('usuarios');
         }
+        redirect('usuarios');
     }
 
     public function edit($user_id = NULL)

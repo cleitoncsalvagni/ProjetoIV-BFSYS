@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Ajax extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -46,12 +47,8 @@ class Ajax extends CI_Controller
                         'produto_qtde_estoque' => $row->produto_qtde_estoque,
                     );
                 }
-
-                echo json_encode($data);
-            } else {
-
-                echo json_encode($data);
             }
+            echo json_encode($data);
         }
     }
 
@@ -81,12 +78,8 @@ class Ajax extends CI_Controller
                         'servico_preco' => $row->servico_preco,
                     );
                 }
-
-                echo json_encode($data);
-            } else {
-
-                echo json_encode($data);
             }
+            echo json_encode($data);
         }
     }
 }
