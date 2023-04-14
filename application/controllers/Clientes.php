@@ -4,9 +4,12 @@ defined('BASEPATH') or exit('Ação não permitida');
 
 class Clientes extends CI_Controller
 {
+
+	public $clienteService;
     public function __construct()
     {
         parent::__construct();
+		$this->clienteService = new ClienteService;
 
         if (!$this->ion_auth->logged_in()) {
             $this->session->set_flashdata('info', 'Sua sessão expirou! Por favor realize seu login novamente');
@@ -243,39 +246,17 @@ class Clientes extends CI_Controller
 
     public function del($cliente_id = NULL)
     {
-
-        if (!$cliente_id || !$this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id))) {
-
-            $this->session->set_flashdata('error', 'Cliente não encontrado');
-            redirect('clientes');
-        } else {
-            $this->core_model->delete('clientes', array('cliente_id' => $cliente_id));
-            redirect('clientes');
-        }
+		$this->clienteService->delete($cliente_id);
     }
 
     public function check_email($cliente_email)
     {
-        $cliente_id = $this->input->post('cliente_id');
-
-        if ($this->core_model->get_by_id('clientes', array('cliente_email' => $cliente_email, 'cliente_id !=' => $cliente_id))) {
-            $this->form_validation->set_message('check_email', 'Este email já existe!');
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+        $this->clienteService->check_email($cliente_email);
     }
 
     public function check_telefone($cliente_telefone)
     {
-        $cliente_id = $this->input->post('cliente_id');
-
-        if ($this->core_model->get_by_id('clientes', array('cliente_telefone' => $cliente_telefone, 'cliente_id !=' => $cliente_id))) {
-            $this->form_validation->set_message('check_telefone', 'Este telefone já existe!');
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+        $this->clienteService->check_telefone($cliente_telefone);
     }
 
     public function check_rg_ie($cliente_rg_ie)
