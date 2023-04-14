@@ -52,7 +52,6 @@ class Relatorios extends CI_Controller
 				$html .= 'table {border-collapse: collapse; width: 100%;}';
 				$html .= 'th, td {text-align: left; padding: 8px;}';
 				$html .= 'th {background-color: #f2f2f2;}';
-				$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 				$html .= 'footer {font-size: 12px; text-align: center;}';
 				$html .= '</style>';
 				$html .= '</head>';
@@ -152,7 +151,6 @@ class Relatorios extends CI_Controller
 				$html .= 'table {border-collapse: collapse; width: 100%;}';
 				$html .= 'th, td {text-align: left; padding: 8px;}';
 				$html .= 'th {background-color: #f2f2f2;}';
-				$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 				$html .= 'footer {font-size: 12px; text-align: center;}';
 				$html .= '</style>';
 				$html .= '</head>';
@@ -255,7 +253,6 @@ class Relatorios extends CI_Controller
 					$html .= 'table {border-collapse: collapse; width: 100%;}';
 					$html .= 'th, td {text-align: left; padding: 8px;}';
 					$html .= 'th {background-color: #f2f2f2;}';
-					$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 					$html .= 'footer {font-size: 12px; text-align: center;}';
 					$html .= '</style>';
 					$html .= '</head>';
@@ -331,7 +328,6 @@ class Relatorios extends CI_Controller
 					$html .= 'table {border-collapse: collapse; width: 100%;}';
 					$html .= 'th, td {text-align: left; padding: 8px;}';
 					$html .= 'th {background-color: #f2f2f2;}';
-					$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 					$html .= 'footer {font-size: 12px; text-align: center;}';
 					$html .= '</style>';
 					$html .= '</head>';
@@ -407,7 +403,6 @@ class Relatorios extends CI_Controller
 					$html .= 'table {border-collapse: collapse; width: 100%;}';
 					$html .= 'th, td {text-align: left; padding: 8px;}';
 					$html .= 'th {background-color: #f2f2f2;}';
-					$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 					$html .= 'footer {font-size: 12px; text-align: center;}';
 					$html .= '</style>';
 					$html .= '</head>';
@@ -507,7 +502,6 @@ class Relatorios extends CI_Controller
 					$html .= 'table {border-collapse: collapse; width: 100%;}';
 					$html .= 'th, td {text-align: left; padding: 8px;}';
 					$html .= 'th {background-color: #f2f2f2;}';
-					$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 					$html .= 'footer {font-size: 12px; text-align: center;}';
 					$html .= '</style>';
 					$html .= '</head>';
@@ -586,7 +580,6 @@ class Relatorios extends CI_Controller
 					$html .= 'table {border-collapse: collapse; width: 100%;}';
 					$html .= 'th, td {text-align: left; padding: 8px;}';
 					$html .= 'th {background-color: #f2f2f2;}';
-					$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 					$html .= 'footer {font-size: 12px; text-align: center;}';
 					$html .= '</style>';
 					$html .= '</head>';
@@ -664,7 +657,6 @@ class Relatorios extends CI_Controller
 					$html .= 'table {border-collapse: collapse; width: 100%;}';
 					$html .= 'th, td {text-align: left; padding: 8px;}';
 					$html .= 'th {background-color: #f2f2f2;}';
-					$html .= 'tr:nth-child(even) {background-color: #f2f2f2;}';
 					$html .= 'footer {font-size: 12px; text-align: center;}';
 					$html .= '</style>';
 					$html .= '</head>';

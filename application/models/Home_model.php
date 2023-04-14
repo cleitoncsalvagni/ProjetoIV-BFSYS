@@ -15,6 +15,17 @@ class Home_model extends CI_Model
         return $this->db->get('vendas')->row();
     }
 
+    public function get_sum_vendas_por_mes()
+    {
+        $this->db->select([
+            'DATE_FORMAT(venda_data_emissao, "%Y-%m") AS mes',
+            'FORMAT(SUM(REPLACE(venda_valor_total, ",", "")), 2) AS venda_valor_total',
+        ]);
+        $this->db->group_by('mes');
+        return $this->db->get('vendas')->result();
+    }
+
+
     public function get_sum_os()
     {
 
@@ -23,6 +34,16 @@ class Home_model extends CI_Model
         ]);
 
         return $this->db->get('ordens_servicos')->row();
+    }
+
+    public function get_sum_os_por_mes()
+    {
+        $this->db->select([
+            'DATE_FORMAT(ordem_servico_data_emissao, "%Y-%m") AS mes',
+            'FORMAT(SUM(REPLACE(ordem_servico_valor_total, ",", "")), 2) AS os_valor_total',
+        ]);
+        $this->db->group_by('mes');
+        return $this->db->get('ordens_servicos')->result();
     }
 
     public function get_sum_receber()

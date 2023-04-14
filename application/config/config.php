@@ -25,7 +25,8 @@ date_default_timezone_set('America/Sao_Paulo');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+
+$config['base_url'] = 'http://127.0.0.1/bfsys';
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = "";
 
 /*
 |--------------------------------------------------------------------------

@@ -19,6 +19,34 @@ class Home extends CI_Controller
 
     public function index()
     {
+        /* Vendas de produtos - Para o gráfico em barras. */
+
+        $vendas_por_mes = $this->home_model->get_sum_vendas_por_mes();
+        $valores_vendas = array_fill(0, 12, 0);
+        $meses = array("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez");
+
+        foreach ($vendas_por_mes as $venda) {
+            $mes = intval(substr($venda->mes, 5)) - 1; // Subtrai 1 para ficar no índice correto do array
+            $valores_vendas[$mes] = intval(str_replace(',', '', $venda->venda_valor_total));
+        }
+
+        $soma_vendas_mes = array_values($valores_vendas); // Transforma os valores em um array sequencial
+        $labels_meses = array_slice($meses, 0, count($soma_vendas_mes)); // Pega as labels dos meses correspondentes aos valores
+
+        /* Vendas de serviço - Para o gráfico em barras. */
+
+        $os_por_mes = $this->home_model->get_sum_os_por_mes();
+        $valores_os = array_fill(0, 12, 0);
+        $meses = array("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez");
+
+        foreach ($os_por_mes as $os) {
+            $mes = intval(substr($os->mes, 5)) - 1; // Subtrai 1 para ficar no índice correto do array
+            $valores_os[$mes] = intval(str_replace(',', '', $os->os_valor_total));
+        }
+
+        $soma_os_mes = array_values($valores_os); // Transforma os valores em um array sequencial
+        $labels_meses = array_slice($meses, 0, count($soma_os_mes)); // Pega as labels dos meses correspondentes aos valores
+
         $data = array(
             'pageTitle' => 'Início',
             'soma_vendas' => $this->home_model->get_sum_vendas(),
@@ -27,6 +55,8 @@ class Home extends CI_Controller
             'total_receber' => $this->home_model->get_sum_receber(),
             'produtos_mais_vendidos' => $this->home_model->get_produtos_mais_vendidos(),
             'servicos_mais_vendidos' => $this->home_model->get_servicos_mais_vendidos(),
+            'soma_vendas_mes' => $soma_vendas_mes,
+            'soma_os_mes' => $soma_os_mes,
         );
 
         $contador_notificacoes = 0;

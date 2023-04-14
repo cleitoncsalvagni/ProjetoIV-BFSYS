@@ -24,7 +24,6 @@
                                 <th>Nome</th>
                                 <th>CPF</th>
                                 <th>Celular</th>
-                                <th>Email</th>
                                 <th class='text-center'>Ativo</th>
                                 <th class='text-center no-sort'>Ações</th>
                             </tr>
@@ -35,10 +34,9 @@
                                 <tr>
                                     <!-- <td><?php echo $vendedor->vendedor_id ?></td> -->
                                     <td><?php echo $vendedor->vendedor_codigo ?></td>
-                                    <td><?php echo $vendedor->vendedor_nome_completo ?></td>
+                                    <td><?php echo word_limiter($vendedor->vendedor_nome_completo, 4) ?></td>
                                     <td><?php echo $vendedor->vendedor_cpf ?></td>
                                     <td><?php echo $vendedor->vendedor_celular ?></td>
-                                    <td><?php echo $vendedor->vendedor_email ?></td>
                                     <td class='text-center pr-4'><?php echo ($vendedor->vendedor_ativo ? '<span class="badge badge-success btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                     <td class='text-center'>
                                         <a title="Editar" href="<?php echo base_url('vendedores/edit/' . $vendedor->vendedor_id) ?>" class="btn btn-outline-primary rounded btn-sm"><i class="fas fa-pen"></i></a>

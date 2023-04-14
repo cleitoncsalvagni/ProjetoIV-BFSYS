@@ -2,7 +2,7 @@
 
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/') ?>">
     <div class="sidebar-brand-icon">
-      <img src="http://[::1]/bfsys/public/img/bfsys_logo_icon.svg" style='width: 3rem;' class="img-fluid" alt="...">
+      <img src="<?php echo base_url("public/img/bfsys_logo_icon.svg") ?>" style='width: 3rem;' class="img-fluid" alt="...">
     </div>
     <div class="sidebar-brand-text mx-3">BFSYS</div>
   </a>
@@ -21,19 +21,18 @@
     Módulos
   </div>
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+  <li class="nav-item <?php echo $this->router->fetch_class() == 'vendas' ? 'active' : '' ?>">
+    <a title='Gerenciar vendas' class="nav-link" href="<?php echo base_url('vendas'); ?>">
       <i class="fas fa-shopping-cart"></i>
-      <span>Vendas</span>
-    </a>
-    <div id="collapseOne" class="collapse" data-parent="#accordionSidebar">
-      <div class="bg-light py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Escolha uma opção:</h6>
-        <a class="collapse-item" title='Gerenciar vendas' href="<?php echo base_url('vendas') ?>"><i class="fas fa-shopping-basket text-gray-700"></i>&nbsp;&nbsp;Vendas</a>
-        <a class="collapse-item" title='Gerenciar O.S' href="<?php echo base_url('os') ?>"><i class="fas fa-file-invoice-dollar text-gray-700"></i>&nbsp;&nbsp;Ordens de Serviço</a>
-      </div>
-    </div>
+      <span>Vendas</span></a>
   </li>
+
+  <li class="nav-item <?php echo $this->router->fetch_class() == 'ordens_servicos' ? 'active' : '' ?>">
+    <a title='Gerenciar O.S' class="nav-link" href="<?php echo base_url('os'); ?>">
+      <i class="fas fa-file-invoice-dollar"></i>
+      <span>Ordens de Serviço</span></a>
+  </li>
+
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -94,7 +93,7 @@
       <div id="collapseSix" class="collapse" data-parent="#accordionSidebar">
         <div class="bg-light py-2 collapse-inner rounded">
           <h6 class="collapse-header">Escolha uma opção:</h6>
-          <a class="collapse-item" title='Gerenciar relatório de vendas' href="<?php echo base_url('relatorios/vendas') ?>"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Vendas</a>
+          <a title='Gerenciar relatório de vendas' class="collapse-item" href="<?php echo base_url('relatorios/vendas') ?>"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Vendas</a>
           <a title="Gerar relatório de ordens de serviços" class="collapse-item" href="<?php echo base_url('relatorios/os'); ?>"><i class="fas fa-shopping-basket text-gray-900"></i>&nbsp;&nbsp;Ordens de serviços</a>
           <a title="Gerar relatório de contas a pagar" class="collapse-item" href="<?php echo base_url('relatorios/pagar'); ?>"><i class="fas fa-money-bill-alt text-gray-900"></i>&nbsp;&nbsp;Contas a pagar</a>
           <a title="Gerar relatório de contas a receber" class="collapse-item" href="<?php echo base_url('relatorios/receber'); ?>"><i class="fas fa-hand-holding-usd text-gray-900"></i>&nbsp;&nbsp;Contas a receber</a>

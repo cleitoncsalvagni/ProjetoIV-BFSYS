@@ -65,6 +65,13 @@ $(document).ready(function () {
 						response(data.message);
 					}
 				},
+				error: function () {
+					Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "Não foi possível carregar os serviços! Verifique sua conexão com a internet e tente novamente.",
+					});
+				},
 			});
 		},
 		minLength: 1,

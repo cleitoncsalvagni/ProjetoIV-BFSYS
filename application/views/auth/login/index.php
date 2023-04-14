@@ -3,10 +3,10 @@
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 
-            <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 10rem !important">
+            <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 5rem !important">
                 <div class="card-body p-0">
                     <div class="row">
-                        <!-- <img src="http://[::1]/bfsys/public/img/bfsys_logo.png" class="col-lg-6 d-none d-lg-block img-fluid rounded" alt="..."> -->
+                        <img src="<?php echo base_url("/public/img/bfsys_logo.png") ?>" class="col-lg-6 d-none d-lg-block img-fluid rounded" alt="...">
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">

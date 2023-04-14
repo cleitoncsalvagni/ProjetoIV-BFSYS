@@ -90,7 +90,7 @@ $db['default'] = array(
 	'swap_pre' => '',
 	'encrypt' => FALSE,
 	'compress' => FALSE,
-	'stricton' => FALSE,
+	'stricton' => false, //True para hospedagem
 	'failover' => array(),
 	'save_queries' => TRUE
 );
