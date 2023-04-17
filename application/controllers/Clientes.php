@@ -6,10 +6,11 @@ class Clientes extends CI_Controller
 {
 
 	public $clienteService;
-    public function __construct()
+    public function __construct(ClienteService $_clienteService)
     {
+		$this->clienteService = $_clienteService;
         parent::__construct();
-		$this->clienteService = new ClienteService;
+
 
         if (!$this->ion_auth->logged_in()) {
             $this->session->set_flashdata('info', 'Sua sessão expirou! Por favor realize seu login novamente');
@@ -261,62 +262,18 @@ class Clientes extends CI_Controller
 
     public function check_rg_ie($cliente_rg_ie)
     {
-        $cliente_id = $this->input->post('cliente_id');
-
-        if ($this->core_model->get_by_id('clientes', array('cliente_rg_ie' => $cliente_rg_ie, 'cliente_id !=' => $cliente_id))) {
-            $this->form_validation->set_message('check_rg_ie', 'Este documento já existe!');
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+		$this->clienteService->check_rg_ie($cliente_rg_ie);
     }
 
     public function check_celular($cliente_celular)
     {
-        $cliente_id = $this->input->post('cliente_id');
-
-        if ($this->core_model->get_by_id('clientes', array('cliente_celular' => $cliente_celular, 'cliente_id !=' => $cliente_id))) {
-            $this->form_validation->set_message('check_celular', 'Este celular existe!');
-            return FALSE;
-        } else {
-            return TRUE;
-        }
+		$this->clienteService->check_celular($cliente_celular);
     }
 
     public function check_cpf($cpf)
     {
 
-        if ($this->input->post('cliente_id')) {
-
-            $cliente_id = $this->input->post('cliente_id');
-
-            if ($this->core_model->get_by_id('clientes', array('cliente_id !=' => $cliente_id, 'cliente_cpf_cnpj' => $cpf))) {
-                $this->form_validation->set_message('check_cpf', 'Este CPF já existe');
-                return FALSE;
-            }
-        }
-
-        $cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
-        // Verifica se nenhuma das sequências abaixo foi digitada, caso seja, retorna falso
-        if (strlen($cpf) != 11 || $cpf == '00000000000' || $cpf == '11111111111' || $cpf == '22222222222' || $cpf == '33333333333' || $cpf == '44444444444' || $cpf == '55555555555' || $cpf == '66666666666' || $cpf == '77777777777' || $cpf == '88888888888' || $cpf == '99999999999') {
-
-            $this->form_validation->set_message('check_cpf', 'Por favor digite um CPF válido');
-            return FALSE;
-        } else {
-            // Calcula os números para verificar se o CPF é verdadeiro
-            for ($t = 9; $t < 11; $t++) {
-                for ($d = 0, $c = 0; $c < $t; $c++) {
-                    //$d += $cpf{$c} * (($t + 1) - $c); // Para PHP com versão < 7.4
-                    $d += $cpf[$c] * (($t + 1) - $c);
-                }
-                $d = ((10 * $d) % 11) % 10;
-                if ($cpf[$c] != $d) {
-                    $this->form_validation->set_message('check_cpf', 'Por favor digite um CPF válido');
-                    return FALSE;
-                }
-            }
-            return TRUE;
-        }
+        $this->clienteService->check_cpf($cpf);
     }
 
     public function check_cnpj($cnpj)
