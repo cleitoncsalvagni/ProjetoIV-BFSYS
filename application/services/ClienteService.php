@@ -1,7 +1,10 @@
 <?php
 
-class ClienteService
+class ClienteService implements ClienteInterface
 {
+	public function __construct()
+	{
+	}
 
 	public function delete($cliente_id = null)
 	{
@@ -17,7 +20,7 @@ class ClienteService
 
 	public function check_email($cliente_email)
 	{
-
+		$cliente_id = $this->input->post('cliente_id');
 
 		if ($this->core_model->get_by_id('clientes', array('cliente_email' => $cliente_email, 'cliente_id !=' => $cliente_id))) {
 			$this->form_validation->set_message('check_email', 'Este email já existe!');

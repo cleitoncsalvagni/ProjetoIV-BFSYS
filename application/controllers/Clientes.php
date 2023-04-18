@@ -5,12 +5,12 @@ defined('BASEPATH') or exit('Ação não permitida');
 class Clientes extends CI_Controller
 {
 
-	public $clienteService;
-    public function __construct(ClienteService $_clienteService)
-    {
-		$this->clienteService = $_clienteService;
+	public $clienteInterface;
+    public function __construct(ClienteInterface $_clienteInterface)
+	{
         parent::__construct();
 
+		$this->clienteInterface = $_clienteInterface;
 
         if (!$this->ion_auth->logged_in()) {
             $this->session->set_flashdata('info', 'Sua sessão expirou! Por favor realize seu login novamente');
@@ -247,33 +247,33 @@ class Clientes extends CI_Controller
 
     public function del($cliente_id = NULL)
     {
-		$this->clienteService->delete($cliente_id);
+		$this->clienteInterface->delete($cliente_id);
     }
 
     public function check_email($cliente_email)
     {
-        $this->clienteService->check_email($cliente_email);
+        $this->clienteInterface->check_email($cliente_email);
     }
 
     public function check_telefone($cliente_telefone)
     {
-        $this->clienteService->check_telefone($cliente_telefone);
+        $this->clienteInterface->check_telefone($cliente_telefone);
     }
 
     public function check_rg_ie($cliente_rg_ie)
     {
-		$this->clienteService->check_rg_ie($cliente_rg_ie);
+		$this->clienteInterface->check_rg_ie($cliente_rg_ie);
     }
 
     public function check_celular($cliente_celular)
     {
-		$this->clienteService->check_celular($cliente_celular);
+		$this->clienteInterface->check_celular($cliente_celular);
     }
 
     public function check_cpf($cpf)
     {
 
-        $this->clienteService->check_cpf($cpf);
+        $this->clienteInterface->check_cpf($cpf);
     }
 
     public function check_cnpj($cnpj)
