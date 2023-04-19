@@ -6,7 +6,7 @@
             <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 5rem !important">
                 <div class="card-body p-0">
                     <div class="row">
-                        <!-- <img src="<?php echo base_url("/public/img/bfsys_logo.png") ?>" class="col-lg-6 d-none d-lg-block img-fluid rounded" alt="..."> -->
+                        <img src="<?php echo base_url("/public/img/bfsys_logo.png") ?>" class="col-lg-6 d-none d-lg-block img-fluid rounded" alt="...">
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
