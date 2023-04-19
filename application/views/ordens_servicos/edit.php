@@ -134,20 +134,20 @@
                             <div class="form-group row">
 
                                 <div class="col-sm-6 mb-1 mb-sm-0">
-                                    <label class="small my-0">Equipamento <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_equipamento', $ordem_servico->ordem_servico_equipamento); ?>" name="ordem_servico_equipamento" required="">
+                                    <label class="small my-0">Equipamento</label>
+                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_equipamento', $ordem_servico->ordem_servico_equipamento); ?>" name="ordem_servico_equipamento" placeholder="Equipamento">
                                     <?php echo form_error('ordem_servico_equipamento', '<div class="text-danger small">', '</div>') ?>
                                 </div>
 
                                 <div class="col-sm-3 mb-1 mb-sm-0">
-                                    <label class="small my-0">Marca <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_marca_equipamento', $ordem_servico->ordem_servico_marca_equipamento); ?>" name="ordem_servico_marca_equipamento" required="">
+                                    <label class="small my-0">Marca</label>
+                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_marca_equipamento', $ordem_servico->ordem_servico_marca_equipamento); ?>" name="ordem_servico_marca_equipamento" placeholder="Marca">
                                     <?php echo form_error('ordem_servico_marca_equipamento', '<div class="text-danger small">', '</div>') ?>
                                 </div>
 
                                 <div class="col-sm-3 mb-1 mb-sm-0">
-                                    <label class="small my-0">Modelo <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_modelo_equipamento', $ordem_servico->ordem_servico_modelo_equipamento); ?>" name="ordem_servico_modelo_equipamento" required="">
+                                    <label class="small my-0">Modelo</label>
+                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_modelo_equipamento', $ordem_servico->ordem_servico_modelo_equipamento); ?>" name="ordem_servico_modelo_equipamento" placeholder="Modelo">
                                     <?php echo form_error('ordem_servico_modelo_equipamento', '<div class="text-danger small">', '</div>') ?>
                                 </div>
 
@@ -156,14 +156,14 @@
                             <div class="form-group row">
 
                                 <div class="col-sm-6 mb-1 mb-sm-0">
-                                    <label class="small my-0">Defeitos <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_defeito', $ordem_servico->ordem_servico_defeito); ?>" name="ordem_servico_defeito" required="">
+                                    <label class="small my-0">Defeitos</label>
+                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_defeito', $ordem_servico->ordem_servico_defeito); ?>" name="ordem_servico_defeito" placeholder="Defeitos">
                                     <?php echo form_error('ordem_servico_defeito', '<div class="text-danger small">', '</div>') ?>
                                 </div>
 
                                 <div class="col-sm-6 mb-1 mb-sm-0">
-                                    <label class="small my-0">Acessórios <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_acessorios', $ordem_servico->ordem_servico_acessorios); ?>" name="ordem_servico_acessorios" required="">
+                                    <label class="small my-0">Acessórios</label>
+                                    <input type="text" class="form-control" value="<?php echo set_value('ordem_servico_acessorios', $ordem_servico->ordem_servico_acessorios); ?>" name="ordem_servico_acessorios" placeholder="Acessórios">
                                     <?php echo form_error('ordem_servico_acessorios', '<div class="text-danger small">', '</div>') ?>
                                 </div>
 
@@ -172,7 +172,7 @@
 
                                 <div class="col-sm-12 mb-1 mb-sm-0">
                                     <label class="small my-0">Observações <span class="text-danger"></span></label>
-                                    <textarea type="text" class="form-control" value="" name="ordem_servico_obs"><?php echo set_value('ordem_servico_obs', $ordem_servico->ordem_servico_obs); ?></textarea>
+                                    <textarea type="text" class="form-control" value="" name="ordem_servico_obs" placeholder="Observações"><?php echo set_value('ordem_servico_obs', $ordem_servico->ordem_servico_obs); ?></textarea>
                                 </div>
 
                             </div>

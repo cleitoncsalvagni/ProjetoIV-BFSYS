@@ -319,74 +319,92 @@ class Vendas extends CI_Controller
             $file_name = 'Venda&nbsp;' . $venda->venda_id;
 
 
- $html = '<!DOCTYPE html>';
-$html .= '<html>';
-$html .= '<head>';
-$html .= '<title>' . $empresa->sistema_nome_fantasia . ' | Impressão de venda</title>';
-$html .= '<style>';
-$html .= 'body {font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; padding: 0 30px;}';
-$html .= 'h4 {font-weight: bold; margin-top: 20px; margin-bottom: 10px;}';
-$html .= 'hr {border: 0; height: 1px; background-color: #ddd; margin: 20px 0;}';
-$html .= 'table {width: 100%; border-collapse: collapse; margin-top: 20px;}';
-$html .= 'table th, table td {border: solid #ddd 1px; padding: 10px;}';
-$html .= 'table th {font-weight: bold; text-align: left;}';
-$html .= '</style>';
-$html .= '</head>';
-$html .= '<body>';
-$html .= '<h4>' . $empresa->sistema_razao_social . '</h4>';
-$html .= '<p>CNPJ: ' . $empresa->sistema_cnpj . '</p>';
-$html .= '<p>' . $empresa->sistema_endereco . ', ' . $empresa->sistema_numero . '<br>';
-$html .= 'CEP: ' . $empresa->sistema_cep . ', ' . $empresa->sistema_cidade . ', ' . $empresa->sistema_estado . '<br>';
-$html .= 'Telefone: ' . $empresa->sistema_telefone_movel . '<br>';
-$html .= 'E-mail: ' . $empresa->sistema_email . '</p>';
-$html .= '<hr>';
-$html .= '<p style="text-align: right; font-size: 12px;">Venda Nº ' . $venda->venda_id . '</p>';
-$html .= '<p><strong>Cliente:</strong> ' . $venda->cliente_nome_completo . '<br>';
-$html .= '<strong>CPF:</strong> ' . $venda->cliente_cpf_cnpj . '<br>';
-$html .= '<strong>Celular:</strong> ' . $venda->cliente_celular . '<br>';
-$html .= '<strong>Data de emissão:</strong> ' . formata_data_banco_com_hora($venda->venda_data_emissao) . '<br>';
-$html .= '<strong>Forma de pagamento:</strong> ' . $venda->forma_pagamento . '</p>';
-$html .= '<hr>';
+            $html = '<!DOCTYPE html>';
+            $html .= '<html>';
+            $html .= '<head>';
+            $html .= '<title>' . $empresa->sistema_nome_fantasia . ' | Impressão de venda</title>';
+            $html .= '<style>';
+            $html .= 'body {font-size: 14px; font-family: Arial, sans-serif; margin: 0;}';
+            $html .= 'h4 {text-align: center;}';
+            $html .= 'table {border-collapse: collapse; width: 100%;}';
+            $html .= 'th, td {text-align: left; padding: 8px;}';
+            $html .= 'th {background-color: #f2f2f2;}';
+            $html .= 'footer {font-size: 12px; text-align: center;}';
+            $html .= 'hr {border: 0; height: 1px; background-color: #ddd; margin: 20px 0;}';
+            $html .= '</style>';
+            $html .= '</head>';
+            $html .= '<body>';
+            $html .= '<div style="padding: 10px;">';
+            $html .= '<h4>' . $empresa->sistema_razao_social . '</h4>';
+            $html .= '<p style="text-align: center;">CNPJ: ' . $empresa->sistema_cnpj . '</p>';
+            $html .= '<p style="text-align: center;">' . $empresa->sistema_endereco . ', ' . $empresa->sistema_numero . '<br>';
+            $html .= 'CEP: ' . $empresa->sistema_cep . ', ' . $empresa->sistema_cidade . ', ' . $empresa->sistema_estado . '<br>';
+            $html .= 'Telefone: ' . $empresa->sistema_telefone_movel . '<br>';
+            $html .= 'E-mail: ' . $empresa->sistema_email . '</p>';
+            $html .= '<hr>';
+            $html .= '<p style="text-align: right; font-size: 12px;">Venda Nº ' . $venda->venda_id . '</p>';
+            $html .= '<div style="margin-top: 20px;">';
+            $html .= '<h4 style="text-align: left;">Cliente:</h4>';
+            $html .= '<p><strong>' . $venda->cliente_nome_completo . '</strong><br>';
+            $html .= '<strong>CPF:</strong> ' . $venda->cliente_cpf_cnpj . '<br>';
+            $html .= '<strong>Celular:</strong> ' . $venda->cliente_celular . '<br>';
+            $html .= '<strong>Data de emissão:</strong> ' . formata_data_banco_com_hora($venda->venda_data_emissao) . '<br>';
+            $html .= '<strong>Forma de pagamento:</strong> ' . $venda->forma_pagamento . '</p>';
+            $html .= '<hr>';
 
             $produtos_venda = $this->vendas_model->get_all_produtos($venda_id);
 
 
             $valor_final_venda = $this->vendas_model->get_valor_final_venda($venda_id);
 
-$html .= '<table width="100%" style="border-collapse: collapse; border: solid #ddd 1px">';
-$html .= '<tr>';
-$html .= '<th style="border: solid #ddd 1px; padding: 8px;">Código do produto</th>';
-$html .= '<th style="border: solid #ddd 1px; padding: 8px;">Descrição</th>';
-$html .= '<th style="border: solid #ddd 1px; padding: 8px;">Quantidade</th>';
-$html .= '<th style="border: solid #ddd 1px; padding: 8px;">Valor unitário</th>';
-$html .= '<th style="border: solid #ddd 1px; padding: 8px;">Desconto</th>';
-$html .= '<th style="border: solid #ddd 1px; padding: 8px;">Valor total</th>';
-$html .= '</tr>';
+            $html .= '<table>';
+            $html .= '<tr>';
+            $html .= '<th>Descrição</th>';
+            $html .= '<th style="text-align: center;">Quantidade</th>';
+            $html .= '<th>Valor unitário</th>';
+            $html .= '<th style="text-align: center;">Desconto</th>';
+            $html .= '<th>Valor total</th>';
+            $html .= '</tr>';
 
-foreach ($produtos_venda as $produto) :
-    $html .= '<tr>';
-    $html .= '<td style="border: solid #ddd 1px; padding: 8px;">' . $produto->venda_produto_id_produto . '</td>';
-    $html .= '<td style="border: solid #ddd 1px; padding: 8px;">' . $produto->produto_descricao . '</td>';
-    $html .= '<td style="border: solid #ddd 1px; padding: 8px;">' . $produto->venda_produto_quantidade . '</td>';
-    $html .= '<td style="border: solid #ddd 1px; padding: 8px;">' . 'R$&nbsp;' . $produto->venda_produto_valor_unitario . '</td>';
-    $html .= '<td style="border: solid #ddd 1px; padding: 8px;">' .   ($produto->venda_produto_desconto ? $produto->venda_produto_desconto . '%&nbsp;' : 'R$ 0.00')  . '</td>';
-    $html .= '<td style="border: solid #ddd 1px; padding: 8px;">' . 'R$&nbsp;' . $produto->venda_produto_valor_total . '</td>';
-    $html .= '</tr>';
-endforeach;
+            foreach ($produtos_venda as $produto) :
+                $html .= '<tr>';
+                $html .= '<td>' . $produto->produto_descricao . '</td>';
+                $html .= '<td style="text-align: center;">' . $produto->venda_produto_quantidade . '</td>';
+                $html .= '<td>' . 'R$&nbsp;' . $produto->venda_produto_valor_unitario . '</td>';
+                $html .= '<td style="text-align: center;">' .   ($produto->venda_produto_desconto ? $produto->venda_produto_desconto . '%&nbsp;' : 'R$ 0.00')  . '</td>';
+                $html .= '<td>' . 'R$&nbsp;' . $produto->venda_produto_valor_total . '</td>';
+                $html .= '</tr>';
+            endforeach;
 
-$html .= '<tr>';
-$html .= '<td colspan="4" style="border-bottom: solid #ddd 1px;"></td>';
-$html .= '<td style="padding: 8px; border: solid #ddd 1px;"><strong>Valor final</strong></td>';
-$html .= '<td style="padding: 8px; border: solid #ddd 1px;">' . 'R$&nbsp;' . $valor_final_venda->venda_valor_total . '</td>';
-$html .= '</tr>';
+            $html .= '<tfoot>';
+            $html .= '<tr>';
+            $html .= '<td colspan="4" style="text-align:right; font-weight:bold; border:none; padding-top:20px;">Valor total:</td>';
+            $html .= '<td style="border:none; padding-top:20px;">' . 'R$&nbsp;' . $valor_final_venda->venda_valor_total . '</td>';
+            $html .= '</tr>';
+            $html .= '</tfoot>';
 
-$html .= '</table>';
+            $html .= '</table>';
 
-$html .= '</body>';
-$html .= '</html>';
+            $html .= '<div style="position: absolute; bottom: 200px">';
+            $html .= '<table style="width: 100%;">';
+            $html .= '<tr>';
+            $html .= '<td style="text-align: center; padding-top: 50px;">';
+            $html .= '<hr style="width: 40%; margin: 0 auto; border: none; border-bottom: 1px solid #000000;" />';
+            $html .= '</td>';
+            $html .= '</tr>';
+            $html .= '<tr>';
+            $html .= '<td style="text-align: center;"><strong>' . $empresa->sistema_nome_fantasia . '</strong></td>';
+            $html .= '</tr>';
+            $html .= '</table>';
+            $html .= '</div>';
 
-            // False -> Abre PDF no navegador
-            // True -> Faz o download
+            $html .= '<footer style="text-align: center; position: absolute; bottom: 0;">';
+            $html .= '<p>' . $empresa->sistema_txt_ordem_servico . '</p>';
+            $html .= '</footer>';
+
+            $html .= '</body>';
+            $html .= '</html>';
+
 
             $this->pdf->createPDF($html, $file_name, false);
         }
