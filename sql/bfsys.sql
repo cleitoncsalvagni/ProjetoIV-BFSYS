@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql208.epizy.com
--- Tempo de geração: 19/04/2023 às 15:20
+-- Tempo de geração: 08/05/2023 às 11:15
 -- Versão do servidor: 10.4.17-MariaDB
 -- Versão do PHP: 7.2.22
 
@@ -118,10 +118,10 @@ CREATE TABLE `contas_pagar` (
 --
 
 INSERT INTO `contas_pagar` (`conta_pagar_id`, `conta_pagar_fornecedor_id`, `conta_pagar_data_vencimento`, `conta_pagar_data_pagamento`, `conta_pagar_valor`, `conta_pagar_status`, `conta_pagar_obs`, `conta_pagar_data_alteracao`) VALUES
-(2, 3, '2023-10-30', NULL, '2,000.00', 0, 'Motores Elétricos', '2023-04-19 17:47:59'),
+(2, 3, '2023-03-29', NULL, '2,000.00', 0, 'Motores Elétricos', '2023-04-26 22:11:59'),
 (3, 2, '2023-06-15', NULL, '1,000.00', 0, 'Canaletas de PVP para fios', '2023-04-19 17:49:23'),
 (5, 2, '2023-04-19', '2023-04-19 01:00:58', '115.00', 1, 'Canaletas PVC', '2023-04-19 18:00:38'),
-(6, 5, '2023-05-04', NULL, '120.00', 0, '', '2023-04-19 18:32:51');
+(6, 5, '2023-04-26', NULL, '120.00', 0, '', '2023-04-26 22:11:31');
 
 -- --------------------------------------------------------
 
@@ -247,14 +247,6 @@ CREATE TABLE `login_attempts` (
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Despejando dados para a tabela `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(1, '187.45.103.67', 'admin@bfsys.com', 1681919351),
-(2, '187.45.103.67', 'admin@bfsys.com', 1681876812);
-
 -- --------------------------------------------------------
 
 --
@@ -305,9 +297,16 @@ CREATE TABLE `ordem_tem_servicos` (
 --
 
 INSERT INTO `ordem_tem_servicos` (`ordem_ts_id`, `ordem_ts_id_servico`, `ordem_ts_id_ordem_servico`, `ordem_ts_quantidade`, `ordem_ts_valor_unitario`, `ordem_ts_valor_desconto`, `ordem_ts_valor_total`) VALUES
-(1, 8, 1, 2, ' 700.00', '0 ', ' 1,400.00'),
 (2, 1, 2, 1, ' 150.00', '0 ', ' 150.00'),
-(3, 5, 3, 1, ' 200.00', '0 ', ' 200.00');
+(6, 6, 4, 3, ' 500.00', '0 ', ' 1,500.00'),
+(11, 8, 1, 2, ' 700.00', '0 ', ' 1,400.00'),
+(12, 1, 5, 1, ' 150.00', '0 ', ' 150.00'),
+(13, 8, 5, 2, ' 700.00', '5 ', ' 1,330.00'),
+(14, 2, 5, 1, ' 250.00', '0 ', ' 250.00'),
+(15, 9, 5, 1, ' 200.00', '0 ', ' 200.00'),
+(16, 10, 6, 7, ' 150.00', '0 ', ' 1,050.00'),
+(17, 5, 3, 1, ' 200.00', '0 ', ' 200.00'),
+(18, 3, 3, 1, ' 100.00', '0 ', ' 100.00');
 
 -- --------------------------------------------------------
 
@@ -338,9 +337,12 @@ CREATE TABLE `ordens_servicos` (
 --
 
 INSERT INTO `ordens_servicos` (`ordem_servico_id`, `ordem_servico_forma_pagamento_id`, `ordem_servico_cliente_id`, `ordem_servico_data_emissao`, `ordem_servico_data_conclusao`, `ordem_servico_equipamento`, `ordem_servico_marca_equipamento`, `ordem_servico_modelo_equipamento`, `ordem_servico_acessorios`, `ordem_servico_defeito`, `ordem_servico_valor_desconto`, `ordem_servico_valor_total`, `ordem_servico_status`, `ordem_servico_obs`, `ordem_servico_data_alteracao`) VALUES
-(1, NULL, 7, '2023-04-19 18:50:42', NULL, 'Ar Condicionado', 'Samsung', 'Split', 'Nenhum', 'Nenhum', 'R$ 0.00', '1,400.00', 0, '', NULL),
-(2, NULL, 1, '2023-04-19 19:16:49', NULL, '', '', '', '', '', 'R$ 0.00', '150.00', 0, '', NULL),
-(3, NULL, 6, '2023-04-19 19:18:50', NULL, '', '', '', '', '', 'R$ 0.00', '200.00', 0, '', NULL);
+(1, 2, 7, '2023-01-19 19:50:42', NULL, 'Ar Condicionado', 'Samsung', 'Split', 'Nenhum', 'Nenhum', 'R$ 0.00', '1,400.00', 1, '', '2023-04-25 23:18:21'),
+(2, NULL, 1, '2023-02-19 20:16:49', NULL, '', '', '', '', '', 'R$ 0.00', '150.00', 0, '', '2023-04-25 23:18:24'),
+(3, 3, 6, '2023-04-19 19:18:50', NULL, '', '', '', '', '', 'R$ 0.00', '300.00', 1, '', '2023-04-25 23:16:09'),
+(4, NULL, 7, '2023-05-25 23:11:18', NULL, '', '', '', '', '', 'R$ 0.00', '1,500.00', 0, '', '2023-04-25 23:18:33'),
+(5, NULL, 9, '2023-07-25 23:13:56', NULL, '', '', '', '', '', 'R$ 70.00', '1,930.00', 0, '', '2023-04-25 23:18:36'),
+(6, NULL, 4, '2023-10-25 23:15:15', NULL, '', '', '', '', '', 'R$ 0.00', '1,050.00', 0, '', '2023-04-25 23:18:40');
 
 -- --------------------------------------------------------
 
@@ -373,10 +375,10 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`produto_id`, `produto_codigo`, `produto_data_cadastro`, `produto_categoria_id`, `produto_marca_id`, `produto_fornecedor_id`, `produto_descricao`, `produto_unidade`, `produto_codigo_barras`, `produto_ncm`, `produto_preco_custo`, `produto_preco_venda`, `produto_estoque_minimo`, `produto_qtde_estoque`, `produto_ativo`, `produto_obs`, `produto_data_alteracao`) VALUES
-(1, '45209783', NULL, 9, 10, 1, 'Fita Isolante 3M Scotch 33+', 'UN', NULL, NULL, '2,50', '5,00', '5', '9', 1, '', '2023-04-19 18:48:19'),
-(2, '68317502', NULL, 2, 3, 1, 'Disjuntor em Caixa Moldada ABB Tmax XT', 'UN', NULL, NULL, '120,00', '180,00', '2', '2', 1, '', '0000-00-00 00:00:00'),
+(1, '45209783', NULL, 9, 10, 1, 'Fita Isolante 3M Scotch 33+', 'UN', NULL, NULL, '2,50', '5,00', '5', '8', 1, '', '2023-04-19 20:57:25'),
+(2, '68317502', NULL, 2, 3, 1, 'Disjuntor em Caixa Moldada ABB Tmax XT', 'UN', NULL, NULL, '120,00', '180,00', '2', '1', 1, '', '2023-04-19 20:57:25'),
 (3, '04682517', NULL, 2, 5, 2, 'Eaton Bussmann Fusível NH000 100A', 'UN', NULL, NULL, '10,00', '20,00', '3', '2', 1, '', '2023-04-19 19:04:46'),
-(4, '48625910', NULL, 7, 1, 3, 'Siemens Quadro de Distribuição Trifásico', 'UN', NULL, NULL, '1.500,00', '2.500,00', '1', '1', 1, '', '0000-00-00 00:00:00'),
+(4, '48625910', NULL, 7, 1, 3, 'Siemens Quadro de Distribuição Trifásico', 'UN', NULL, NULL, '1.500,00', '2.500,00', '1', '0', 1, '', '2023-04-25 23:08:56'),
 (5, '16579403', NULL, 10, 4, 5, 'WEG Motor Elétrico Trifásico W22 IR3', 'UN', NULL, NULL, '1.000,00', '1.800,00', '1', '0', 1, '', '2023-04-19 19:19:20');
 
 -- --------------------------------------------------------
@@ -475,7 +477,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$ydyAh2sUbFbCcUBwQi3i5O3fL1e5xgWAOFBf9ocUttCi3HRRnMUf.', 'admin@bfsys.software', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1681876819, 1, 'Administrador', 'Bfsys', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$kgWr1tUgY30dH7RBFQXDPu3vmiAFJ/gBN22vGUVO4H5u.1MPngVR2', 'admin@bfsys.software', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1683237760, 1, 'Administrador', 'Bfsys', 'ADMIN', '0'),
+(11, '177.69.47.5', 'vendedor', '$2y$10$B6Sa8fdq9oFA/wF6wpBYue2iiAiBQH8DVy3lkDRLWcqFBNwsSt7Re', 'vendedor@bfsys.software', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1682465059, 1682547319, 1, 'Vendedor', 'Bfsys', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -494,7 +497,8 @@ CREATE TABLE `users_groups` (
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(7, 1, 1);
+(7, 1, 1),
+(25, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -519,10 +523,12 @@ CREATE TABLE `vendas` (
 --
 
 INSERT INTO `vendas` (`venda_id`, `venda_cliente_id`, `venda_forma_pagamento_id`, `venda_vendedor_id`, `venda_tipo`, `venda_data_emissao`, `venda_valor_desconto`, `venda_valor_total`, `venda_data_alteracao`) VALUES
-(1, 6, 2, 3, 1, '2023-04-19 18:48:19', 'R$ 0.00', '5.00', NULL),
-(2, 7, 5, 1, 1, '2023-04-19 18:48:53', 'R$ 0.00', '40.00', NULL),
+(1, 6, 2, 3, 1, '2023-01-19 19:48:19', 'R$ 0.00', '100.00', '2023-04-25 23:19:26'),
+(2, 7, 5, 1, 1, '2023-02-19 19:48:53', 'R$ 0.00', '40.00', '2023-04-25 23:17:27'),
 (3, 9, 4, 1, 2, '2023-04-19 18:53:31', 'R$ 180.00', '1,620.00', NULL),
-(4, 3, 2, 2, 1, '2023-04-19 19:04:46', 'R$ 0.00', '20.00', NULL);
+(4, 3, 2, 2, 1, '2023-05-19 19:04:46', 'R$ 0.00', '200.00', '2023-04-25 23:19:58'),
+(5, 5, 2, 2, 2, '2023-07-19 20:57:25', 'R$ 0.00', '185.00', '2023-04-25 23:17:40'),
+(6, 6, 6, 3, 1, '2023-10-25 23:08:56', 'R$ 750.00', '1,750.00', '2023-04-25 23:17:47');
 
 -- --------------------------------------------------------
 
@@ -548,7 +554,10 @@ INSERT INTO `venda_produtos` (`id_venda_produtos`, `venda_produto_id_venda`, `ve
 (1, 1, 1, '1', ' 5.00', '0 ', ' 5.00'),
 (2, 2, 3, '2', ' 20.00', '0 ', ' 40.00'),
 (3, 3, 5, '1', ' 1,800.00', '10 ', ' 1620.00'),
-(4, 4, 3, '1', ' 20.00', '0 ', ' 20.00');
+(4, 4, 3, '1', ' 20.00', '0 ', ' 20.00'),
+(5, 5, 1, '1', ' 5.00', '0 ', ' 5.00'),
+(6, 5, 2, '1', ' 180.00', '0 ', ' 180.00'),
+(7, 6, 4, '1', ' 2,500.00', '30 ', ' 1750.00');
 
 -- --------------------------------------------------------
 
@@ -776,7 +785,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT de tabela `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
@@ -788,13 +797,13 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de tabela `ordem_tem_servicos`
 --
 ALTER TABLE `ordem_tem_servicos`
-  MODIFY `ordem_ts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ordem_ts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `ordens_servicos`
 --
 ALTER TABLE `ordens_servicos`
-  MODIFY `ordem_servico_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ordem_servico_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -818,25 +827,25 @@ ALTER TABLE `sistema`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `venda_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `venda_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `venda_produtos`
 --
 ALTER TABLE `venda_produtos`
-  MODIFY `id_venda_produtos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_venda_produtos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `vendedores`
